@@ -1,4 +1,4 @@
-module gfcq_protoc
+module github.com/lj1570693659/gfcq_protoc
 
 go 1.18
 
