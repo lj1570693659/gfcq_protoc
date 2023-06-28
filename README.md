@@ -7,3 +7,4 @@
 
 *  protoc --proto_path=.\ --go_out=plugins=grpc:user user\v1\user.proto
 *  protoc --proto_path=.\ --go_out=plugins=grpc:pbentity pbentity\user.proto
+*  protoc --proto_path=.\ --go_out=plugins=grpc:common common\v1\department.proto

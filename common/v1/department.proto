@@ -1,0 +1,44 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+package common;
+
+option go_package = "github.com/lj1570693659/gfcq_protoc/common/v1/department";
+
+service Department {
+  rpc Create(CreateReq) returns (CreateRes) {}
+  rpc GetOne(GetOneReq) returns (GetOneRes) {}
+  rpc GetList(GetListReq) returns (GetListRes) {}
+}
+
+message DepartmentInfo {
+    int32  Id           =1;
+    string Name        =2; // 部门名称
+    int32  Pid          =3; // 上级部门
+    string Remark      =4; // 预留备注信息
+    string CreateTime  =5; // 数据新增时间
+    string UpdateTime  =6; // 最后一次更新数据时间
+    }
+
+message CreateReq {
+  string Name = 1; // v: required
+  string Pid = 2; // v: required
+  string Remark = 3; // v: required
+}
+message CreateRes {}
+
+message GetOneReq {
+  uint64 Id = 1; // v: required
+}
+message GetOneRes {
+  DepartmentInfo Department = 1;
+}
+
+message GetListReq {
+  int32 Page = 1;
+  int32 Size = 2;
+}
+message GetListRes {
+  repeated DepartmentInfo Department = 1;
+}
