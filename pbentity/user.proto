@@ -6,7 +6,7 @@ syntax = "proto3";
 
 package pbentity;
 
-option go_package = "gfcq_protoc/pbentity;pbentity";
+option go_package = "github.com/lj1570693659/gfcq_protoc/pbentity;pbentity";
 
 import "google/protobuf/timestamp.proto";
 

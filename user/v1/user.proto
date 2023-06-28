@@ -4,10 +4,9 @@ syntax = "proto3";
 
 package user;
 
-option go_package = "./;user";
+option go_package = "github.com/lj1570693659/gfcq_protoc/api/user/v1";
 
 import "pbentity/user.proto";
-
 service User{
     rpc Create(CreateReq) returns (CreateRes) {}
     rpc GetOne(GetOneReq) returns (GetOneRes) {}
