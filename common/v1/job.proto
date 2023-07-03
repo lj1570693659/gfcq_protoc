@@ -16,7 +16,7 @@ service Job {
   rpc Delete(DeleteJobReq) returns (DeleteJobRes) {}
 }
 
-// 岗位信息公共数据结构
+// 公共数据结构
 message JobInfo {
     int32  Id           = 1;
     string Name         = 2; // 岗位名称
@@ -49,14 +49,14 @@ message GetOneJobRes {
   JobInfo Job = 1;
 }
 
-// 部门列表接口输入数据结构
+// 列表接口输入数据结构
 message GetListJobReq {
   int32 Page = 1;
   int32 Size = 2;
   JobInfo Job = 3;
 }
 
-// 部门列表接口输出数据结构
+// 列表接口输出数据结构
 message GetListJobRes {
   int32 Page = 1;
   int32 Size = 2;

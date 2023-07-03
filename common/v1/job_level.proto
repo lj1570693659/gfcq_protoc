@@ -1,0 +1,85 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+package common;
+
+option go_package = "github.com/lj1570693659/gfcq_protoc/common/v1/job_level";
+
+import "google/protobuf/timestamp.proto";
+
+service JobLevel {
+  rpc Create(CreateJobLevelReq) returns (CreateJobLevelRes) {}
+  rpc GetOne(GetOneJobLevelReq) returns (GetOneJobLevelRes) {}
+  rpc GetList(GetListJobLevelReq) returns (GetListJobLevelRes) {}
+  rpc Modify(ModifyJobLevelReq) returns (ModifyJobLevelRes) {}
+  rpc Delete(DeleteJobLevelReq) returns (DeleteJobLevelRes) {}
+}
+
+// 公共数据结构
+message JobLevelInfo {
+    int32  Id           = 1;
+    string Name         = 2; // 职级名称
+    string Remark       = 3; // 预留备注信息
+    google.protobuf.Timestamp CreateTime   = 4; // 数据新增时间
+    google.protobuf.Timestamp UpdateTime   = 5; // 最后一次更新数据时间
+}
+
+// 创建数据接口输入数据结构
+message CreateJobLevelReq {
+  string Name = 1; // v: required
+  string Remark = 2;
+}
+
+// 创建数据接口输出数据结构
+message CreateJobLevelRes {
+    JobLevelInfo JobLevel = 1;
+}
+
+// 获取详情接口输入数据结构
+message GetOneJobLevelReq {
+  int32 Id   = 1; // v: required
+  int32 Name = 2; // 职级名称
+}
+
+// 获取详情接口输出数据结构
+message GetOneJobLevelRes {
+  JobLevelInfo JobLevel = 1;
+}
+
+// 列表接口输入数据结构
+message GetListJobLevelReq {
+  int32 Page = 1;
+  int32 Size = 2;
+  JobLevelInfo JobLevel = 3;
+}
+
+// 列表接口输出数据结构
+message GetListJobLevelRes {
+  int32 Page = 1;
+  int32 Size = 2;
+  JobLevelInfo Data = 3;
+}
+
+// 修改数据接口输入数据结构
+message ModifyJobLevelReq {
+  int32 Id = 1; // v: required
+  string Name = 2; // v: required
+  string Remark = 3; // v: required
+}
+
+// 修改数据接口输出数据结构
+message ModifyJobLevelRes {
+  JobLevelInfo JobLevel = 1;
+}
+
+// 删除数据接口输入数据结构
+message DeleteJobLevelReq {
+  int32 Id = 1; // v: required
+}
+
+// 删除数据接口输出数据结构
+message DeleteJobLevelRes {
+  bool IsSuccess = 1; // v: required
+  string Msg = 2; // v: required
+}

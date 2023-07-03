@@ -68,14 +68,14 @@ message GetOneEmployeeRes {
   EmployeeInfo Employee = 1;
 }
 
-// 部门列表接口输入数据结构
+// 列表接口输入数据结构
 message GetListEmployeeReq {
   int32 Page = 1;
   int32 Size = 2;
   EmployeeInfo Employee = 3;
 }
 
-// 部门列表接口输出数据结构
+// 列表接口输出数据结构
 message GetListEmployeeRes {
   int32 Page = 1;
   int32 Size = 2;

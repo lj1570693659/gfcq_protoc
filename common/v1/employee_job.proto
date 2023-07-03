@@ -1,0 +1,88 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+package common;
+
+option go_package = "github.com/lj1570693659/gfcq_protoc/common/v1/employee_job";
+
+import "google/protobuf/timestamp.proto";
+
+service EmployeeJob {
+  rpc Create(CreateEmployeeJobReq) returns (CreateEmployeeJobRes) {}
+  rpc GetOne(GetOneEmployeeJobReq) returns (GetOneEmployeeJobRes) {}
+  rpc GetList(GetListEmployeeJobReq) returns (GetListEmployeeJobRes) {}
+  rpc Modify(ModifyEmployeeJobReq) returns (ModifyEmployeeJobRes) {}
+  rpc Delete(DeleteEmployeeJobReq) returns (DeleteEmployeeJobRes) {}
+}
+
+// 公共数据结构
+message EmployeeJobInfo {
+    int32  Id           = 1;
+    int32 EmployeeId    = 2; // 员工信息
+    int32 JobId         = 3; // 岗位信息
+    string Remark       = 4; // 预留备注信息
+    google.protobuf.Timestamp CreateTime   = 5; // 数据新增时间
+    google.protobuf.Timestamp UpdateTime   = 6; // 最后一次更新数据时间
+}
+
+// 创建数据接口输入数据结构
+message CreateEmployeeJobReq {
+  int32 EmployeeId    = 1; // 员工信息
+  int32 JobId         = 2; // 岗位信息
+  string Remark = 3;
+}
+
+// 创建数据接口输出数据结构
+message CreateEmployeeJobRes {
+  EmployeeJobInfo EmployeeJob = 1;
+}
+
+// 获取详情接口输入数据结构
+message GetOneEmployeeJobReq {
+  int32 EmployeeId    = 1; // 员工信息
+  int32 JobId         = 2; // 岗位信息
+}
+
+// 获取详情接口输出数据结构
+message GetOneEmployeeJobRes {
+  EmployeeJobInfo EmployeeJob = 1;
+}
+
+// 列表接口输入数据结构
+message GetListEmployeeJobReq {
+  int32 Page = 1;
+  int32 Size = 2;
+  EmployeeJobInfo EmployeeJob = 3;
+}
+
+// 列表接口输出数据结构
+message GetListEmployeeJobRes {
+  int32 Page = 1;
+  int32 Size = 2;
+  EmployeeJobInfo Data = 3;
+}
+
+// 修改数据接口输入数据结构
+message ModifyEmployeeJobReq {
+  int32 Id = 1; // v: required
+  int32 EmployeeId    = 2; // v: required 员工信息
+  int32 JobId         = 3; // v: required 岗位信息
+  string Remark = 4; // v: required
+}
+
+// 修改数据接口输出数据结构
+message ModifyEmployeeJobRes {
+  EmployeeJobInfo EmployeeJob = 1;
+}
+
+// 删除数据接口输入数据结构
+message DeleteEmployeeJobReq {
+  int32 Id = 1; // v: required
+}
+
+// 删除数据接口输出数据结构
+message DeleteEmployeeJobRes {
+  bool IsSuccess = 1; // v: required
+  string Msg = 2; // v: required
+}
