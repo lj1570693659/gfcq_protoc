@@ -6,17 +6,19 @@
 // 	protoc        v3.20.3
 // source: common/v1/department.proto
 
-package department
+package v1
 
 import (
 	context "context"
+	reflect "reflect"
+	sync "sync"
+
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	reflect "reflect"
-	sync "sync"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -26,17 +28,18 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// 部门信息公共数据结构
 type DepartmentInfo struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id         int32  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"`
-	Name       string `protobuf:"bytes,2,opt,name=Name,proto3" json:"Name,omitempty"`             // 部门名称
-	Pid        int32  `protobuf:"varint,3,opt,name=Pid,proto3" json:"Pid,omitempty"`              // 上级部门
-	Remark     string `protobuf:"bytes,4,opt,name=Remark,proto3" json:"Remark,omitempty"`         // 预留备注信息
-	CreateTime string `protobuf:"bytes,5,opt,name=CreateTime,proto3" json:"CreateTime,omitempty"` // 数据新增时间
-	UpdateTime string `protobuf:"bytes,6,opt,name=UpdateTime,proto3" json:"UpdateTime,omitempty"` // 最后一次更新数据时间
+	Id         int32                  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"`
+	Name       string                 `protobuf:"bytes,2,opt,name=Name,proto3" json:"Name,omitempty"`             // 部门名称
+	Pid        int32                  `protobuf:"varint,3,opt,name=Pid,proto3" json:"Pid,omitempty"`              // 上级部门
+	Remark     string                 `protobuf:"bytes,4,opt,name=Remark,proto3" json:"Remark,omitempty"`         // 预留备注信息
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=CreateTime,proto3" json:"CreateTime,omitempty"` // 数据新增时间
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=UpdateTime,proto3" json:"UpdateTime,omitempty"` // 最后一次更新数据时间
 }
 
 func (x *DepartmentInfo) Reset() {
@@ -99,32 +102,33 @@ func (x *DepartmentInfo) GetRemark() string {
 	return ""
 }
 
-func (x *DepartmentInfo) GetCreateTime() string {
+func (x *DepartmentInfo) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
-	return ""
+	return nil
 }
 
-func (x *DepartmentInfo) GetUpdateTime() string {
+func (x *DepartmentInfo) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
-	return ""
+	return nil
 }
 
-type CreateReq struct {
+// 创建数据接口输入数据结构
+type CreateDepartmentReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Name   string `protobuf:"bytes,1,opt,name=Name,proto3" json:"Name,omitempty"`     // v: required
-	Pid    string `protobuf:"bytes,2,opt,name=Pid,proto3" json:"Pid,omitempty"`       // v: required
+	Pid    int32  `protobuf:"varint,1,opt,name=Pid,proto3" json:"Pid,omitempty"`      // v: required
+	Name   string `protobuf:"bytes,2,opt,name=Name,proto3" json:"Name,omitempty"`     // v: required
 	Remark string `protobuf:"bytes,3,opt,name=Remark,proto3" json:"Remark,omitempty"` // v: required
 }
 
-func (x *CreateReq) Reset() {
-	*x = CreateReq{}
+func (x *CreateDepartmentReq) Reset() {
+	*x = CreateDepartmentReq{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_common_v1_department_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -132,13 +136,13 @@ func (x *CreateReq) Reset() {
 	}
 }
 
-func (x *CreateReq) String() string {
+func (x *CreateDepartmentReq) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateReq) ProtoMessage() {}
+func (*CreateDepartmentReq) ProtoMessage() {}
 
-func (x *CreateReq) ProtoReflect() protoreflect.Message {
+func (x *CreateDepartmentReq) ProtoReflect() protoreflect.Message {
 	mi := &file_common_v1_department_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -150,40 +154,43 @@ func (x *CreateReq) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateReq.ProtoReflect.Descriptor instead.
-func (*CreateReq) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateDepartmentReq.ProtoReflect.Descriptor instead.
+func (*CreateDepartmentReq) Descriptor() ([]byte, []int) {
 	return file_common_v1_department_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CreateReq) GetName() string {
+func (x *CreateDepartmentReq) GetPid() int32 {
+	if x != nil {
+		return x.Pid
+	}
+	return 0
+}
+
+func (x *CreateDepartmentReq) GetName() string {
 	if x != nil {
 		return x.Name
 	}
 	return ""
 }
 
-func (x *CreateReq) GetPid() string {
-	if x != nil {
-		return x.Pid
-	}
-	return ""
-}
-
-func (x *CreateReq) GetRemark() string {
+func (x *CreateDepartmentReq) GetRemark() string {
 	if x != nil {
 		return x.Remark
 	}
 	return ""
 }
 
-type CreateRes struct {
+// 创建数据接口输出数据结构
+type CreateDepartmentRes struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
+
+	Department *DepartmentInfo `protobuf:"bytes,1,opt,name=Department,proto3" json:"Department,omitempty"`
 }
 
-func (x *CreateRes) Reset() {
-	*x = CreateRes{}
+func (x *CreateDepartmentRes) Reset() {
+	*x = CreateDepartmentRes{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_common_v1_department_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -191,13 +198,13 @@ func (x *CreateRes) Reset() {
 	}
 }
 
-func (x *CreateRes) String() string {
+func (x *CreateDepartmentRes) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateRes) ProtoMessage() {}
+func (*CreateDepartmentRes) ProtoMessage() {}
 
-func (x *CreateRes) ProtoReflect() protoreflect.Message {
+func (x *CreateDepartmentRes) ProtoReflect() protoreflect.Message {
 	mi := &file_common_v1_department_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -209,21 +216,30 @@ func (x *CreateRes) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateRes.ProtoReflect.Descriptor instead.
-func (*CreateRes) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateDepartmentRes.ProtoReflect.Descriptor instead.
+func (*CreateDepartmentRes) Descriptor() ([]byte, []int) {
 	return file_common_v1_department_proto_rawDescGZIP(), []int{2}
 }
 
-type GetOneReq struct {
+func (x *CreateDepartmentRes) GetDepartment() *DepartmentInfo {
+	if x != nil {
+		return x.Department
+	}
+	return nil
+}
+
+// 获取详情接口输入数据结构
+type GetOneDepartmentReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id uint64 `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"` // v: required
+	Id   int32 `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"`     // v: required
+	Name int32 `protobuf:"varint,2,opt,name=Name,proto3" json:"Name,omitempty"` // 部门名称
 }
 
-func (x *GetOneReq) Reset() {
-	*x = GetOneReq{}
+func (x *GetOneDepartmentReq) Reset() {
+	*x = GetOneDepartmentReq{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_common_v1_department_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -231,13 +247,13 @@ func (x *GetOneReq) Reset() {
 	}
 }
 
-func (x *GetOneReq) String() string {
+func (x *GetOneDepartmentReq) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetOneReq) ProtoMessage() {}
+func (*GetOneDepartmentReq) ProtoMessage() {}
 
-func (x *GetOneReq) ProtoReflect() protoreflect.Message {
+func (x *GetOneDepartmentReq) ProtoReflect() protoreflect.Message {
 	mi := &file_common_v1_department_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -249,19 +265,27 @@ func (x *GetOneReq) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetOneReq.ProtoReflect.Descriptor instead.
-func (*GetOneReq) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetOneDepartmentReq.ProtoReflect.Descriptor instead.
+func (*GetOneDepartmentReq) Descriptor() ([]byte, []int) {
 	return file_common_v1_department_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetOneReq) GetId() uint64 {
+func (x *GetOneDepartmentReq) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
 	return 0
 }
 
-type GetOneRes struct {
+func (x *GetOneDepartmentReq) GetName() int32 {
+	if x != nil {
+		return x.Name
+	}
+	return 0
+}
+
+// 获取详情接口输出数据结构
+type GetOneDepartmentRes struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -269,8 +293,8 @@ type GetOneRes struct {
 	Department *DepartmentInfo `protobuf:"bytes,1,opt,name=Department,proto3" json:"Department,omitempty"`
 }
 
-func (x *GetOneRes) Reset() {
-	*x = GetOneRes{}
+func (x *GetOneDepartmentRes) Reset() {
+	*x = GetOneDepartmentRes{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_common_v1_department_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -278,13 +302,13 @@ func (x *GetOneRes) Reset() {
 	}
 }
 
-func (x *GetOneRes) String() string {
+func (x *GetOneDepartmentRes) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetOneRes) ProtoMessage() {}
+func (*GetOneDepartmentRes) ProtoMessage() {}
 
-func (x *GetOneRes) ProtoReflect() protoreflect.Message {
+func (x *GetOneDepartmentRes) ProtoReflect() protoreflect.Message {
 	mi := &file_common_v1_department_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -296,29 +320,31 @@ func (x *GetOneRes) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetOneRes.ProtoReflect.Descriptor instead.
-func (*GetOneRes) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetOneDepartmentRes.ProtoReflect.Descriptor instead.
+func (*GetOneDepartmentRes) Descriptor() ([]byte, []int) {
 	return file_common_v1_department_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *GetOneRes) GetDepartment() *DepartmentInfo {
+func (x *GetOneDepartmentRes) GetDepartment() *DepartmentInfo {
 	if x != nil {
 		return x.Department
 	}
 	return nil
 }
 
-type GetListReq struct {
+// 部门列表接口输入数据结构
+type GetListDepartmentReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Page int32 `protobuf:"varint,1,opt,name=Page,proto3" json:"Page,omitempty"`
-	Size int32 `protobuf:"varint,2,opt,name=Size,proto3" json:"Size,omitempty"`
+	Page       int32           `protobuf:"varint,1,opt,name=Page,proto3" json:"Page,omitempty"`
+	Size       int32           `protobuf:"varint,2,opt,name=Size,proto3" json:"Size,omitempty"`
+	Department *DepartmentInfo `protobuf:"bytes,3,opt,name=Department,proto3" json:"Department,omitempty"`
 }
 
-func (x *GetListReq) Reset() {
-	*x = GetListReq{}
+func (x *GetListDepartmentReq) Reset() {
+	*x = GetListDepartmentReq{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_common_v1_department_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -326,13 +352,13 @@ func (x *GetListReq) Reset() {
 	}
 }
 
-func (x *GetListReq) String() string {
+func (x *GetListDepartmentReq) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetListReq) ProtoMessage() {}
+func (*GetListDepartmentReq) ProtoMessage() {}
 
-func (x *GetListReq) ProtoReflect() protoreflect.Message {
+func (x *GetListDepartmentReq) ProtoReflect() protoreflect.Message {
 	mi := &file_common_v1_department_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -344,35 +370,45 @@ func (x *GetListReq) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetListReq.ProtoReflect.Descriptor instead.
-func (*GetListReq) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetListDepartmentReq.ProtoReflect.Descriptor instead.
+func (*GetListDepartmentReq) Descriptor() ([]byte, []int) {
 	return file_common_v1_department_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *GetListReq) GetPage() int32 {
+func (x *GetListDepartmentReq) GetPage() int32 {
 	if x != nil {
 		return x.Page
 	}
 	return 0
 }
 
-func (x *GetListReq) GetSize() int32 {
+func (x *GetListDepartmentReq) GetSize() int32 {
 	if x != nil {
 		return x.Size
 	}
 	return 0
 }
 
-type GetListRes struct {
+func (x *GetListDepartmentReq) GetDepartment() *DepartmentInfo {
+	if x != nil {
+		return x.Department
+	}
+	return nil
+}
+
+// 部门列表接口输出数据结构
+type GetListDepartmentRes struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Department []*DepartmentInfo `protobuf:"bytes,1,rep,name=Department,proto3" json:"Department,omitempty"`
+	Page int32             `protobuf:"varint,1,opt,name=Page,proto3" json:"Page,omitempty"`
+	Size int32             `protobuf:"varint,2,opt,name=Size,proto3" json:"Size,omitempty"`
+	Data []*DepartmentInfo `protobuf:"bytes,3,rep,name=Data,proto3" json:"Data,omitempty"`
 }
 
-func (x *GetListRes) Reset() {
-	*x = GetListRes{}
+func (x *GetListDepartmentRes) Reset() {
+	*x = GetListDepartmentRes{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_common_v1_department_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -380,13 +416,13 @@ func (x *GetListRes) Reset() {
 	}
 }
 
-func (x *GetListRes) String() string {
+func (x *GetListDepartmentRes) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetListRes) ProtoMessage() {}
+func (*GetListDepartmentRes) ProtoMessage() {}
 
-func (x *GetListRes) ProtoReflect() protoreflect.Message {
+func (x *GetListDepartmentRes) ProtoReflect() protoreflect.Message {
 	mi := &file_common_v1_department_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -398,16 +434,254 @@ func (x *GetListRes) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetListRes.ProtoReflect.Descriptor instead.
-func (*GetListRes) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetListDepartmentRes.ProtoReflect.Descriptor instead.
+func (*GetListDepartmentRes) Descriptor() ([]byte, []int) {
 	return file_common_v1_department_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *GetListRes) GetDepartment() []*DepartmentInfo {
+func (x *GetListDepartmentRes) GetPage() int32 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *GetListDepartmentRes) GetSize() int32 {
+	if x != nil {
+		return x.Size
+	}
+	return 0
+}
+
+func (x *GetListDepartmentRes) GetData() []*DepartmentInfo {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+// 修改数据接口输入数据结构
+type ModifyDepartmentReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id     int32  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"`        // v: required
+	Pid    int32  `protobuf:"varint,2,opt,name=Pid,proto3" json:"Pid,omitempty"`      // v: required
+	Name   string `protobuf:"bytes,3,opt,name=Name,proto3" json:"Name,omitempty"`     // v: required
+	Remark string `protobuf:"bytes,4,opt,name=Remark,proto3" json:"Remark,omitempty"` // v: required
+}
+
+func (x *ModifyDepartmentReq) Reset() {
+	*x = ModifyDepartmentReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_common_v1_department_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ModifyDepartmentReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ModifyDepartmentReq) ProtoMessage() {}
+
+func (x *ModifyDepartmentReq) ProtoReflect() protoreflect.Message {
+	mi := &file_common_v1_department_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ModifyDepartmentReq.ProtoReflect.Descriptor instead.
+func (*ModifyDepartmentReq) Descriptor() ([]byte, []int) {
+	return file_common_v1_department_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *ModifyDepartmentReq) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *ModifyDepartmentReq) GetPid() int32 {
+	if x != nil {
+		return x.Pid
+	}
+	return 0
+}
+
+func (x *ModifyDepartmentReq) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *ModifyDepartmentReq) GetRemark() string {
+	if x != nil {
+		return x.Remark
+	}
+	return ""
+}
+
+// 修改数据接口输出数据结构
+type ModifyDepartmentRes struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Department *DepartmentInfo `protobuf:"bytes,1,opt,name=Department,proto3" json:"Department,omitempty"`
+}
+
+func (x *ModifyDepartmentRes) Reset() {
+	*x = ModifyDepartmentRes{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_common_v1_department_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ModifyDepartmentRes) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ModifyDepartmentRes) ProtoMessage() {}
+
+func (x *ModifyDepartmentRes) ProtoReflect() protoreflect.Message {
+	mi := &file_common_v1_department_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ModifyDepartmentRes.ProtoReflect.Descriptor instead.
+func (*ModifyDepartmentRes) Descriptor() ([]byte, []int) {
+	return file_common_v1_department_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *ModifyDepartmentRes) GetDepartment() *DepartmentInfo {
 	if x != nil {
 		return x.Department
 	}
 	return nil
+}
+
+// 删除数据接口输入数据结构
+type DeleteDepartmentReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id int32 `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"` // v: required
+}
+
+func (x *DeleteDepartmentReq) Reset() {
+	*x = DeleteDepartmentReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_common_v1_department_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeleteDepartmentReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteDepartmentReq) ProtoMessage() {}
+
+func (x *DeleteDepartmentReq) ProtoReflect() protoreflect.Message {
+	mi := &file_common_v1_department_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteDepartmentReq.ProtoReflect.Descriptor instead.
+func (*DeleteDepartmentReq) Descriptor() ([]byte, []int) {
+	return file_common_v1_department_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *DeleteDepartmentReq) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+// 删除数据接口输出数据结构
+type DeleteDepartmentRes struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	IsSuccess bool   `protobuf:"varint,1,opt,name=IsSuccess,proto3" json:"IsSuccess,omitempty"` // v: required
+	Msg       string `protobuf:"bytes,2,opt,name=Msg,proto3" json:"Msg,omitempty"`              // v: required
+}
+
+func (x *DeleteDepartmentRes) Reset() {
+	*x = DeleteDepartmentRes{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_common_v1_department_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeleteDepartmentRes) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteDepartmentRes) ProtoMessage() {}
+
+func (x *DeleteDepartmentRes) ProtoReflect() protoreflect.Message {
+	mi := &file_common_v1_department_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteDepartmentRes.ProtoReflect.Descriptor instead.
+func (*DeleteDepartmentRes) Descriptor() ([]byte, []int) {
+	return file_common_v1_department_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *DeleteDepartmentRes) GetIsSuccess() bool {
+	if x != nil {
+		return x.IsSuccess
+	}
+	return false
+}
+
+func (x *DeleteDepartmentRes) GetMsg() string {
+	if x != nil {
+		return x.Msg
+	}
+	return ""
 }
 
 var File_common_v1_department_proto protoreflect.FileDescriptor
@@ -415,51 +689,101 @@ var File_common_v1_department_proto protoreflect.FileDescriptor
 var file_common_v1_department_proto_rawDesc = []byte{
 	0x0a, 0x1a, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2f, 0x76, 0x31, 0x2f, 0x64, 0x65, 0x70, 0x61,
 	0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x06, 0x63, 0x6f,
-	0x6d, 0x6d, 0x6f, 0x6e, 0x22, 0x9e, 0x01, 0x0a, 0x0e, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d,
-	0x65, 0x6e, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x64, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x05, 0x52, 0x02, 0x49, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x4e, 0x61, 0x6d, 0x65, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x50,
-	0x69, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x50, 0x69, 0x64, 0x12, 0x16, 0x0a,
+	0x6d, 0x6d, 0x6f, 0x6e, 0x1a, 0x1f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x2e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xd6, 0x01, 0x0a, 0x0e, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74,
+	0x6d, 0x65, 0x6e, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x64, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x49, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x4e, 0x61, 0x6d, 0x65,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x10, 0x0a, 0x03,
+	0x50, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x50, 0x69, 0x64, 0x12, 0x16,
+	0x0a, 0x06, 0x52, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06,
+	0x52, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x12, 0x3a, 0x0a, 0x0a, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65,
+	0x54, 0x69, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d,
+	0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x0a, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54, 0x69,
+	0x6d, 0x65, 0x12, 0x3a, 0x0a, 0x0a, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65,
+	0x18, 0x06, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61,
+	0x6d, 0x70, 0x52, 0x0a, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x22, 0x53,
+	0x0a, 0x13, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65,
+	0x6e, 0x74, 0x52, 0x65, 0x71, 0x12, 0x10, 0x0a, 0x03, 0x50, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x03, 0x50, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x4e, 0x61, 0x6d, 0x65, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x52,
+	0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x52, 0x65, 0x6d,
+	0x61, 0x72, 0x6b, 0x22, 0x4d, 0x0a, 0x13, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x44, 0x65, 0x70,
+	0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x12, 0x36, 0x0a, 0x0a, 0x44, 0x65,
+	0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16,
+	0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65,
+	0x6e, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x0a, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65,
+	0x6e, 0x74, 0x22, 0x39, 0x0a, 0x13, 0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x44, 0x65, 0x70, 0x61,
+	0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x64, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x49, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x4e, 0x61, 0x6d,
+	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x4e, 0x61, 0x6d, 0x65, 0x22, 0x4d, 0x0a,
+	0x13, 0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e,
+	0x74, 0x52, 0x65, 0x73, 0x12, 0x36, 0x0a, 0x0a, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65,
+	0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
+	0x6e, 0x2e, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x49, 0x6e, 0x66, 0x6f,
+	0x52, 0x0a, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x22, 0x76, 0x0a, 0x14,
+	0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e,
+	0x74, 0x52, 0x65, 0x71, 0x12, 0x12, 0x0a, 0x04, 0x50, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x04, 0x50, 0x61, 0x67, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x53, 0x69, 0x7a, 0x65,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x36, 0x0a, 0x0a,
+	0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x16, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74,
+	0x6d, 0x65, 0x6e, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x0a, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74,
+	0x6d, 0x65, 0x6e, 0x74, 0x22, 0x6a, 0x0a, 0x14, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x44,
+	0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x12, 0x12, 0x0a, 0x04,
+	0x50, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x50, 0x61, 0x67, 0x65,
+	0x12, 0x12, 0x0a, 0x04, 0x53, 0x69, 0x7a, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04,
+	0x53, 0x69, 0x7a, 0x65, 0x12, 0x2a, 0x0a, 0x04, 0x44, 0x61, 0x74, 0x61, 0x18, 0x03, 0x20, 0x03,
+	0x28, 0x0b, 0x32, 0x16, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x44, 0x65, 0x70, 0x61,
+	0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x44, 0x61, 0x74, 0x61,
+	0x22, 0x63, 0x0a, 0x13, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74,
+	0x6d, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x64, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x02, 0x49, 0x64, 0x12, 0x10, 0x0a, 0x03, 0x50, 0x69, 0x64, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x50, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x4e, 0x61, 0x6d,
+	0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a,
 	0x06, 0x52, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x52,
-	0x65, 0x6d, 0x61, 0x72, 0x6b, 0x12, 0x1e, 0x0a, 0x0a, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54,
-	0x69, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x43, 0x72, 0x65, 0x61, 0x74,
-	0x65, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x1e, 0x0a, 0x0a, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x54,
-	0x69, 0x6d, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x55, 0x70, 0x64, 0x61, 0x74,
-	0x65, 0x54, 0x69, 0x6d, 0x65, 0x22, 0x49, 0x0a, 0x09, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52,
-	0x65, 0x71, 0x12, 0x12, 0x0a, 0x04, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x04, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x50, 0x69, 0x64, 0x18, 0x02, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x03, 0x50, 0x69, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x52, 0x65, 0x6d, 0x61,
-	0x72, 0x6b, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x52, 0x65, 0x6d, 0x61, 0x72, 0x6b,
-	0x22, 0x0b, 0x0a, 0x09, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65, 0x73, 0x22, 0x1b, 0x0a,
-	0x09, 0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x64,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x64, 0x22, 0x43, 0x0a, 0x09, 0x47, 0x65,
-	0x74, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x12, 0x36, 0x0a, 0x0a, 0x44, 0x65, 0x70, 0x61, 0x72,
-	0x74, 0x6d, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x63, 0x6f,
-	0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x49,
-	0x6e, 0x66, 0x6f, 0x52, 0x0a, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x22,
-	0x34, 0x0a, 0x0a, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x12, 0x12, 0x0a,
-	0x04, 0x50, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x50, 0x61, 0x67,
-	0x65, 0x12, 0x12, 0x0a, 0x04, 0x53, 0x69, 0x7a, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52,
-	0x04, 0x53, 0x69, 0x7a, 0x65, 0x22, 0x44, 0x0a, 0x0a, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74,
-	0x52, 0x65, 0x73, 0x12, 0x36, 0x0a, 0x0a, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e,
-	0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
-	0x2e, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x52,
-	0x0a, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x32, 0xa5, 0x01, 0x0a, 0x0a,
-	0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x12, 0x30, 0x0a, 0x06, 0x43, 0x72,
-	0x65, 0x61, 0x74, 0x65, 0x12, 0x11, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43, 0x72,
-	0x65, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x11, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
-	0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x30, 0x0a, 0x06,
-	0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x12, 0x11, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e,
-	0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x11, 0x2e, 0x63, 0x6f, 0x6d, 0x6d,
-	0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x33,
-	0x0a, 0x07, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x12, 0x2e, 0x63, 0x6f, 0x6d, 0x6d,
-	0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x12, 0x2e,
-	0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65,
-	0x73, 0x22, 0x00, 0x42, 0x3a, 0x5a, 0x38, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f,
-	0x6d, 0x2f, 0x6c, 0x6a, 0x31, 0x35, 0x37, 0x30, 0x36, 0x39, 0x33, 0x36, 0x35, 0x39, 0x2f, 0x67,
-	0x66, 0x63, 0x71, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x2f, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
-	0x6e, 0x2f, 0x76, 0x31, 0x2f, 0x64, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x62,
-	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x65, 0x6d, 0x61, 0x72, 0x6b, 0x22, 0x4d, 0x0a, 0x13, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x44,
+	0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x12, 0x36, 0x0a, 0x0a,
+	0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x16, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74,
+	0x6d, 0x65, 0x6e, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x0a, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74,
+	0x6d, 0x65, 0x6e, 0x74, 0x22, 0x25, 0x0a, 0x13, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x44, 0x65,
+	0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x49,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x49, 0x64, 0x22, 0x45, 0x0a, 0x13, 0x44,
+	0x65, 0x6c, 0x65, 0x74, 0x65, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x52,
+	0x65, 0x73, 0x12, 0x1c, 0x0a, 0x09, 0x49, 0x73, 0x53, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x09, 0x49, 0x73, 0x53, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73,
+	0x12, 0x10, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x4d,
+	0x73, 0x67, 0x32, 0xed, 0x02, 0x0a, 0x0a, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e,
+	0x74, 0x12, 0x44, 0x0a, 0x06, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x12, 0x1b, 0x2e, 0x63, 0x6f,
+	0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x44, 0x65, 0x70, 0x61, 0x72,
+	0x74, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x1b, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
+	0x6e, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65,
+	0x6e, 0x74, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x44, 0x0a, 0x06, 0x47, 0x65, 0x74, 0x4f, 0x6e,
+	0x65, 0x12, 0x1b, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x4f, 0x6e,
+	0x65, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x1b,
+	0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x44, 0x65,
+	0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x47, 0x0a,
+	0x07, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x1c, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
+	0x6e, 0x2e, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d,
+	0x65, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x1c, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e,
+	0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e,
+	0x74, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x44, 0x0a, 0x06, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79,
+	0x12, 0x1b, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79,
+	0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x1b, 0x2e,
+	0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x44, 0x65, 0x70,
+	0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x44, 0x0a, 0x06,
+	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x12, 0x1b, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e,
+	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74,
+	0x52, 0x65, 0x71, 0x1a, 0x1b, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x44, 0x65, 0x6c,
+	0x65, 0x74, 0x65, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x73,
+	0x22, 0x00, 0x42, 0x3a, 0x5a, 0x38, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d,
+	0x2f, 0x6c, 0x6a, 0x31, 0x35, 0x37, 0x30, 0x36, 0x39, 0x33, 0x36, 0x35, 0x39, 0x2f, 0x67, 0x66,
+	0x63, 0x71, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x2f, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
+	0x2f, 0x76, 0x31, 0x2f, 0x64, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -474,30 +798,44 @@ func file_common_v1_department_proto_rawDescGZIP() []byte {
 	return file_common_v1_department_proto_rawDescData
 }
 
-var file_common_v1_department_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_common_v1_department_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_common_v1_department_proto_goTypes = []interface{}{
-	(*DepartmentInfo)(nil), // 0: common.DepartmentInfo
-	(*CreateReq)(nil),      // 1: common.CreateReq
-	(*CreateRes)(nil),      // 2: common.CreateRes
-	(*GetOneReq)(nil),      // 3: common.GetOneReq
-	(*GetOneRes)(nil),      // 4: common.GetOneRes
-	(*GetListReq)(nil),     // 5: common.GetListReq
-	(*GetListRes)(nil),     // 6: common.GetListRes
+	(*DepartmentInfo)(nil),        // 0: common.DepartmentInfo
+	(*CreateDepartmentReq)(nil),   // 1: common.CreateDepartmentReq
+	(*CreateDepartmentRes)(nil),   // 2: common.CreateDepartmentRes
+	(*GetOneDepartmentReq)(nil),   // 3: common.GetOneDepartmentReq
+	(*GetOneDepartmentRes)(nil),   // 4: common.GetOneDepartmentRes
+	(*GetListDepartmentReq)(nil),  // 5: common.GetListDepartmentReq
+	(*GetListDepartmentRes)(nil),  // 6: common.GetListDepartmentRes
+	(*ModifyDepartmentReq)(nil),   // 7: common.ModifyDepartmentReq
+	(*ModifyDepartmentRes)(nil),   // 8: common.ModifyDepartmentRes
+	(*DeleteDepartmentReq)(nil),   // 9: common.DeleteDepartmentReq
+	(*DeleteDepartmentRes)(nil),   // 10: common.DeleteDepartmentRes
+	(*timestamppb.Timestamp)(nil), // 11: google.protobuf.Timestamp
 }
 var file_common_v1_department_proto_depIdxs = []int32{
-	0, // 0: common.GetOneRes.Department:type_name -> common.DepartmentInfo
-	0, // 1: common.GetListRes.Department:type_name -> common.DepartmentInfo
-	1, // 2: common.Department.Create:input_type -> common.CreateReq
-	3, // 3: common.Department.GetOne:input_type -> common.GetOneReq
-	5, // 4: common.Department.GetList:input_type -> common.GetListReq
-	2, // 5: common.Department.Create:output_type -> common.CreateRes
-	4, // 6: common.Department.GetOne:output_type -> common.GetOneRes
-	6, // 7: common.Department.GetList:output_type -> common.GetListRes
-	5, // [5:8] is the sub-list for method output_type
-	2, // [2:5] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	11, // 0: common.DepartmentInfo.CreateTime:type_name -> google.protobuf.Timestamp
+	11, // 1: common.DepartmentInfo.UpdateTime:type_name -> google.protobuf.Timestamp
+	0,  // 2: common.CreateDepartmentRes.Department:type_name -> common.DepartmentInfo
+	0,  // 3: common.GetOneDepartmentRes.Department:type_name -> common.DepartmentInfo
+	0,  // 4: common.GetListDepartmentReq.Department:type_name -> common.DepartmentInfo
+	0,  // 5: common.GetListDepartmentRes.Data:type_name -> common.DepartmentInfo
+	0,  // 6: common.ModifyDepartmentRes.Department:type_name -> common.DepartmentInfo
+	1,  // 7: common.Department.Create:input_type -> common.CreateDepartmentReq
+	3,  // 8: common.Department.GetOne:input_type -> common.GetOneDepartmentReq
+	5,  // 9: common.Department.GetList:input_type -> common.GetListDepartmentReq
+	7,  // 10: common.Department.Modify:input_type -> common.ModifyDepartmentReq
+	9,  // 11: common.Department.Delete:input_type -> common.DeleteDepartmentReq
+	2,  // 12: common.Department.Create:output_type -> common.CreateDepartmentRes
+	4,  // 13: common.Department.GetOne:output_type -> common.GetOneDepartmentRes
+	6,  // 14: common.Department.GetList:output_type -> common.GetListDepartmentRes
+	8,  // 15: common.Department.Modify:output_type -> common.ModifyDepartmentRes
+	10, // 16: common.Department.Delete:output_type -> common.DeleteDepartmentRes
+	12, // [12:17] is the sub-list for method output_type
+	7,  // [7:12] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_common_v1_department_proto_init() }
@@ -519,7 +857,7 @@ func file_common_v1_department_proto_init() {
 			}
 		}
 		file_common_v1_department_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreateReq); i {
+			switch v := v.(*CreateDepartmentReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -531,7 +869,7 @@ func file_common_v1_department_proto_init() {
 			}
 		}
 		file_common_v1_department_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreateRes); i {
+			switch v := v.(*CreateDepartmentRes); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -543,7 +881,7 @@ func file_common_v1_department_proto_init() {
 			}
 		}
 		file_common_v1_department_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetOneReq); i {
+			switch v := v.(*GetOneDepartmentReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -555,7 +893,7 @@ func file_common_v1_department_proto_init() {
 			}
 		}
 		file_common_v1_department_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetOneRes); i {
+			switch v := v.(*GetOneDepartmentRes); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -567,7 +905,7 @@ func file_common_v1_department_proto_init() {
 			}
 		}
 		file_common_v1_department_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetListReq); i {
+			switch v := v.(*GetListDepartmentReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -579,7 +917,55 @@ func file_common_v1_department_proto_init() {
 			}
 		}
 		file_common_v1_department_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetListRes); i {
+			switch v := v.(*GetListDepartmentRes); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_common_v1_department_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ModifyDepartmentReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_common_v1_department_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ModifyDepartmentRes); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_common_v1_department_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DeleteDepartmentReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_common_v1_department_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DeleteDepartmentRes); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -597,7 +983,7 @@ func file_common_v1_department_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_common_v1_department_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -623,9 +1009,11 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type DepartmentClient interface {
-	Create(ctx context.Context, in *CreateReq, opts ...grpc.CallOption) (*CreateRes, error)
-	GetOne(ctx context.Context, in *GetOneReq, opts ...grpc.CallOption) (*GetOneRes, error)
-	GetList(ctx context.Context, in *GetListReq, opts ...grpc.CallOption) (*GetListRes, error)
+	Create(ctx context.Context, in *CreateDepartmentReq, opts ...grpc.CallOption) (*CreateDepartmentRes, error)
+	GetOne(ctx context.Context, in *GetOneDepartmentReq, opts ...grpc.CallOption) (*GetOneDepartmentRes, error)
+	GetList(ctx context.Context, in *GetListDepartmentReq, opts ...grpc.CallOption) (*GetListDepartmentRes, error)
+	Modify(ctx context.Context, in *ModifyDepartmentReq, opts ...grpc.CallOption) (*ModifyDepartmentRes, error)
+	Delete(ctx context.Context, in *DeleteDepartmentReq, opts ...grpc.CallOption) (*DeleteDepartmentRes, error)
 }
 
 type departmentClient struct {
@@ -636,8 +1024,8 @@ func NewDepartmentClient(cc grpc.ClientConnInterface) DepartmentClient {
 	return &departmentClient{cc}
 }
 
-func (c *departmentClient) Create(ctx context.Context, in *CreateReq, opts ...grpc.CallOption) (*CreateRes, error) {
-	out := new(CreateRes)
+func (c *departmentClient) Create(ctx context.Context, in *CreateDepartmentReq, opts ...grpc.CallOption) (*CreateDepartmentRes, error) {
+	out := new(CreateDepartmentRes)
 	err := c.cc.Invoke(ctx, "/common.Department/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -645,8 +1033,8 @@ func (c *departmentClient) Create(ctx context.Context, in *CreateReq, opts ...gr
 	return out, nil
 }
 
-func (c *departmentClient) GetOne(ctx context.Context, in *GetOneReq, opts ...grpc.CallOption) (*GetOneRes, error) {
-	out := new(GetOneRes)
+func (c *departmentClient) GetOne(ctx context.Context, in *GetOneDepartmentReq, opts ...grpc.CallOption) (*GetOneDepartmentRes, error) {
+	out := new(GetOneDepartmentRes)
 	err := c.cc.Invoke(ctx, "/common.Department/GetOne", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -654,9 +1042,27 @@ func (c *departmentClient) GetOne(ctx context.Context, in *GetOneReq, opts ...gr
 	return out, nil
 }
 
-func (c *departmentClient) GetList(ctx context.Context, in *GetListReq, opts ...grpc.CallOption) (*GetListRes, error) {
-	out := new(GetListRes)
+func (c *departmentClient) GetList(ctx context.Context, in *GetListDepartmentReq, opts ...grpc.CallOption) (*GetListDepartmentRes, error) {
+	out := new(GetListDepartmentRes)
 	err := c.cc.Invoke(ctx, "/common.Department/GetList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *departmentClient) Modify(ctx context.Context, in *ModifyDepartmentReq, opts ...grpc.CallOption) (*ModifyDepartmentRes, error) {
+	out := new(ModifyDepartmentRes)
+	err := c.cc.Invoke(ctx, "/common.Department/Modify", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *departmentClient) Delete(ctx context.Context, in *DeleteDepartmentReq, opts ...grpc.CallOption) (*DeleteDepartmentRes, error) {
+	out := new(DeleteDepartmentRes)
+	err := c.cc.Invoke(ctx, "/common.Department/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -665,23 +1071,31 @@ func (c *departmentClient) GetList(ctx context.Context, in *GetListReq, opts ...
 
 // DepartmentServer is the server API for Department service.
 type DepartmentServer interface {
-	Create(context.Context, *CreateReq) (*CreateRes, error)
-	GetOne(context.Context, *GetOneReq) (*GetOneRes, error)
-	GetList(context.Context, *GetListReq) (*GetListRes, error)
+	Create(context.Context, *CreateDepartmentReq) (*CreateDepartmentRes, error)
+	GetOne(context.Context, *GetOneDepartmentReq) (*GetOneDepartmentRes, error)
+	GetList(context.Context, *GetListDepartmentReq) (*GetListDepartmentRes, error)
+	Modify(context.Context, *ModifyDepartmentReq) (*ModifyDepartmentRes, error)
+	Delete(context.Context, *DeleteDepartmentReq) (*DeleteDepartmentRes, error)
 }
 
 // UnimplementedDepartmentServer can be embedded to have forward compatible implementations.
 type UnimplementedDepartmentServer struct {
 }
 
-func (*UnimplementedDepartmentServer) Create(context.Context, *CreateReq) (*CreateRes, error) {
+func (*UnimplementedDepartmentServer) Create(context.Context, *CreateDepartmentReq) (*CreateDepartmentRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
-func (*UnimplementedDepartmentServer) GetOne(context.Context, *GetOneReq) (*GetOneRes, error) {
+func (*UnimplementedDepartmentServer) GetOne(context.Context, *GetOneDepartmentReq) (*GetOneDepartmentRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetOne not implemented")
 }
-func (*UnimplementedDepartmentServer) GetList(context.Context, *GetListReq) (*GetListRes, error) {
+func (*UnimplementedDepartmentServer) GetList(context.Context, *GetListDepartmentReq) (*GetListDepartmentRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetList not implemented")
+}
+func (*UnimplementedDepartmentServer) Modify(context.Context, *ModifyDepartmentReq) (*ModifyDepartmentRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Modify not implemented")
+}
+func (*UnimplementedDepartmentServer) Delete(context.Context, *DeleteDepartmentReq) (*DeleteDepartmentRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 
 func RegisterDepartmentServer(s *grpc.Server, srv DepartmentServer) {
@@ -689,7 +1103,7 @@ func RegisterDepartmentServer(s *grpc.Server, srv DepartmentServer) {
 }
 
 func _Department_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateReq)
+	in := new(CreateDepartmentReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -701,13 +1115,13 @@ func _Department_Create_Handler(srv interface{}, ctx context.Context, dec func(i
 		FullMethod: "/common.Department/Create",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DepartmentServer).Create(ctx, req.(*CreateReq))
+		return srv.(DepartmentServer).Create(ctx, req.(*CreateDepartmentReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Department_GetOne_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetOneReq)
+	in := new(GetOneDepartmentReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -719,13 +1133,13 @@ func _Department_GetOne_Handler(srv interface{}, ctx context.Context, dec func(i
 		FullMethod: "/common.Department/GetOne",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DepartmentServer).GetOne(ctx, req.(*GetOneReq))
+		return srv.(DepartmentServer).GetOne(ctx, req.(*GetOneDepartmentReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Department_GetList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetListReq)
+	in := new(GetListDepartmentReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -737,7 +1151,43 @@ func _Department_GetList_Handler(srv interface{}, ctx context.Context, dec func(
 		FullMethod: "/common.Department/GetList",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DepartmentServer).GetList(ctx, req.(*GetListReq))
+		return srv.(DepartmentServer).GetList(ctx, req.(*GetListDepartmentReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Department_Modify_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ModifyDepartmentReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DepartmentServer).Modify(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/common.Department/Modify",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DepartmentServer).Modify(ctx, req.(*ModifyDepartmentReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Department_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteDepartmentReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DepartmentServer).Delete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/common.Department/Delete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DepartmentServer).Delete(ctx, req.(*DeleteDepartmentReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -757,6 +1207,14 @@ var _Department_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetList",
 			Handler:    _Department_GetList_Handler,
+		},
+		{
+			MethodName: "Modify",
+			Handler:    _Department_Modify_Handler,
+		},
+		{
+			MethodName: "Delete",
+			Handler:    _Department_Delete_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

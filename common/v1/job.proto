@@ -4,85 +4,85 @@ syntax = "proto3";
 
 package common;
 
-option go_package = "github.com/lj1570693659/gfcq_protoc/common/v1/department";
+option go_package = "github.com/lj1570693659/gfcq_protoc/common/v1/job";
 
 import "google/protobuf/timestamp.proto";
 
-service Department {
-  rpc Create(CreateDepartmentReq) returns (CreateDepartmentRes) {}
-  rpc GetOne(GetOneDepartmentReq) returns (GetOneDepartmentRes) {}
-  rpc GetList(GetListDepartmentReq) returns (GetListDepartmentRes) {}
-  rpc Modify(ModifyDepartmentReq) returns (ModifyDepartmentRes) {}
-  rpc Delete(DeleteDepartmentReq) returns (DeleteDepartmentRes) {}
+service Job {
+  rpc Create(CreateJobReq) returns (CreateJobRes) {}
+  rpc GetOne(GetOneJobReq) returns (GetOneJobRes) {}
+  rpc GetList(GetListJobReq) returns (GetListJobRes) {}
+  rpc Modify(ModifyJobReq) returns (ModifyJobRes) {}
+  rpc Delete(DeleteJobReq) returns (DeleteJobRes) {}
 }
 
-// 部门信息公共数据结构
-message DepartmentInfo {
+// 岗位信息公共数据结构
+message JobInfo {
     int32  Id           = 1;
-    string Name         = 2; // 部门名称
-    int32  Pid          = 3; // 上级部门
+    string Name         = 2; // 岗位名称
+    int32  DepartId     = 3; // 部门ID
     string Remark       = 4; // 预留备注信息
     google.protobuf.Timestamp CreateTime   = 5; // 数据新增时间
     google.protobuf.Timestamp UpdateTime   = 6; // 最后一次更新数据时间
 }
 
 // 创建数据接口输入数据结构
-message CreateDepartmentReq {
-  int32 Pid = 1; // v: required
+message CreateJobReq {
+  int32 DepartId = 1; // v: required
   string Name = 2; // v: required
   string Remark = 3; // v: required
 }
 
 // 创建数据接口输出数据结构
-message CreateDepartmentRes {
-    DepartmentInfo Department = 1;
+message CreateJobRes {
+    JobInfo Job = 1;
 }
 
 // 获取详情接口输入数据结构
-message GetOneDepartmentReq {
+message GetOneJobReq {
   int32 Id   = 1; // v: required
-  int32 Name = 2; // 部门名称
+  int32 Name = 2; // 岗位名称
 }
 
 // 获取详情接口输出数据结构
-message GetOneDepartmentRes {
-  DepartmentInfo Department = 1;
+message GetOneJobRes {
+  JobInfo Job = 1;
 }
 
 // 部门列表接口输入数据结构
-message GetListDepartmentReq {
+message GetListJobReq {
   int32 Page = 1;
   int32 Size = 2;
-  DepartmentInfo Department = 3;
+  JobInfo Job = 3;
 }
 
 // 部门列表接口输出数据结构
-message GetListDepartmentRes {
+message GetListJobRes {
   int32 Page = 1;
   int32 Size = 2;
-  repeated DepartmentInfo Data = 3;
+  JobInfo Data = 3;
 }
 
 // 修改数据接口输入数据结构
-message ModifyDepartmentReq {
+message ModifyJobReq {
   int32 Id = 1; // v: required
-  int32 Pid = 2; // v: required
+  int32 DepartId = 2; // v: required
   string Name = 3; // v: required
   string Remark = 4; // v: required
 }
 
 // 修改数据接口输出数据结构
-message ModifyDepartmentRes {
-  DepartmentInfo Department = 1;
+message ModifyJobRes {
+  JobInfo Job = 1;
 }
 
 // 删除数据接口输入数据结构
-message DeleteDepartmentReq {
+message DeleteJobReq {
   int32 Id = 1; // v: required
 }
 
 // 删除数据接口输出数据结构
-message DeleteDepartmentRes {
+message DeleteJobRes {
   bool IsSuccess = 1; // v: required
   string Msg = 2; // v: required
 }

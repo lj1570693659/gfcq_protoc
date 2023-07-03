@@ -7,6 +7,8 @@ package user;
 option go_package = "github.com/lj1570693659/gfcq_protoc/api/user/v1";
 
 import "pbentity/user.proto";
+import "google/protobuf/descriptor.proto";
+
 service User{
     rpc Create(CreateReq) returns (CreateRes) {}
     rpc GetOne(GetOneReq) returns (GetOneRes) {}
@@ -22,7 +24,7 @@ message CreateReq {
 message CreateRes {}
 
 message GetOneReq {
-    uint64 Id = 1; // v: required
+    uint64 Id = 1;
 }
 message GetOneRes {
     pbentity.User User = 1;
