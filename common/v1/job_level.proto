@@ -58,7 +58,8 @@ message GetListJobLevelReq {
 message GetListJobLevelRes {
   int32 Page = 1;
   int32 Size = 2;
-  JobLevelInfo Data = 3;
+  int32 TotalPage = 3;
+  JobLevelInfo Data = 4;
 }
 
 // 修改数据接口输入数据结构

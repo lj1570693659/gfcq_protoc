@@ -60,7 +60,8 @@ message GetListDepartmentReq {
 message GetListDepartmentRes {
   int32 Page = 1;
   int32 Size = 2;
-  repeated DepartmentInfo Data = 3;
+  int32 TotalPage = 3;
+  repeated DepartmentInfo Data = 4;
 }
 
 // 修改数据接口输入数据结构
