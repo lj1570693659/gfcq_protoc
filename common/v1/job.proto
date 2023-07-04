@@ -41,7 +41,7 @@ message CreateJobRes {
 // 获取详情接口输入数据结构
 message GetOneJobReq {
   int32 Id   = 1; // v: required
-  int32 Name = 2; // 岗位名称
+  string Name = 2; // 岗位名称
 }
 
 // 获取详情接口输出数据结构
