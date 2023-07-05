@@ -34,20 +34,20 @@ type EmployeeInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id           int32                  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"`
-	UserName     string                 `protobuf:"bytes,2,opt,name=UserName,proto3" json:"UserName,omitempty"`           // 员工姓名
-	WorkNumber   string                 `protobuf:"bytes,3,opt,name=WorkNumber,proto3" json:"WorkNumber,omitempty"`       // 员工工号
-	Sex          int32                  `protobuf:"varint,4,opt,name=Sex,proto3" json:"Sex,omitempty"`                    // 性别（0：未知 1：男  2：女）
-	Phone        string                 `protobuf:"bytes,5,opt,name=Phone,proto3" json:"Phone,omitempty"`                 // 手机号码
-	Email        string                 `protobuf:"bytes,6,opt,name=Email,proto3" json:"Email,omitempty"`                 // 邮箱号码
-	DepartId     int32                  `protobuf:"varint,7,opt,name=DepartId,proto3" json:"DepartId,omitempty"`          // 部门ID
-	JobLevel     int32                  `protobuf:"varint,8,opt,name=JobLevel,proto3" json:"JobLevel,omitempty"`          // 职级
-	JobId        int32                  `protobuf:"varint,9,opt,name=JobId,proto3" json:"JobId,omitempty"`                // 岗位信息
-	InstructorId int32                  `protobuf:"varint,10,opt,name=InstructorId,proto3" json:"InstructorId,omitempty"` // 指导老师
-	Status       int32                  `protobuf:"varint,11,opt,name=Status,proto3" json:"Status,omitempty"`             // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
-	Remark       string                 `protobuf:"bytes,12,opt,name=Remark,proto3" json:"Remark,omitempty"`              // 预留备注信息
-	CreateTime   *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=CreateTime,proto3" json:"CreateTime,omitempty"`      // 数据新增时间
-	UpdateTime   *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=UpdateTime,proto3" json:"UpdateTime,omitempty"`      // 最后一次更新数据时间
+	Id           int32                  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id"`
+	UserName     string                 `protobuf:"bytes,2,opt,name=UserName,proto3" json:"UserName"`           // 员工姓名
+	WorkNumber   string                 `protobuf:"bytes,3,opt,name=WorkNumber,proto3" json:"WorkNumber"`       // 员工工号
+	Sex          int32                  `protobuf:"varint,4,opt,name=Sex,proto3" json:"Sex"`                    // 性别（0：未知 1：男  2：女）
+	Phone        string                 `protobuf:"bytes,5,opt,name=Phone,proto3" json:"Phone"`                 // 手机号码
+	Email        string                 `protobuf:"bytes,6,opt,name=Email,proto3" json:"Email"`                 // 邮箱号码
+	DepartId     int32                  `protobuf:"varint,7,opt,name=DepartId,proto3" json:"DepartId"`          // 部门ID
+	JobLevel     int32                  `protobuf:"varint,8,opt,name=JobLevel,proto3" json:"JobLevel"`          // 职级
+	JobId        int32                  `protobuf:"varint,9,opt,name=JobId,proto3" json:"JobId"`                // 岗位信息
+	InstructorId int32                  `protobuf:"varint,10,opt,name=InstructorId,proto3" json:"InstructorId"` // 指导老师
+	Status       int32                  `protobuf:"varint,11,opt,name=Status,proto3" json:"Status"`             // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+	Remark       string                 `protobuf:"bytes,12,opt,name=Remark,proto3" json:"Remark"`              // 预留备注信息
+	CreateTime   *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=CreateTime,proto3" json:"CreateTime"`      // 数据新增时间
+	UpdateTime   *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=UpdateTime,proto3" json:"UpdateTime"`      // 最后一次更新数据时间
 }
 
 func (x *EmployeeInfo) Reset() {
@@ -186,17 +186,17 @@ type CreateEmployeeReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Remark       string `protobuf:"bytes,1,opt,name=Remark,proto3" json:"Remark,omitempty"`
-	UserName     string `protobuf:"bytes,2,opt,name=UserName,proto3" json:"UserName,omitempty"`           // 员工姓名
-	WorkNumber   string `protobuf:"bytes,3,opt,name=WorkNumber,proto3" json:"WorkNumber,omitempty"`       // 员工工号
-	Sex          int32  `protobuf:"varint,4,opt,name=Sex,proto3" json:"Sex,omitempty"`                    // 性别（0：未知 1：男  2：女）
-	Phone        string `protobuf:"bytes,5,opt,name=Phone,proto3" json:"Phone,omitempty"`                 // 手机号码
-	Email        string `protobuf:"bytes,6,opt,name=Email,proto3" json:"Email,omitempty"`                 // 邮箱号码
-	DepartId     int32  `protobuf:"varint,7,opt,name=DepartId,proto3" json:"DepartId,omitempty"`          // 部门ID
-	JobLevel     int32  `protobuf:"varint,8,opt,name=JobLevel,proto3" json:"JobLevel,omitempty"`          // 职级
-	JobId        int32  `protobuf:"varint,9,opt,name=JobId,proto3" json:"JobId,omitempty"`                // 岗位信息
-	InstructorId int32  `protobuf:"varint,10,opt,name=InstructorId,proto3" json:"InstructorId,omitempty"` // 指导老师
-	Status       int32  `protobuf:"varint,11,opt,name=Status,proto3" json:"Status,omitempty"`             // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+	Remark       string `protobuf:"bytes,1,opt,name=Remark,proto3" json:"Remark"`
+	UserName     string `protobuf:"bytes,2,opt,name=UserName,proto3" json:"UserName"`           // 员工姓名
+	WorkNumber   string `protobuf:"bytes,3,opt,name=WorkNumber,proto3" json:"WorkNumber"`       // 员工工号
+	Sex          int32  `protobuf:"varint,4,opt,name=Sex,proto3" json:"Sex"`                    // 性别（0：未知 1：男  2：女）
+	Phone        string `protobuf:"bytes,5,opt,name=Phone,proto3" json:"Phone"`                 // 手机号码
+	Email        string `protobuf:"bytes,6,opt,name=Email,proto3" json:"Email"`                 // 邮箱号码
+	DepartId     int32  `protobuf:"varint,7,opt,name=DepartId,proto3" json:"DepartId"`          // 部门ID
+	JobLevel     int32  `protobuf:"varint,8,opt,name=JobLevel,proto3" json:"JobLevel"`          // 职级
+	JobId        int32  `protobuf:"varint,9,opt,name=JobId,proto3" json:"JobId"`                // 岗位信息
+	InstructorId int32  `protobuf:"varint,10,opt,name=InstructorId,proto3" json:"InstructorId"` // 指导老师
+	Status       int32  `protobuf:"varint,11,opt,name=Status,proto3" json:"Status"`             // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
 }
 
 func (x *CreateEmployeeReq) Reset() {
@@ -314,7 +314,7 @@ type CreateEmployeeRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Employee *EmployeeInfo `protobuf:"bytes,1,opt,name=Employee,proto3" json:"Employee,omitempty"`
+	Employee *EmployeeInfo `protobuf:"bytes,1,opt,name=Employee,proto3" json:"Employee"`
 }
 
 func (x *CreateEmployeeRes) Reset() {
@@ -362,11 +362,11 @@ type GetOneEmployeeReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id         int32  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"`                // v: required
-	UserName   string `protobuf:"bytes,2,opt,name=UserName,proto3" json:"UserName,omitempty"`     // 员工姓名
-	WorkNumber string `protobuf:"bytes,3,opt,name=WorkNumber,proto3" json:"WorkNumber,omitempty"` // 员工工号
-	Phone      string `protobuf:"bytes,4,opt,name=Phone,proto3" json:"Phone,omitempty"`           // 手机号码
-	Email      string `protobuf:"bytes,5,opt,name=Email,proto3" json:"Email,omitempty"`           // 邮箱号码
+	Id         int32  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id"`                // v: required
+	UserName   string `protobuf:"bytes,2,opt,name=UserName,proto3" json:"UserName"`     // 员工姓名
+	WorkNumber string `protobuf:"bytes,3,opt,name=WorkNumber,proto3" json:"WorkNumber"` // 员工工号
+	Phone      string `protobuf:"bytes,4,opt,name=Phone,proto3" json:"Phone"`           // 手机号码
+	Email      string `protobuf:"bytes,5,opt,name=Email,proto3" json:"Email"`           // 邮箱号码
 }
 
 func (x *GetOneEmployeeReq) Reset() {
@@ -442,7 +442,7 @@ type GetOneEmployeeRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Employee *EmployeeInfo `protobuf:"bytes,1,opt,name=Employee,proto3" json:"Employee,omitempty"`
+	Employee *EmployeeInfo `protobuf:"bytes,1,opt,name=Employee,proto3" json:"Employee"`
 }
 
 func (x *GetOneEmployeeRes) Reset() {
@@ -490,9 +490,9 @@ type GetListEmployeeReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Page     int32         `protobuf:"varint,1,opt,name=Page,proto3" json:"Page,omitempty"`
-	Size     int32         `protobuf:"varint,2,opt,name=Size,proto3" json:"Size,omitempty"`
-	Employee *EmployeeInfo `protobuf:"bytes,3,opt,name=Employee,proto3" json:"Employee,omitempty"`
+	Page     int32         `protobuf:"varint,1,opt,name=Page,proto3" json:"Page"`
+	Size     int32         `protobuf:"varint,2,opt,name=Size,proto3" json:"Size"`
+	Employee *EmployeeInfo `protobuf:"bytes,3,opt,name=Employee,proto3" json:"Employee"`
 }
 
 func (x *GetListEmployeeReq) Reset() {
@@ -554,10 +554,10 @@ type GetListEmployeeRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Page      int32         `protobuf:"varint,1,opt,name=Page,proto3" json:"Page,omitempty"`
-	Size      int32         `protobuf:"varint,2,opt,name=Size,proto3" json:"Size,omitempty"`
-	TotalPage int32         `protobuf:"varint,3,opt,name=TotalPage,proto3" json:"TotalPage,omitempty"`
-	Data      *EmployeeInfo `protobuf:"bytes,4,opt,name=Data,proto3" json:"Data,omitempty"`
+	Page      int32         `protobuf:"varint,1,opt,name=Page,proto3" json:"Page"`
+	Size      int32         `protobuf:"varint,2,opt,name=Size,proto3" json:"Size"`
+	TotalSize int32         `protobuf:"varint,3,opt,name=TotalSize,proto3" json:"TotalSize"`
+	Data      *EmployeeInfo `protobuf:"bytes,4,opt,name=Data,proto3" json:"Data"`
 }
 
 func (x *GetListEmployeeRes) Reset() {
@@ -606,9 +606,9 @@ func (x *GetListEmployeeRes) GetSize() int32 {
 	return 0
 }
 
-func (x *GetListEmployeeRes) GetTotalPage() int32 {
+func (x *GetListEmployeeRes) GetTotalSize() int32 {
 	if x != nil {
-		return x.TotalPage
+		return x.TotalSize
 	}
 	return 0
 }
@@ -626,18 +626,18 @@ type ModifyEmployeeReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Remark       string `protobuf:"bytes,1,opt,name=Remark,proto3" json:"Remark,omitempty"`
-	UserName     string `protobuf:"bytes,2,opt,name=UserName,proto3" json:"UserName,omitempty"`           // 员工姓名
-	WorkNumber   string `protobuf:"bytes,3,opt,name=WorkNumber,proto3" json:"WorkNumber,omitempty"`       // 员工工号
-	Sex          int32  `protobuf:"varint,4,opt,name=Sex,proto3" json:"Sex,omitempty"`                    // 性别（0：未知 1：男  2：女）
-	Phone        string `protobuf:"bytes,5,opt,name=Phone,proto3" json:"Phone,omitempty"`                 // 手机号码
-	Email        string `protobuf:"bytes,6,opt,name=Email,proto3" json:"Email,omitempty"`                 // 邮箱号码
-	DepartId     int32  `protobuf:"varint,7,opt,name=DepartId,proto3" json:"DepartId,omitempty"`          // 部门ID
-	JobLevel     int32  `protobuf:"varint,8,opt,name=JobLevel,proto3" json:"JobLevel,omitempty"`          // 职级
-	JobId        int32  `protobuf:"varint,9,opt,name=JobId,proto3" json:"JobId,omitempty"`                // 岗位信息
-	InstructorId int32  `protobuf:"varint,10,opt,name=InstructorId,proto3" json:"InstructorId,omitempty"` // 指导老师
-	Status       int32  `protobuf:"varint,11,opt,name=Status,proto3" json:"Status,omitempty"`             // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
-	Id           int32  `protobuf:"varint,12,opt,name=Id,proto3" json:"Id,omitempty"`                     // v: required
+	Remark       string `protobuf:"bytes,1,opt,name=Remark,proto3" json:"Remark"`
+	UserName     string `protobuf:"bytes,2,opt,name=UserName,proto3" json:"UserName"`           // 员工姓名
+	WorkNumber   string `protobuf:"bytes,3,opt,name=WorkNumber,proto3" json:"WorkNumber"`       // 员工工号
+	Sex          int32  `protobuf:"varint,4,opt,name=Sex,proto3" json:"Sex"`                    // 性别（0：未知 1：男  2：女）
+	Phone        string `protobuf:"bytes,5,opt,name=Phone,proto3" json:"Phone"`                 // 手机号码
+	Email        string `protobuf:"bytes,6,opt,name=Email,proto3" json:"Email"`                 // 邮箱号码
+	DepartId     int32  `protobuf:"varint,7,opt,name=DepartId,proto3" json:"DepartId"`          // 部门ID
+	JobLevel     int32  `protobuf:"varint,8,opt,name=JobLevel,proto3" json:"JobLevel"`          // 职级
+	JobId        int32  `protobuf:"varint,9,opt,name=JobId,proto3" json:"JobId"`                // 岗位信息
+	InstructorId int32  `protobuf:"varint,10,opt,name=InstructorId,proto3" json:"InstructorId"` // 指导老师
+	Status       int32  `protobuf:"varint,11,opt,name=Status,proto3" json:"Status"`             // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+	Id           int32  `protobuf:"varint,12,opt,name=Id,proto3" json:"Id"`                     // v: required
 }
 
 func (x *ModifyEmployeeReq) Reset() {
@@ -762,7 +762,7 @@ type ModifyEmployeeRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Employee *EmployeeInfo `protobuf:"bytes,3,opt,name=Employee,proto3" json:"Employee,omitempty"`
+	Employee *EmployeeInfo `protobuf:"bytes,3,opt,name=Employee,proto3" json:"Employee"`
 }
 
 func (x *ModifyEmployeeRes) Reset() {
@@ -810,7 +810,7 @@ type DeleteEmployeeReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id int32 `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"` // v: required
+	Id int32 `protobuf:"varint,1,opt,name=Id,proto3" json:"Id"` // v: required
 }
 
 func (x *DeleteEmployeeReq) Reset() {
@@ -858,8 +858,8 @@ type DeleteEmployeeRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	IsSuccess bool   `protobuf:"varint,1,opt,name=IsSuccess,proto3" json:"IsSuccess,omitempty"` // v: required
-	Msg       string `protobuf:"bytes,2,opt,name=Msg,proto3" json:"Msg,omitempty"`              // v: required
+	IsSuccess bool   `protobuf:"varint,1,opt,name=IsSuccess,proto3" json:"IsSuccess"` // v: required
+	Msg       string `protobuf:"bytes,2,opt,name=Msg,proto3" json:"Msg"`              // v: required
 }
 
 func (x *DeleteEmployeeRes) Reset() {
@@ -990,9 +990,9 @@ var file_common_v1_employee_proto_rawDesc = []byte{
 	0x73, 0x74, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x73, 0x12, 0x12, 0x0a,
 	0x04, 0x50, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x50, 0x61, 0x67,
 	0x65, 0x12, 0x12, 0x0a, 0x04, 0x53, 0x69, 0x7a, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52,
-	0x04, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x1c, 0x0a, 0x09, 0x54, 0x6f, 0x74, 0x61, 0x6c, 0x50, 0x61,
-	0x67, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x54, 0x6f, 0x74, 0x61, 0x6c, 0x50,
-	0x61, 0x67, 0x65, 0x12, 0x28, 0x0a, 0x04, 0x44, 0x61, 0x74, 0x61, 0x18, 0x04, 0x20, 0x01, 0x28,
+	0x04, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x1c, 0x0a, 0x09, 0x54, 0x6f, 0x74, 0x61, 0x6c, 0x53, 0x69,
+	0x7a, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x54, 0x6f, 0x74, 0x61, 0x6c, 0x53,
+	0x69, 0x7a, 0x65, 0x12, 0x28, 0x0a, 0x04, 0x44, 0x61, 0x74, 0x61, 0x18, 0x04, 0x20, 0x01, 0x28,
 	0x0b, 0x32, 0x14, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x45, 0x6d, 0x70, 0x6c, 0x6f,
 	0x79, 0x65, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x44, 0x61, 0x74, 0x61, 0x22, 0xbf, 0x02,
 	0x0a, 0x11, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65,

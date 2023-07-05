@@ -34,11 +34,11 @@ type JobLevelInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id         int32                  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"`
-	Name       string                 `protobuf:"bytes,2,opt,name=Name,proto3" json:"Name,omitempty"`             // 职级名称
-	Remark     string                 `protobuf:"bytes,3,opt,name=Remark,proto3" json:"Remark,omitempty"`         // 预留备注信息
-	CreateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=CreateTime,proto3" json:"CreateTime,omitempty"` // 数据新增时间
-	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=UpdateTime,proto3" json:"UpdateTime,omitempty"` // 最后一次更新数据时间
+	Id         int32                  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id"`
+	Name       string                 `protobuf:"bytes,2,opt,name=Name,proto3" json:"Name"`             // 职级名称
+	Remark     string                 `protobuf:"bytes,3,opt,name=Remark,proto3" json:"Remark"`         // 预留备注信息
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=CreateTime,proto3" json:"CreateTime"` // 数据新增时间
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=UpdateTime,proto3" json:"UpdateTime"` // 最后一次更新数据时间
 }
 
 func (x *JobLevelInfo) Reset() {
@@ -114,8 +114,8 @@ type CreateJobLevelReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Name   string `protobuf:"bytes,1,opt,name=Name,proto3" json:"Name,omitempty"` // v: required
-	Remark string `protobuf:"bytes,2,opt,name=Remark,proto3" json:"Remark,omitempty"`
+	Name   string `protobuf:"bytes,1,opt,name=Name,proto3" json:"Name"` // v: required
+	Remark string `protobuf:"bytes,2,opt,name=Remark,proto3" json:"Remark"`
 }
 
 func (x *CreateJobLevelReq) Reset() {
@@ -170,7 +170,7 @@ type CreateJobLevelRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	JobLevel *JobLevelInfo `protobuf:"bytes,1,opt,name=JobLevel,proto3" json:"JobLevel,omitempty"`
+	JobLevel *JobLevelInfo `protobuf:"bytes,1,opt,name=JobLevel,proto3" json:"JobLevel"`
 }
 
 func (x *CreateJobLevelRes) Reset() {
@@ -218,8 +218,8 @@ type GetOneJobLevelReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id   int32  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"`    // v: required
-	Name string `protobuf:"bytes,2,opt,name=Name,proto3" json:"Name,omitempty"` // 职级名称
+	Id   int32  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id"`    // v: required
+	Name string `protobuf:"bytes,2,opt,name=Name,proto3" json:"Name"` // 职级名称
 }
 
 func (x *GetOneJobLevelReq) Reset() {
@@ -274,7 +274,7 @@ type GetOneJobLevelRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	JobLevel *JobLevelInfo `protobuf:"bytes,1,opt,name=JobLevel,proto3" json:"JobLevel,omitempty"`
+	JobLevel *JobLevelInfo `protobuf:"bytes,1,opt,name=JobLevel,proto3" json:"JobLevel"`
 }
 
 func (x *GetOneJobLevelRes) Reset() {
@@ -322,9 +322,9 @@ type GetListJobLevelReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Page     int32         `protobuf:"varint,1,opt,name=Page,proto3" json:"Page,omitempty"`
-	Size     int32         `protobuf:"varint,2,opt,name=Size,proto3" json:"Size,omitempty"`
-	JobLevel *JobLevelInfo `protobuf:"bytes,3,opt,name=JobLevel,proto3" json:"JobLevel,omitempty"`
+	Page     int32         `protobuf:"varint,1,opt,name=Page,proto3" json:"Page"`
+	Size     int32         `protobuf:"varint,2,opt,name=Size,proto3" json:"Size"`
+	JobLevel *JobLevelInfo `protobuf:"bytes,3,opt,name=JobLevel,proto3" json:"JobLevel"`
 }
 
 func (x *GetListJobLevelReq) Reset() {
@@ -386,10 +386,10 @@ type GetListJobLevelRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Page      int32         `protobuf:"varint,1,opt,name=Page,proto3" json:"Page,omitempty"`
-	Size      int32         `protobuf:"varint,2,opt,name=Size,proto3" json:"Size,omitempty"`
-	TotalPage int32         `protobuf:"varint,3,opt,name=TotalPage,proto3" json:"TotalPage,omitempty"`
-	Data      *JobLevelInfo `protobuf:"bytes,4,opt,name=Data,proto3" json:"Data,omitempty"`
+	Page      int32         `protobuf:"varint,1,opt,name=Page,proto3" json:"Page"`
+	Size      int32         `protobuf:"varint,2,opt,name=Size,proto3" json:"Size"`
+	TotalSize int32         `protobuf:"varint,3,opt,name=TotalSize,proto3" json:"TotalSize"`
+	Data      *JobLevelInfo `protobuf:"bytes,4,opt,name=Data,proto3" json:"Data"`
 }
 
 func (x *GetListJobLevelRes) Reset() {
@@ -438,9 +438,9 @@ func (x *GetListJobLevelRes) GetSize() int32 {
 	return 0
 }
 
-func (x *GetListJobLevelRes) GetTotalPage() int32 {
+func (x *GetListJobLevelRes) GetTotalSize() int32 {
 	if x != nil {
-		return x.TotalPage
+		return x.TotalSize
 	}
 	return 0
 }
@@ -458,9 +458,9 @@ type ModifyJobLevelReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id     int32  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"`        // v: required
-	Name   string `protobuf:"bytes,2,opt,name=Name,proto3" json:"Name,omitempty"`     // v: required
-	Remark string `protobuf:"bytes,3,opt,name=Remark,proto3" json:"Remark,omitempty"` // v: required
+	Id     int32  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id"`        // v: required
+	Name   string `protobuf:"bytes,2,opt,name=Name,proto3" json:"Name"`     // v: required
+	Remark string `protobuf:"bytes,3,opt,name=Remark,proto3" json:"Remark"` // v: required
 }
 
 func (x *ModifyJobLevelReq) Reset() {
@@ -522,7 +522,7 @@ type ModifyJobLevelRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	JobLevel *JobLevelInfo `protobuf:"bytes,1,opt,name=JobLevel,proto3" json:"JobLevel,omitempty"`
+	JobLevel *JobLevelInfo `protobuf:"bytes,1,opt,name=JobLevel,proto3" json:"JobLevel"`
 }
 
 func (x *ModifyJobLevelRes) Reset() {
@@ -570,7 +570,7 @@ type DeleteJobLevelReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id int32 `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"` // v: required
+	Id int32 `protobuf:"varint,1,opt,name=Id,proto3" json:"Id"` // v: required
 }
 
 func (x *DeleteJobLevelReq) Reset() {
@@ -618,8 +618,8 @@ type DeleteJobLevelRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	IsSuccess bool   `protobuf:"varint,1,opt,name=IsSuccess,proto3" json:"IsSuccess,omitempty"` // v: required
-	Msg       string `protobuf:"bytes,2,opt,name=Msg,proto3" json:"Msg,omitempty"`              // v: required
+	IsSuccess bool   `protobuf:"varint,1,opt,name=IsSuccess,proto3" json:"IsSuccess"` // v: required
+	Msg       string `protobuf:"bytes,2,opt,name=Msg,proto3" json:"Msg"`              // v: required
 }
 
 func (x *DeleteJobLevelRes) Reset() {
@@ -715,8 +715,8 @@ var file_common_v1_job_level_proto_rawDesc = []byte{
 	0x4c, 0x65, 0x76, 0x65, 0x6c, 0x52, 0x65, 0x73, 0x12, 0x12, 0x0a, 0x04, 0x50, 0x61, 0x67, 0x65,
 	0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x50, 0x61, 0x67, 0x65, 0x12, 0x12, 0x0a, 0x04,
 	0x53, 0x69, 0x7a, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x53, 0x69, 0x7a, 0x65,
-	0x12, 0x1c, 0x0a, 0x09, 0x54, 0x6f, 0x74, 0x61, 0x6c, 0x50, 0x61, 0x67, 0x65, 0x18, 0x03, 0x20,
-	0x01, 0x28, 0x05, 0x52, 0x09, 0x54, 0x6f, 0x74, 0x61, 0x6c, 0x50, 0x61, 0x67, 0x65, 0x12, 0x28,
+	0x12, 0x1c, 0x0a, 0x09, 0x54, 0x6f, 0x74, 0x61, 0x6c, 0x53, 0x69, 0x7a, 0x65, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x09, 0x54, 0x6f, 0x74, 0x61, 0x6c, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x28,
 	0x0a, 0x04, 0x44, 0x61, 0x74, 0x61, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x63,
 	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x4a, 0x6f, 0x62, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x49, 0x6e,
 	0x66, 0x6f, 0x52, 0x04, 0x44, 0x61, 0x74, 0x61, 0x22, 0x4f, 0x0a, 0x11, 0x4d, 0x6f, 0x64, 0x69,

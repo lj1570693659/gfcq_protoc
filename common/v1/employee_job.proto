@@ -60,7 +60,7 @@ message GetListEmployeeJobReq {
 message GetListEmployeeJobRes {
   int32 Page = 1;
   int32 Size = 2;
-  int32 TotalPage = 3;
+  int32 TotalSize = 3;
   EmployeeJobInfo Data = 4;
 }
 

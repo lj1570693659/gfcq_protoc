@@ -6,8 +6,6 @@ package common;
 
 option go_package = "github.com/lj1570693659/gfcq_protoc/common/v1/department";
 
-import "google/protobuf/timestamp.proto";
-
 service Department {
   rpc Create(CreateDepartmentReq) returns (CreateDepartmentRes) {}
   rpc GetOne(GetOneDepartmentReq) returns (GetOneDepartmentRes) {}
@@ -18,12 +16,12 @@ service Department {
 
 // 部门信息公共数据结构
 message DepartmentInfo {
-    int32  Id           = 1;
-    string Name         = 2; // 部门名称
-    int32  Pid          = 3; // 上级部门
-    string Remark       = 4; // 预留备注信息
-    google.protobuf.Timestamp CreateTime   = 5; // 数据新增时间
-    google.protobuf.Timestamp UpdateTime   = 6; // 最后一次更新数据时间
+  int32  Id           = 1;
+  string Name         = 2; // 部门名称
+  int32  Pid          = 3; // 上级部门
+  string Remark       = 4; // 预留备注信息
+  string CreateTime   = 5; // 数据新增时间
+  string UpdateTime   = 6; // 最后一次更新数据时间
 }
 
 // 创建数据接口输入数据结构
@@ -60,7 +58,7 @@ message GetListDepartmentReq {
 message GetListDepartmentRes {
   int32 Page = 1;
   int32 Size = 2;
-  int32 TotalPage = 3;
+  int32 TotalSize = 3;
   repeated DepartmentInfo Data = 4;
 }
 

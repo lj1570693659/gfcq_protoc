@@ -34,12 +34,12 @@ type EmployeeJobInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id         int32                  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"`
-	EmployeeId int32                  `protobuf:"varint,2,opt,name=EmployeeId,proto3" json:"EmployeeId,omitempty"` // 员工信息
-	JobId      int32                  `protobuf:"varint,3,opt,name=JobId,proto3" json:"JobId,omitempty"`           // 岗位信息
-	Remark     string                 `protobuf:"bytes,4,opt,name=Remark,proto3" json:"Remark,omitempty"`          // 预留备注信息
-	CreateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=CreateTime,proto3" json:"CreateTime,omitempty"`  // 数据新增时间
-	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=UpdateTime,proto3" json:"UpdateTime,omitempty"`  // 最后一次更新数据时间
+	Id         int32                  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id"`
+	EmployeeId int32                  `protobuf:"varint,2,opt,name=EmployeeId,proto3" json:"EmployeeId"` // 员工信息
+	JobId      int32                  `protobuf:"varint,3,opt,name=JobId,proto3" json:"JobId"`           // 岗位信息
+	Remark     string                 `protobuf:"bytes,4,opt,name=Remark,proto3" json:"Remark"`          // 预留备注信息
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=CreateTime,proto3" json:"CreateTime"`  // 数据新增时间
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=UpdateTime,proto3" json:"UpdateTime"`  // 最后一次更新数据时间
 }
 
 func (x *EmployeeJobInfo) Reset() {
@@ -122,9 +122,9 @@ type CreateEmployeeJobReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	EmployeeId int32  `protobuf:"varint,1,opt,name=EmployeeId,proto3" json:"EmployeeId,omitempty"` // 员工信息
-	JobId      int32  `protobuf:"varint,2,opt,name=JobId,proto3" json:"JobId,omitempty"`           // 岗位信息
-	Remark     string `protobuf:"bytes,3,opt,name=Remark,proto3" json:"Remark,omitempty"`
+	EmployeeId int32  `protobuf:"varint,1,opt,name=EmployeeId,proto3" json:"EmployeeId"` // 员工信息
+	JobId      int32  `protobuf:"varint,2,opt,name=JobId,proto3" json:"JobId"`           // 岗位信息
+	Remark     string `protobuf:"bytes,3,opt,name=Remark,proto3" json:"Remark"`
 }
 
 func (x *CreateEmployeeJobReq) Reset() {
@@ -186,7 +186,7 @@ type CreateEmployeeJobRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	EmployeeJob *EmployeeJobInfo `protobuf:"bytes,1,opt,name=EmployeeJob,proto3" json:"EmployeeJob,omitempty"`
+	EmployeeJob *EmployeeJobInfo `protobuf:"bytes,1,opt,name=EmployeeJob,proto3" json:"EmployeeJob"`
 }
 
 func (x *CreateEmployeeJobRes) Reset() {
@@ -234,8 +234,8 @@ type GetOneEmployeeJobReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	EmployeeId int32 `protobuf:"varint,1,opt,name=EmployeeId,proto3" json:"EmployeeId,omitempty"` // 员工信息
-	JobId      int32 `protobuf:"varint,2,opt,name=JobId,proto3" json:"JobId,omitempty"`           // 岗位信息
+	EmployeeId int32 `protobuf:"varint,1,opt,name=EmployeeId,proto3" json:"EmployeeId"` // 员工信息
+	JobId      int32 `protobuf:"varint,2,opt,name=JobId,proto3" json:"JobId"`           // 岗位信息
 }
 
 func (x *GetOneEmployeeJobReq) Reset() {
@@ -290,7 +290,7 @@ type GetOneEmployeeJobRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	EmployeeJob *EmployeeJobInfo `protobuf:"bytes,1,opt,name=EmployeeJob,proto3" json:"EmployeeJob,omitempty"`
+	EmployeeJob *EmployeeJobInfo `protobuf:"bytes,1,opt,name=EmployeeJob,proto3" json:"EmployeeJob"`
 }
 
 func (x *GetOneEmployeeJobRes) Reset() {
@@ -338,9 +338,9 @@ type GetListEmployeeJobReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Page        int32            `protobuf:"varint,1,opt,name=Page,proto3" json:"Page,omitempty"`
-	Size        int32            `protobuf:"varint,2,opt,name=Size,proto3" json:"Size,omitempty"`
-	EmployeeJob *EmployeeJobInfo `protobuf:"bytes,3,opt,name=EmployeeJob,proto3" json:"EmployeeJob,omitempty"`
+	Page        int32            `protobuf:"varint,1,opt,name=Page,proto3" json:"Page"`
+	Size        int32            `protobuf:"varint,2,opt,name=Size,proto3" json:"Size"`
+	EmployeeJob *EmployeeJobInfo `protobuf:"bytes,3,opt,name=EmployeeJob,proto3" json:"EmployeeJob"`
 }
 
 func (x *GetListEmployeeJobReq) Reset() {
@@ -402,10 +402,10 @@ type GetListEmployeeJobRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Page      int32            `protobuf:"varint,1,opt,name=Page,proto3" json:"Page,omitempty"`
-	Size      int32            `protobuf:"varint,2,opt,name=Size,proto3" json:"Size,omitempty"`
-	TotalPage int32            `protobuf:"varint,3,opt,name=TotalPage,proto3" json:"TotalPage,omitempty"`
-	Data      *EmployeeJobInfo `protobuf:"bytes,4,opt,name=Data,proto3" json:"Data,omitempty"`
+	Page      int32            `protobuf:"varint,1,opt,name=Page,proto3" json:"Page"`
+	Size      int32            `protobuf:"varint,2,opt,name=Size,proto3" json:"Size"`
+	TotalSize int32            `protobuf:"varint,3,opt,name=TotalSize,proto3" json:"TotalSize"`
+	Data      *EmployeeJobInfo `protobuf:"bytes,4,opt,name=Data,proto3" json:"Data"`
 }
 
 func (x *GetListEmployeeJobRes) Reset() {
@@ -454,9 +454,9 @@ func (x *GetListEmployeeJobRes) GetSize() int32 {
 	return 0
 }
 
-func (x *GetListEmployeeJobRes) GetTotalPage() int32 {
+func (x *GetListEmployeeJobRes) GetTotalSize() int32 {
 	if x != nil {
-		return x.TotalPage
+		return x.TotalSize
 	}
 	return 0
 }
@@ -474,10 +474,10 @@ type ModifyEmployeeJobReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id         int32  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"`                 // v: required
-	EmployeeId int32  `protobuf:"varint,2,opt,name=EmployeeId,proto3" json:"EmployeeId,omitempty"` // v: required 员工信息
-	JobId      int32  `protobuf:"varint,3,opt,name=JobId,proto3" json:"JobId,omitempty"`           // v: required 岗位信息
-	Remark     string `protobuf:"bytes,4,opt,name=Remark,proto3" json:"Remark,omitempty"`          // v: required
+	Id         int32  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id"`                 // v: required
+	EmployeeId int32  `protobuf:"varint,2,opt,name=EmployeeId,proto3" json:"EmployeeId"` // v: required 员工信息
+	JobId      int32  `protobuf:"varint,3,opt,name=JobId,proto3" json:"JobId"`           // v: required 岗位信息
+	Remark     string `protobuf:"bytes,4,opt,name=Remark,proto3" json:"Remark"`          // v: required
 }
 
 func (x *ModifyEmployeeJobReq) Reset() {
@@ -546,7 +546,7 @@ type ModifyEmployeeJobRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	EmployeeJob *EmployeeJobInfo `protobuf:"bytes,1,opt,name=EmployeeJob,proto3" json:"EmployeeJob,omitempty"`
+	EmployeeJob *EmployeeJobInfo `protobuf:"bytes,1,opt,name=EmployeeJob,proto3" json:"EmployeeJob"`
 }
 
 func (x *ModifyEmployeeJobRes) Reset() {
@@ -594,7 +594,7 @@ type DeleteEmployeeJobReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id int32 `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"` // v: required
+	Id int32 `protobuf:"varint,1,opt,name=Id,proto3" json:"Id"` // v: required
 }
 
 func (x *DeleteEmployeeJobReq) Reset() {
@@ -642,8 +642,8 @@ type DeleteEmployeeJobRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	IsSuccess bool   `protobuf:"varint,1,opt,name=IsSuccess,proto3" json:"IsSuccess,omitempty"` // v: required
-	Msg       string `protobuf:"bytes,2,opt,name=Msg,proto3" json:"Msg,omitempty"`              // v: required
+	IsSuccess bool   `protobuf:"varint,1,opt,name=IsSuccess,proto3" json:"IsSuccess"` // v: required
+	Msg       string `protobuf:"bytes,2,opt,name=Msg,proto3" json:"Msg"`              // v: required
 }
 
 func (x *DeleteEmployeeJobRes) Reset() {
@@ -748,8 +748,8 @@ var file_common_v1_employee_job_proto_rawDesc = []byte{
 	0x73, 0x12, 0x12, 0x0a, 0x04, 0x50, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52,
 	0x04, 0x50, 0x61, 0x67, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x53, 0x69, 0x7a, 0x65, 0x18, 0x02, 0x20,
 	0x01, 0x28, 0x05, 0x52, 0x04, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x1c, 0x0a, 0x09, 0x54, 0x6f, 0x74,
-	0x61, 0x6c, 0x50, 0x61, 0x67, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x54, 0x6f,
-	0x74, 0x61, 0x6c, 0x50, 0x61, 0x67, 0x65, 0x12, 0x2b, 0x0a, 0x04, 0x44, 0x61, 0x74, 0x61, 0x18,
+	0x61, 0x6c, 0x53, 0x69, 0x7a, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x54, 0x6f,
+	0x74, 0x61, 0x6c, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x2b, 0x0a, 0x04, 0x44, 0x61, 0x74, 0x61, 0x18,
 	0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x45,
 	0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x4a, 0x6f, 0x62, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04,
 	0x44, 0x61, 0x74, 0x61, 0x22, 0x74, 0x0a, 0x14, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x45, 0x6d,
