@@ -6,8 +6,6 @@ package common;
 
 option go_package = "github.com/lj1570693659/gfcq_protoc/common/v1/job_level";
 
-import "google/protobuf/timestamp.proto";
-
 service JobLevel {
   rpc Create(CreateJobLevelReq) returns (CreateJobLevelRes) {}
   rpc GetOne(GetOneJobLevelReq) returns (GetOneJobLevelRes) {}
@@ -21,8 +19,8 @@ message JobLevelInfo {
     int32  Id           = 1;
     string Name         = 2; // 职级名称
     string Remark       = 3; // 预留备注信息
-    google.protobuf.Timestamp CreateTime   = 4; // 数据新增时间
-    google.protobuf.Timestamp UpdateTime   = 5; // 最后一次更新数据时间
+    string CreateTime   = 4; // 数据新增时间
+    string UpdateTime   = 5; // 最后一次更新数据时间
 }
 
 // 创建数据接口输入数据结构

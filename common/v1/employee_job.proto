@@ -6,8 +6,6 @@ package common;
 
 option go_package = "github.com/lj1570693659/gfcq_protoc/common/v1/employee_job";
 
-import "google/protobuf/timestamp.proto";
-
 service EmployeeJob {
   rpc Create(CreateEmployeeJobReq) returns (CreateEmployeeJobRes) {}
   rpc GetOne(GetOneEmployeeJobReq) returns (GetOneEmployeeJobRes) {}
@@ -22,8 +20,8 @@ message EmployeeJobInfo {
     int32 EmployeeId    = 2; // 员工信息
     int32 JobId         = 3; // 岗位信息
     string Remark       = 4; // 预留备注信息
-    google.protobuf.Timestamp CreateTime   = 5; // 数据新增时间
-    google.protobuf.Timestamp UpdateTime   = 6; // 最后一次更新数据时间
+    string CreateTime   = 5; // 数据新增时间
+    string UpdateTime   = 6; // 最后一次更新数据时间
 }
 
 // 创建数据接口输入数据结构

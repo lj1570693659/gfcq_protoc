@@ -6,8 +6,6 @@ package common;
 
 option go_package = "github.com/lj1570693659/gfcq_protoc/common/v1/employee";
 
-import "google/protobuf/timestamp.proto";
-
 service Employee {
   rpc Create(CreateEmployeeReq) returns (CreateEmployeeRes) {}
   rpc GetOne(GetOneEmployeeReq) returns (GetOneEmployeeRes) {}
@@ -16,22 +14,38 @@ service Employee {
   rpc Delete(DeleteEmployeeReq) returns (DeleteEmployeeRes) {}
 }
 
+// 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+enum StatusEnum {
+  anything = 0;
+  working = 1;
+  tryout = 2;
+  interns = 3;
+  terminated = 4;
+}
+
+// 性别（0：未知 1：男  2：女）
+enum SexEnum {
+  unknow = 0;
+  man = 1;
+  woman = 2;
+}
+
 // 员工信息公共数据结构
 message EmployeeInfo {
     int32  Id                              = 1;
     string UserName                        = 2; // 员工姓名
     string WorkNumber                      = 3; // 员工工号
-    int32 Sex                             = 4; // 性别（0：未知 1：男  2：女）
+    SexEnum Sex                             = 4; // 性别（0：未知 1：男  2：女）
     string Phone                           = 5; // 手机号码
     string Email                           = 6; // 邮箱号码
     int32  DepartId                        = 7; // 部门ID
     int32 JobLevel                        = 8; // 职级
     int32 JobId                           = 9; // 岗位信息
     int32 InstructorId                    = 10; // 指导老师
-    int32 Status                          = 11; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+    StatusEnum Status                          = 11; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
     string Remark                          = 12; // 预留备注信息
-    google.protobuf.Timestamp CreateTime   = 13; // 数据新增时间
-    google.protobuf.Timestamp UpdateTime   = 14; // 最后一次更新数据时间
+    string CreateTime   = 13; // 数据新增时间
+    string UpdateTime   = 14; // 最后一次更新数据时间
 }
 
 // 创建数据接口输入数据结构
@@ -39,14 +53,14 @@ message CreateEmployeeReq {
   string Remark                          = 1;
   string UserName                        = 2; // 员工姓名
   string WorkNumber                      = 3; // 员工工号
-  int32 Sex                             = 4; // 性别（0：未知 1：男  2：女）
+  SexEnum Sex                             = 4; // 性别（0：未知 1：男  2：女）
   string Phone                           = 5; // 手机号码
   string Email                           = 6; // 邮箱号码
   int32  DepartId                        = 7; // 部门ID
   int32 JobLevel                        = 8; // 职级
   int32 JobId                           = 9; // 岗位信息
   int32 InstructorId                    = 10; // 指导老师
-  int32 Status                          = 11; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+  StatusEnum Status                          = 11; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
 }
 
 // 创建数据接口输出数据结构
@@ -61,6 +75,10 @@ message GetOneEmployeeReq {
   string WorkNumber                      = 3; // 员工工号
   string Phone                           = 4; // 手机号码
   string Email                           = 5; // 邮箱号码
+  int32  DepartId                        = 6; // 部门ID
+  int32  JobId                           = 7; // 岗位ID
+  int32  JobLevel                        = 8; // 职级
+  StatusEnum  status                        = 9; // 在职状态
 }
 
 // 获取详情接口输出数据结构
@@ -88,14 +106,14 @@ message ModifyEmployeeReq {
   string Remark                          = 1;
   string UserName                        = 2; // 员工姓名
   string WorkNumber                      = 3; // 员工工号
-  int32 Sex                             = 4; // 性别（0：未知 1：男  2：女）
+  SexEnum Sex                             = 4; // 性别（0：未知 1：男  2：女）
   string Phone                           = 5; // 手机号码
   string Email                           = 6; // 邮箱号码
   int32  DepartId                        = 7; // 部门ID
   int32 JobLevel                        = 8; // 职级
   int32 JobId                           = 9; // 岗位信息
   int32 InstructorId                    = 10; // 指导老师
-  int32 Status                          = 11; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+  StatusEnum Status                          = 11; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
   int32 Id                              = 12; // v: required
 
 }
