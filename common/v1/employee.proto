@@ -56,7 +56,7 @@ message CreateEmployeeReq {
   SexEnum Sex                             = 4; // 性别（0：未知 1：男  2：女）
   string Phone                           = 5; // 手机号码
   string Email                           = 6; // 邮箱号码
-  int32  DepartId                        = 7; // 部门ID
+//  int32  DepartId                        = 7; // 部门ID
   int32 JobLevel                        = 8; // 职级
   repeated int32 JobId                           = 9; // 岗位信息
   int32 InstructorId                    = 10; // 指导老师
@@ -109,7 +109,7 @@ message ModifyEmployeeReq {
   SexEnum Sex                             = 4; // 性别（0：未知 1：男  2：女）
   string Phone                           = 5; // 手机号码
   string Email                           = 6; // 邮箱号码
-  int32  DepartId                        = 7; // 部门ID
+//  int32  DepartId                        = 7; // 部门ID
   int32 JobLevel                        = 8; // 职级
   repeated int32 JobId                           = 9; // 岗位信息
   int32 InstructorId                    = 10; // 指导老师
