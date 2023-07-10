@@ -60,6 +60,8 @@ message CreateEmployeeReq {
   repeated int32 JobId                           = 8; // 岗位信息
   int32 InstructorId                    = 9; // 指导老师
   StatusEnum Status                          = 10; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+  string DepartId                        = 11; // 部门ID
+
 }
 
 // 创建数据接口输出数据结构
