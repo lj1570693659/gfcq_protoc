@@ -19,9 +19,10 @@ message EmployeeJobInfo {
     int32  Id           = 1;
     int32 EmployeeId    = 2; // 员工信息
     int32 JobId         = 3; // 岗位信息
-    string Remark       = 4; // 预留备注信息
-    string CreateTime   = 5; // 数据新增时间
-    string UpdateTime   = 6; // 最后一次更新数据时间
+    int32 DepartId      = 4; // 部门ID
+    string Remark       = 5; // 预留备注信息
+    string CreateTime   = 6; // 数据新增时间
+    string UpdateTime   = 7; // 最后一次更新数据时间
 }
 
 // 创建数据接口输入数据结构
