@@ -86,6 +86,7 @@ message GetOneEmployeeRes {
   EmployeeInfo Employee = 1;
   string DepartString = 2;
   repeated int32  DepartIds                        = 3; // 部门ID
+  repeated int32  JobIds                        = 4; // 岗位ID
 }
 
 // 列表接口输入数据结构
