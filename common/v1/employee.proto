@@ -75,15 +75,17 @@ message GetOneEmployeeReq {
   string WorkNumber                      = 3; // 员工工号
   string Phone                           = 4; // 手机号码
   string Email                           = 5; // 邮箱号码
-  int32  DepartId                        = 6; // 部门ID
-  int32  JobId                           = 7; // 岗位ID
-  int32  JobLevel                        = 8; // 职级
+  repeated int32  DepartId                        = 6; // 部门ID
+  repeated int32  JobId                           = 7; // 岗位ID
+  repeated int32  JobLevel                        = 8; // 职级
   StatusEnum  status                        = 9; // 在职状态
 }
 
 // 获取详情接口输出数据结构
 message GetOneEmployeeRes {
   EmployeeInfo Employee = 1;
+  string DepartString = 2;
+  repeated int32  DepartIds                        = 3; // 部门ID
 }
 
 // 列表接口输入数据结构
