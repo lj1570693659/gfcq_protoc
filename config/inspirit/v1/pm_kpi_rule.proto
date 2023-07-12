@@ -1,0 +1,88 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+package config;
+
+option go_package = "github.com/lj1570693659/gfcq_protoc/config/inspirit/v1";
+
+// PM绩效等级配置信息
+service PmKpiRule {
+  rpc Create(CreatePmKpiRuleReq) returns (CreatePmKpiRuleRes) {}
+  rpc GetOne(GetOnePmKpiRuleReq) returns (GetOnePmKpiRuleRes) {}
+  rpc GetList(GetListPmKpiRuleReq) returns (GetListPmKpiRuleRes) {}
+  rpc Modify(ModifyPmKpiRuleReq) returns (ModifyPmKpiRuleRes) {}
+  rpc Delete(DeletePmKpiRuleReq) returns (DeletePmKpiRuleRes) {}
+}
+
+// PmKpiRule is the golang structure for table cqgf_Pm_kpi_rule.
+message PmKpiRuleInfo {
+  int32             Id = 1;
+  float          Redio = 2;// 比例
+  string          LevelName = 3;// 等级名称
+  string          Remark = 4;// 预留备注说明信息
+  string CreateTime = 5;// 数据新增时间
+  string  UpdateTime = 6;// 最后一次更新数据时间
+}
+
+// 创建数据接口输入数据结构
+message CreatePmKpiRuleReq {
+  string Remark = 1;
+  float          Redio = 2;// 比例
+  string          LevelName = 3;// 等级名称
+
+}
+
+// 创建数据接口输出数据结构
+message CreatePmKpiRuleRes {
+  PmKpiRuleInfo PmKpiRule = 1;
+}
+
+// 获取详情接口输入数据结构
+message GetOnePmKpiRuleReq {
+  PmKpiRuleInfo PmKpiRule = 1;
+}
+
+// 获取详情接口输出数据结构
+message GetOnePmKpiRuleRes {
+  PmKpiRuleInfo PmKpiRule = 1;
+}
+
+// 列表接口输入数据结构
+message GetListPmKpiRuleReq {
+  int32 Page = 1;
+  int32 Size = 2;
+  PmKpiRuleInfo PmKpiRule = 3;
+}
+
+// 列表接口输出数据结构
+message GetListPmKpiRuleRes {
+  int32 Page = 1;
+  int32 Size = 2;
+  int32 TotalSize = 3;
+  repeated PmKpiRuleInfo Data = 4;
+}
+
+// 修改数据接口输入数据结构
+message ModifyPmKpiRuleReq {
+  string Remark = 1;
+  float          Redio = 2;// 比例
+  string          LevelName = 3;// 等级名称
+  int32 Id = 4; // v: required
+}
+
+// 修改数据接口输出数据结构
+message ModifyPmKpiRuleRes {
+  PmKpiRuleInfo PmKpiRule = 3;
+}
+
+// 删除数据接口输入数据结构
+message DeletePmKpiRuleReq {
+  int32 Id = 1; // v: required
+}
+
+// 删除数据接口输出数据结构
+message DeletePmKpiRuleRes {
+  bool IsSuccess = 1; // v: required
+  string Msg = 2; // v: required
+}

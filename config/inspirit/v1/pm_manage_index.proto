@@ -1,0 +1,88 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+package config;
+
+option go_package = "github.com/lj1570693659/gfcq_protoc/config/inspirit/v1";
+
+// PM管理指数配置信息
+service PmManageIndex {
+  rpc Create(CreatePmManageIndexReq) returns (CreatePmManageIndexRes) {}
+  rpc GetOne(GetOnePmManageIndexReq) returns (GetOnePmManageIndexRes) {}
+  rpc GetList(GetListPmManageIndexReq) returns (GetListPmManageIndexRes) {}
+  rpc Modify(ModifyPmManageIndexReq) returns (ModifyPmManageIndexRes) {}
+  rpc Delete(DeletePmManageIndexReq) returns (DeletePmManageIndexRes) {}
+}
+
+// PmManageIndex is the golang structure for table Pm_manage_index.
+message PmManageIndexInfo {
+  int32             Id = 1;
+  uint32          ScoreIndex = 2;// 管理指数
+  uint32          ProductRoleId = 3;// 项目角色ID
+  string          Remark = 4;// 预留备注说明信息
+  string CreateTime = 5;// 数据新增时间
+  string  UpdateTime = 6;// 最后一次更新数据时间
+}
+
+// 创建数据接口输入数据结构
+message CreatePmManageIndexReq {
+  string Remark = 1;
+  uint32          ScoreIndex = 2;// 管理指数
+  uint32          ProductRoleId = 3;// 项目角色ID
+
+}
+
+// 创建数据接口输出数据结构
+message CreatePmManageIndexRes {
+  PmManageIndexInfo PmManageIndex = 1;
+}
+
+// 获取详情接口输入数据结构
+message GetOnePmManageIndexReq {
+  PmManageIndexInfo PmManageIndex = 1;
+}
+
+// 获取详情接口输出数据结构
+message GetOnePmManageIndexRes {
+  PmManageIndexInfo PmManageIndex = 1;
+}
+
+// 列表接口输入数据结构
+message GetListPmManageIndexReq {
+  int32 Page = 1;
+  int32 Size = 2;
+  PmManageIndexInfo PmManageIndex = 3;
+}
+
+// 列表接口输出数据结构
+message GetListPmManageIndexRes {
+  int32 Page = 1;
+  int32 Size = 2;
+  int32 TotalSize = 3;
+  repeated PmManageIndexInfo Data = 4;
+}
+
+// 修改数据接口输入数据结构
+message ModifyPmManageIndexReq {
+  string Remark = 1;
+  uint32          ScoreIndex = 2;// 管理指数
+  uint32          ProductRoleId = 3;// 项目角色ID
+  int32 Id = 4; // v: required
+}
+
+// 修改数据接口输出数据结构
+message ModifyPmManageIndexRes {
+  PmManageIndexInfo PmManageIndex = 3;
+}
+
+// 删除数据接口输入数据结构
+message DeletePmManageIndexReq {
+  int32 Id = 1; // v: required
+}
+
+// 删除数据接口输出数据结构
+message DeletePmManageIndexRes {
+  bool IsSuccess = 1; // v: required
+  string Msg = 2; // v: required
+}

@@ -1,0 +1,114 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+package config;
+
+option go_package = "github.com/lj1570693659/gfcq_protoc/config/product/v1";
+
+service LevelConfirm {
+  rpc Create(CreateLevelConfirmReq) returns (CreateLevelConfirmRes) {}
+  rpc GetOne(GetOneLevelConfirmReq) returns (GetOneLevelConfirmRes) {}
+  rpc GetList(GetListLevelConfirmReq) returns (GetListLevelConfirmRes) {}
+  rpc Modify(ModifyLevelConfirmReq) returns (ModifyLevelConfirmRes) {}
+  rpc Delete(DeleteLevelConfirmReq) returns (DeleteLevelConfirmRes) {}
+}
+
+// 得分区间包含关系（1：左闭右开，2：左开右闭）
+enum ScoreRange {
+  anything = 0;
+  includeMin = 1;
+  includeMax = 2;
+}
+
+// LevelConfirmInfo 项目优先级确认配置信息
+message LevelConfirmInfo {
+  int32          Id = 1;    // ""
+  string       Name = 2;  // "项目优先级"
+  float      ScoreMin = 3; // "得分下限"
+  float      ScoreMax = 4; // "得分上线"
+  ScoreRange         ScoreRange = 5; // "得分区间包含关系（1：左闭右开，2：左开右闭）"
+  int32         IsNeedPm = 6;   // "是否委派PM(1:是 2：否)"
+  string       PmDemand = 7;    // "pm要求"
+  string       ProductDemand = 8;// "项目工作相关要求"
+  string       MonitDemand = 9;  // "监控要求"
+  int32         IsNeedPml = 10;   // "是否需要项目负责人(1:是 2：否)"
+  string       Remark = 11;    // "预留备注说明信息"
+  string  CreateTime = 12; // "新增数据时间"
+  string  UpdateTime = 13; // "最新更新数据"
+}
+
+// 创建数据接口输入数据结构
+message CreateLevelConfirmReq {
+  string       Name = 1;  // "项目优先级"
+  float      ScoreMin = 2; // "得分下限"
+  float      ScoreMax = 3; // "得分上线"
+  ScoreRange         ScoreRange = 4; // "得分区间包含关系（1：左闭右开，2：左开右闭）"
+  int32         IsNeedPm = 5;   // "是否委派PM(1:是 2：否)"
+  string       PmDemand = 6;    // "pm要求"
+  string       ProductDemand = 7;// "项目工作相关要求"
+  string       MonitDemand = 8;  // "监控要求"
+  int32         IsNeedPml = 9;   // "是否需要项目负责人(1:是 2：否)"
+  string       Remark = 10;    // "预留备注说明信息"
+}
+
+// 创建数据接口输出数据结构
+message CreateLevelConfirmRes {
+  LevelConfirmInfo LevelConfirm = 1;
+}
+
+// 获取详情接口输入数据结构
+message GetOneLevelConfirmReq {
+  LevelConfirmInfo LevelConfirm = 1;
+}
+
+// 获取详情接口输出数据结构
+message GetOneLevelConfirmRes {
+  LevelConfirmInfo LevelConfirm = 1;
+}
+
+// 列表接口输入数据结构
+message GetListLevelConfirmReq {
+  int32 Page = 1;
+  int32 Size = 2;
+  LevelConfirmInfo LevelConfirm = 3;
+}
+
+// 列表接口输出数据结构
+message GetListLevelConfirmRes {
+  int32 Page = 1;
+  int32 Size = 2;
+  int32 TotalSize = 3;
+  repeated LevelConfirmInfo Data = 4;
+}
+
+// 修改数据接口输入数据结构
+message ModifyLevelConfirmReq {
+  string       Name = 1;  // "项目优先级"
+  float      ScoreMin = 2; // "得分下限"
+  float      ScoreMax = 3; // "得分上线"
+  ScoreRange         ScoreRange = 4; // "得分区间包含关系（1：左闭右开，2：左开右闭）"
+  int32         IsNeedPm = 5;   // "是否委派PM(1:是 2：否)"
+  string       PmDemand = 6;    // "pm要求"
+  string       ProductDemand = 7;// "项目工作相关要求"
+  string       MonitDemand = 8;  // "监控要求"
+  int32         IsNeedPml = 9;   // "是否需要项目负责人(1:是 2：否)"
+  string       Remark = 10;    // "预留备注说明信息"
+  int32 Id = 11; // v: required
+}
+
+// 修改数据接口输出数据结构
+message ModifyLevelConfirmRes {
+  LevelConfirmInfo LevelConfirm = 1;
+}
+
+// 删除数据接口输入数据结构
+message DeleteLevelConfirmReq {
+  int32 Id = 1; // v: required
+}
+
+// 删除数据接口输出数据结构
+message DeleteLevelConfirmRes {
+  bool IsSuccess = 1; // v: required
+  string Msg = 2; // v: required
+}

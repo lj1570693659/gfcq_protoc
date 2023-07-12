@@ -1,0 +1,86 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+package config;
+
+option go_package = "github.com/lj1570693659/gfcq_protoc/config/product/v1";
+
+service Mode {
+  rpc Create(CreateModeReq) returns (CreateModeRes) {}
+  rpc GetOne(GetOneModeReq) returns (GetOneModeRes) {}
+  rpc GetList(GetListModeReq) returns (GetListModeRes) {}
+  rpc Modify(ModifyModeReq) returns (ModifyModeRes) {}
+  rpc Delete(DeleteModeReq) returns (DeleteModeRes) {}
+}
+
+// 项目开发模式信息
+message ModeInfo {
+  int32          Id = 1;    // ""
+  string       Name = 2;  // "开发模型名称"
+  float      Factor = 3; // "开发系数"
+  string       Remark = 4;    // "预留备注说明信息"
+  string  CreateTime = 5; // "新增数据时间"
+  string  UpdateTime = 6; // "最新更新数据"
+}
+
+// 创建数据接口输入数据结构
+message CreateModeReq {
+  string Name = 1; // 开发模型名称
+  float Factor = 2; // 开发系数
+  string Remark = 3; // 预留备注说明信息
+}
+
+// 创建数据接口输出数据结构
+message CreateModeRes {
+  ModeInfo Mode = 1;
+}
+
+// 获取详情接口输入数据结构
+message GetOneModeReq {
+  ModeInfo Mode = 1;
+}
+
+// 获取详情接口输出数据结构
+message GetOneModeRes {
+  ModeInfo Mode = 1;
+}
+
+// 列表接口输入数据结构
+message GetListModeReq {
+  int32 Page = 1;
+  int32 Size = 2;
+  ModeInfo Mode = 3;
+}
+
+// 列表接口输出数据结构
+message GetListModeRes {
+  int32 Page = 1;
+  int32 Size = 2;
+  int32 TotalSize = 3;
+  repeated ModeInfo Data = 4;
+}
+
+// 修改数据接口输入数据结构
+message ModifyModeReq {
+  string Name = 1; // 开发模型名称
+  float Factor = 2; // 开发系数
+  string Remark = 3; // 预留备注说明信息
+  int32 Id = 4; // v: required
+}
+
+// 修改数据接口输出数据结构
+message ModifyModeRes {
+  ModeInfo Mode = 1;
+}
+
+// 删除数据接口输入数据结构
+message DeleteModeReq {
+  int32 Id = 1; // v: required
+}
+
+// 删除数据接口输出数据结构
+message DeleteModeRes {
+  bool IsSuccess = 1; // v: required
+  string Msg = 2; // v: required
+}

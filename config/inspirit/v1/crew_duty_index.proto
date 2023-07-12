@@ -1,0 +1,101 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+package config;
+
+option go_package = "github.com/lj1570693659/gfcq_protoc/config/inspirit/v1";
+
+// CrewDutyIndex 团队成员职责指数配置信息服务
+service CrewDutyIndex {
+  rpc Create(CreateCrewDutyIndexReq) returns (CreateCrewDutyIndexRes) {}
+  rpc GetOne(GetOneCrewDutyIndexReq) returns (GetOneCrewDutyIndexRes) {}
+  rpc GetList(GetListCrewDutyIndexReq) returns (GetListCrewDutyIndexRes) {}
+  rpc Modify(ModifyCrewDutyIndexReq) returns (ModifyCrewDutyIndexRes) {}
+  rpc Delete(DeleteCrewDutyIndexReq) returns (DeleteCrewDutyIndexRes) {}
+}
+
+//  ArithEnum 运算方式
+enum ArithEnum {
+  anything = 0; // 默认空值
+  gt = 1; // 大于
+  lt = 2; // 小于
+  egt = 3; // 大于等于
+  elt = 4; // 小于等于
+  eq = 5; // 等于
+  neq = 6; // 不等于
+}
+
+// CrewDutyIndex is the golang structure for table crew_duty_index.
+message CrewDutyIndexInfo {
+  int32             Id = 1;
+  uint32          ScoreIndex = 2;// 职责指数
+  uint32          JobLevelId = 3;// 职级ID
+  ArithEnum          Arith = 4;// 运算方式
+  string          Remark = 5;// 预留备注说明信息
+  string CreateTime = 6;// 数据新增时间
+  string  UpdateTime = 7;// 最后一次更新数据时间
+}
+
+// 创建数据接口输入数据结构
+message CreateCrewDutyIndexReq {
+  string Remark = 1;
+  uint32          ScoreIndex = 2;// 职责指数
+  uint32          JobLevelId = 3;// 职级ID
+  ArithEnum          Arith = 4;// 运算方式
+}
+
+// 创建数据接口输出数据结构
+message CreateCrewDutyIndexRes {
+  CrewDutyIndexInfo CrewDutyIndex = 1;
+}
+
+// 获取详情接口输入数据结构
+message GetOneCrewDutyIndexReq {
+  CrewDutyIndexInfo CrewDutyIndex = 1;
+}
+
+// 获取详情接口输出数据结构
+message GetOneCrewDutyIndexRes {
+  CrewDutyIndexInfo CrewDutyIndex = 1;
+}
+
+// 列表接口输入数据结构
+message GetListCrewDutyIndexReq {
+  int32 Page = 1;
+  int32 Size = 2;
+  CrewDutyIndexInfo CrewDutyIndex = 3;
+}
+
+// 列表接口输出数据结构
+message GetListCrewDutyIndexRes {
+  int32 Page = 1;
+  int32 Size = 2;
+  int32 TotalSize = 3;
+  repeated CrewDutyIndexInfo Data = 4;
+}
+
+// 修改数据接口输入数据结构
+message ModifyCrewDutyIndexReq {
+  string Remark = 1;
+  uint32          ScoreIndex = 2;// 职责指数
+  uint32          JobLevelId = 3;// 职级ID
+  ArithEnum          Arith = 4;// 运算方式
+  int32 Id = 5; // v: required
+}
+
+// 修改数据接口输出数据结构
+message ModifyCrewDutyIndexRes {
+  CrewDutyIndexInfo CrewDutyIndex = 1;
+}
+
+// 删除数据接口输入数据结构
+message DeleteCrewDutyIndexReq {
+  int32 Id = 1; // v: required
+}
+
+// 删除数据接口输出数据结构
+message DeleteCrewDutyIndexRes {
+  bool IsSuccess = 1; // v: required
+  string Msg = 2; // v: required
+}

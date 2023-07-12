@@ -6,6 +6,10 @@ package common;
 
 option go_package = "github.com/lj1570693659/gfcq_protoc/common/v1/employee";
 
+import "common/v1/employee_job.proto";
+import "common/v1/job.proto";
+import "common/v1/department.proto";
+
 service Employee {
   rpc Create(CreateEmployeeReq) returns (CreateEmployeeRes) {}
   rpc GetOne(GetOneEmployeeReq) returns (GetOneEmployeeRes) {}

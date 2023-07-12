@@ -1,0 +1,96 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+package config;
+
+option go_package = "github.com/lj1570693659/gfcq_protoc/config/inspirit/v1";
+
+import "config/product/v1/level_confirm.proto";
+
+// 团队成员工时指数配置信息
+service CrewHoursIndex {
+  rpc Create(CreateCrewHoursIndexReq) returns (CreateCrewHoursIndexRes) {}
+  rpc GetOne(GetOneCrewHoursIndexReq) returns (GetOneCrewHoursIndexRes) {}
+  rpc GetList(GetListCrewHoursIndexReq) returns (GetListCrewHoursIndexRes) {}
+  rpc Modify(ModifyCrewHoursIndexReq) returns (ModifyCrewHoursIndexRes) {}
+  rpc Delete(DeleteCrewHoursIndexReq) returns (DeleteCrewHoursIndexRes) {}
+}
+
+// CrewCrewHoursIndex is the golang structure for table crew_hours_index.
+message CrewHoursIndexInfo {
+  int32             Id = 1;
+  uint32          ScoreIndex = 2;// 工时指数
+  float          ScoreMin = 3;// 分值下限
+  float          ScoreMax = 4;// 分值上限
+  ScoreRange          ScoreRange = 5;// 分数区间包含关系（1：左闭右开，2：左开右闭）
+  string          Remark = 6;// 预留备注说明信息
+  string CreateTime = 7;// 数据新增时间
+  string  UpdateTime = 8;// 最后一次更新数据时间
+}
+
+
+// 创建数据接口输入数据结构
+message CreateCrewHoursIndexReq {
+  string Remark = 1;
+  uint32          ScoreIndex = 2;// 工时指数
+  float          ScoreMin = 3;// 分值下限
+  float          ScoreMax = 4;// 分值上限
+  ScoreRange          ScoreRange = 5;// 分数区间包含关系（1：左闭右开，2：左开右闭）
+}
+
+// 创建数据接口输出数据结构
+message CreateCrewHoursIndexRes {
+  CrewHoursIndexInfo CrewHoursIndex = 1;
+}
+
+// 获取详情接口输入数据结构
+message GetOneCrewHoursIndexReq {
+  CrewHoursIndexInfo CrewHoursIndex = 1;
+}
+
+// 获取详情接口输出数据结构
+message GetOneCrewHoursIndexRes {
+  CrewHoursIndexInfo CrewHoursIndex = 1;
+}
+
+// 列表接口输入数据结构
+message GetListCrewHoursIndexReq {
+  int32 Page = 1;
+  int32 Size = 2;
+  CrewHoursIndexInfo CrewHoursIndex = 3;
+}
+
+// 列表接口输出数据结构
+message GetListCrewHoursIndexRes {
+  int32 Page = 1;
+  int32 Size = 2;
+  int32 TotalSize = 3;
+  repeated CrewHoursIndexInfo Data = 4;
+}
+
+// 修改数据接口输入数据结构
+message ModifyCrewHoursIndexReq {
+  string Remark = 1;
+  uint32          ScoreIndex = 2;// 工时指数
+  float          ScoreMin = 3;// 分值下限
+  float          ScoreMax = 4;// 分值上限
+  ScoreRange          ScoreRange = 5;// 分数区间包含关系（1：左闭右开，2：左开右闭）
+  int32 Id = 6; // v: required
+}
+
+// 修改数据接口输出数据结构
+message ModifyCrewHoursIndexRes {
+  CrewHoursIndexInfo CrewHoursIndex = 3;
+}
+
+// 删除数据接口输入数据结构
+message DeleteCrewHoursIndexReq {
+  int32 Id = 1; // v: required
+}
+
+// 删除数据接口输出数据结构
+message DeleteCrewHoursIndexRes {
+  bool IsSuccess = 1; // v: required
+  string Msg = 2; // v: required
+}

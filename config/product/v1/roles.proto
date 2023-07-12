@@ -1,0 +1,89 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+package config;
+
+option go_package = "github.com/lj1570693659/gfcq_protoc/config/product/v1";
+
+service Roles {
+  rpc Create(CreateRolesReq) returns (CreateRolesRes) {}
+  rpc GetOne(GetOneRolesReq) returns (GetOneRolesRes) {}
+  rpc GetList(GetListRolesReq) returns (GetListRolesRes) {}
+  rpc Modify(ModifyRolesReq) returns (ModifyRolesRes) {}
+  rpc Delete(DeleteRolesReq) returns (DeleteRolesRes) {}
+}
+
+// 项目角色配置信息
+message RolesInfo {
+  int32          Id = 1;    // ""
+  string       Name = 2;  // 角色名
+  int32      Pid = 3; // 上级角色
+  string      Explain = 4; // 角色与职责说明
+  string         Remark = 5; // 预留备注说明信息
+  string  CreateTime = 6; // "新增数据时间"
+  string  UpdateTime = 7; // "最新更新数据"
+}
+
+// 创建数据接口输入数据结构
+message CreateRolesReq {
+  string       Name = 1;  // 角色名
+  int32      Pid = 2; // 上级角色
+  string      Explain = 3; // 角色与职责说明
+  string         Remark = 4; // 预留备注说明信息
+}
+
+// 创建数据接口输出数据结构
+message CreateRolesRes {
+  RolesInfo Roles = 1;
+}
+
+// 获取详情接口输入数据结构
+message GetOneRolesReq {
+  RolesInfo Roles = 1;
+}
+
+// 获取详情接口输出数据结构
+message GetOneRolesRes {
+  RolesInfo Roles = 1;
+}
+
+// 列表接口输入数据结构
+message GetListRolesReq {
+  int32 Page = 1;
+  int32 Size = 2;
+  RolesInfo Roles = 3;
+}
+
+// 列表接口输出数据结构
+message GetListRolesRes {
+  int32 Page = 1;
+  int32 Size = 2;
+  int32 TotalSize = 3;
+  repeated RolesInfo Data = 4;
+}
+
+// 修改数据接口输入数据结构
+message ModifyRolesReq {
+  string       Name = 1;  // 角色名
+  int32      Pid = 2; // 上级角色
+  string      Explain = 3; // 角色与职责说明
+  string         Remark = 4; // 预留备注说明信息
+  int32 Id = 5; // v: required
+}
+
+// 修改数据接口输出数据结构
+message ModifyRolesRes {
+  RolesInfo Roles = 3;
+}
+
+// 删除数据接口输入数据结构
+message DeleteRolesReq {
+  int32 Id = 1; // v: required
+}
+
+// 删除数据接口输出数据结构
+message DeleteRolesRes {
+  bool IsSuccess = 1; // v: required
+  string Msg = 2; // v: required
+}

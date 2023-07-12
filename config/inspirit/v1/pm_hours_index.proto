@@ -1,0 +1,96 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+package config;
+
+option go_package = "github.com/lj1570693659/gfcq_protoc/config/inspirit/v1";
+
+import "config/product/v1/level_confirm.proto";
+
+// PM工时指数配置信息
+service PmHoursIndex {
+  rpc Create(CreatePmHoursIndexReq) returns (CreatePmHoursIndexRes) {}
+  rpc GetOne(GetOnePmHoursIndexReq) returns (GetOnePmHoursIndexRes) {}
+  rpc GetList(GetListPmHoursIndexReq) returns (GetListPmHoursIndexRes) {}
+  rpc Modify(ModifyPmHoursIndexReq) returns (ModifyPmHoursIndexRes) {}
+  rpc Delete(DeletePmHoursIndexReq) returns (DeletePmHoursIndexRes) {}
+}
+
+// PmPmHoursIndex is the golang structure for table Pm_hours_index.
+message PmHoursIndexInfo {
+  int32             Id = 1;
+  uint32          ScoreIndex = 2;// 工时指数
+  float          ScoreMin = 3;// 分值下限
+  float          ScoreMax = 4;// 分值上限
+  ScoreRange          ScoreRange = 5;// 分数区间包含关系（1：左闭右开，2：左开右闭）
+  string          Remark = 6;// 预留备注说明信息
+  string CreateTime = 7;// 数据新增时间
+  string  UpdateTime = 8;// 最后一次更新数据时间
+}
+
+
+// 创建数据接口输入数据结构
+message CreatePmHoursIndexReq {
+  string Remark = 1;
+  uint32          ScoreIndex = 2;// 工时指数
+  float          ScoreMin = 3;// 分值下限
+  float          ScoreMax = 4;// 分值上限
+  ScoreRange          ScoreRange = 5;// 分数区间包含关系（1：左闭右开，2：左开右闭）
+}
+
+// 创建数据接口输出数据结构
+message CreatePmHoursIndexRes {
+  PmHoursIndexInfo PmHoursIndex = 1;
+}
+
+// 获取详情接口输入数据结构
+message GetOnePmHoursIndexReq {
+  PmHoursIndexInfo PmHoursIndex = 1;
+}
+
+// 获取详情接口输出数据结构
+message GetOnePmHoursIndexRes {
+  PmHoursIndexInfo PmHoursIndex = 1;
+}
+
+// 列表接口输入数据结构
+message GetListPmHoursIndexReq {
+  int32 Page = 1;
+  int32 Size = 2;
+  PmHoursIndexInfo PmHoursIndex = 3;
+}
+
+// 列表接口输出数据结构
+message GetListPmHoursIndexRes {
+  int32 Page = 1;
+  int32 Size = 2;
+  int32 TotalSize = 3;
+  repeated PmHoursIndexInfo Data = 4;
+}
+
+// 修改数据接口输入数据结构
+message ModifyPmHoursIndexReq {
+  string Remark = 1;
+  uint32          ScoreIndex = 2;// 工时指数
+  float          ScoreMin = 3;// 分值下限
+  float          ScoreMax = 4;// 分值上限
+  ScoreRange          ScoreRange = 5;// 分数区间包含关系（1：左闭右开，2：左开右闭）
+  int32 Id = 6; // v: required
+}
+
+// 修改数据接口输出数据结构
+message ModifyPmHoursIndexRes {
+  PmHoursIndexInfo PmHoursIndex = 3;
+}
+
+// 删除数据接口输入数据结构
+message DeletePmHoursIndexReq {
+  int32 Id = 1; // v: required
+}
+
+// 删除数据接口输出数据结构
+message DeletePmHoursIndexRes {
+  bool IsSuccess = 1; // v: required
+  string Msg = 2; // v: required
+}

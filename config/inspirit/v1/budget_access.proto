@@ -1,0 +1,101 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+package config;
+
+option go_package = "github.com/lj1570693659/gfcq_protoc/config/inspirit/v1";
+
+import "config/product/v1/level_confirm.proto";
+
+// 项目得分-预算额度配置信息服务
+service BudgetAssess {
+  rpc Create(CreateBudgetAssessReq) returns (CreateBudgetAssessRes) {}
+  rpc GetOne(GetOneBudgetAssessReq) returns (GetOneBudgetAssessRes) {}
+  rpc GetList(GetListBudgetAssessReq) returns (GetListBudgetAssessRes) {}
+  rpc Modify(ModifyBudgetAssessReq) returns (ModifyBudgetAssessRes) {}
+  rpc Delete(DeleteBudgetAssessReq) returns (DeleteBudgetAssessRes) {}
+}
+
+// 项目得分-预算额度配置信息
+message BudgetAssessInfo {
+  int32             Id = 1;
+  uint32          ScoreMin = 2;// 分值下限
+  uint32          ScoreMax = 3;// 分值上限
+  ScoreRange          ScoreRange = 4;// 分数区间包含关系（1：左闭右开，2：左开右闭）
+  float            BudgetMin = 5;// 预算额度下限
+  float         BudgetMax = 6;// 预算额度上线
+  ScoreRange         BudgetRange = 7;// 额度区间包含关系（1：左闭右开，2：左开右闭）
+  string          Remark = 8;// 预留备注说明信息
+  string CreateTime = 9;// 数据新增时间
+  string  UpdateTime = 10;// 最后一次更新数据时间
+}
+
+// 创建数据接口输入数据结构
+message CreateBudgetAssessReq {
+  uint32          ScoreMin = 1;// 分值下限
+  uint32          ScoreMax = 2;// 分值上限
+  ScoreRange          ScoreRange = 3;// 分数区间包含关系（1：左闭右开，2：左开右闭）
+  float            BudgetMin = 4;// 预算额度下限
+  float         BudgetMax = 5;// 预算额度上线
+  ScoreRange         BudgetRange = 6;// 额度区间包含关系（1：左闭右开，2：左开右闭）
+  string          Remark = 7;// 预留备注说明信息
+}
+
+// 创建数据接口输出数据结构
+message CreateBudgetAssessRes {
+  BudgetAssessInfo BudgetAssess = 1;
+}
+
+// 获取详情接口输入数据结构
+message GetOneBudgetAssessReq {
+  BudgetAssessInfo BudgetAssess = 1;
+}
+
+// 获取详情接口输出数据结构
+message GetOneBudgetAssessRes {
+  BudgetAssessInfo BudgetAssess = 1;
+}
+
+// 列表接口输入数据结构
+message GetListBudgetAssessReq {
+  int32 Page = 1;
+  int32 Size = 2;
+  BudgetAssessInfo BudgetAssess = 3;
+}
+
+// 列表接口输出数据结构
+message GetListBudgetAssessRes {
+  int32 Page = 1;
+  int32 Size = 2;
+  int32 TotalSize = 3;
+  repeated BudgetAssessInfo Data = 4;
+}
+
+// 修改数据接口输入数据结构
+message ModifyBudgetAssessReq {
+  uint32          ScoreMin = 1;// 分值下限
+  uint32          ScoreMax = 2;// 分值上限
+  ScoreRange          ScoreRange = 3;// 分数区间包含关系（1：左闭右开，2：左开右闭）
+  float            BudgetMin = 4;// 预算额度下限
+  float         BudgetMax = 5;// 预算额度上线
+  ScoreRange         BudgetRange = 6;// 额度区间包含关系（1：左闭右开，2：左开右闭）
+  string          Remark = 7;// 预留备注说明信息
+  int32 Id = 8; // v: required
+}
+
+// 修改数据接口输出数据结构
+message ModifyBudgetAssessRes {
+  BudgetAssessInfo BudgetAssess = 1;
+}
+
+// 删除数据接口输入数据结构
+message DeleteBudgetAssessReq {
+  int32 Id = 1; // v: required
+}
+
+// 删除数据接口输出数据结构
+message DeleteBudgetAssessRes {
+  bool IsSuccess = 1; // v: required
+  string Msg = 2; // v: required
+}

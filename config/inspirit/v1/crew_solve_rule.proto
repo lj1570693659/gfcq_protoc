@@ -1,0 +1,94 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+package config;
+
+option go_package = "github.com/lj1570693659/gfcq_protoc/config/inspirit/v1";
+
+service CrewSolveRule {
+  rpc Create(CreateCrewSolveRuleReq) returns (CreateCrewSolveRuleRes) {}
+  rpc GetOne(GetOneCrewSolveRuleReq) returns (GetOneCrewSolveRuleRes) {}
+  rpc GetList(GetListCrewSolveRuleReq) returns (GetListCrewSolveRuleRes) {}
+  rpc Modify(ModifyCrewSolveRuleReq) returns (ModifyCrewSolveRuleRes) {}
+  rpc Delete(DeleteCrewSolveRuleReq) returns (DeleteCrewSolveRuleRes) {}
+}
+
+// 贡献标准（1：有突出贡献，2：有重要贡献，3：较低/无贡献）
+enum DemandEnum {
+  anything = 0;
+  highlight = 1;
+  middle = 2;
+  less = 3;
+}
+
+// CrewCrewSolveRule is the golang structure for table crew_solve_rule.
+message CrewSolveRuleInfo {
+  int32             Id = 1;
+  float          Redio = 2;// 浮动比例
+  DemandEnum          Demand = 3;// 贡献标准（1：有突出贡献，2：有重要贡献，3：较低/无贡献）
+  string          Remark = 4;// 预留备注说明信息
+  string CreateTime = 5;// 数据新增时间
+  string  UpdateTime = 6;// 最后一次更新数据时间
+}
+
+// 创建数据接口输入数据结构
+message CreateCrewSolveRuleReq {
+  string Remark = 1;
+  float          Redio = 2;// 浮动比例
+  DemandEnum          Demand = 3;// 贡献标准（1：有突出贡献，2：有重要贡献，3：较低/无贡献）
+}
+
+// 创建数据接口输出数据结构
+message CreateCrewSolveRuleRes {
+  CrewSolveRuleInfo CrewSolveRule = 1;
+}
+
+// 获取详情接口输入数据结构
+message GetOneCrewSolveRuleReq {
+  CrewSolveRuleInfo CrewSolveRule = 1;
+}
+
+// 获取详情接口输出数据结构
+message GetOneCrewSolveRuleRes {
+  CrewSolveRuleInfo CrewSolveRule = 1;
+}
+
+// 列表接口输入数据结构
+message GetListCrewSolveRuleReq {
+  int32 Page = 1;
+  int32 Size = 2;
+  CrewSolveRuleInfo CrewSolveRule = 3;
+}
+
+// 列表接口输出数据结构
+message GetListCrewSolveRuleRes {
+  int32 Page = 1;
+  int32 Size = 2;
+  int32 TotalSize = 3;
+  repeated CrewSolveRuleInfo Data = 4;
+}
+
+// 修改数据接口输入数据结构
+message ModifyCrewSolveRuleReq {
+  string Remark = 1;
+  float          Redio = 2;// 浮动比例
+  DemandEnum          Demand = 3;// 贡献标准（1：有突出贡献，2：有重要贡献，3：较低/无贡献）
+  int32 Id = 4; // v: required
+}
+
+// 修改数据接口输出数据结构
+message ModifyCrewSolveRuleRes {
+  CrewSolveRuleInfo CrewSolveRule = 1;
+}
+
+// 删除数据接口输入数据结构
+message DeleteCrewSolveRuleReq {
+  int32 Id = 1; // v: required
+}
+
+// 删除数据接口输出数据结构
+message DeleteCrewSolveRuleRes {
+  bool IsSuccess = 1; // v: required
+  string Msg = 2; // v: required
+}

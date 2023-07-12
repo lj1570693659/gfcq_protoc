@@ -1,0 +1,98 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+package config;
+
+option go_package = "github.com/lj1570693659/gfcq_protoc/config/inspirit/v1";
+
+import "config/product/v1/level_confirm.proto";
+
+// 项目阶段应发激励占比配置信息
+service StageRadio {
+  rpc Create(CreateStageRadioReq) returns (CreateStageRadioRes) {}
+  rpc GetOne(GetOneStageRadioReq) returns (GetOneStageRadioRes) {}
+  rpc GetList(GetListStageRadioReq) returns (GetListStageRadioRes) {}
+  rpc Modify(ModifyStageRadioReq) returns (ModifyStageRadioRes) {}
+  rpc Delete(DeleteStageRadioReq) returns (DeleteStageRadioRes) {}
+}
+
+// ProductStageRadio is the golang structure for table product_stage_radio.
+message StageRadioInfo {
+  int32             Id = 1;
+  float          ScoreMin = 2;// 分值下限
+  float          ScoreMax = 3;// 分值上限
+  ScoreRange          ScoreRange = 4;// 分数区间包含关系（1：左闭右开，2：左开右闭）
+  float            QuotaRadio = 5;// 激励额度占比
+  uint32         Sid = 6;// 阶段ID
+  string          Remark = 7;// 预留备注说明信息
+  string CreateTime = 8;// 数据新增时间
+  string  UpdateTime = 9;// 最后一次更新数据时间
+}
+
+// 创建数据接口输入数据结构
+message CreateStageRadioReq {
+  string Remark = 1;
+  float          ScoreMin = 2;// 分值下限
+  float          ScoreMax = 3;// 分值上限
+  ScoreRange          ScoreRange = 4;// 分数区间包含关系（1：左闭右开，2：左开右闭）
+  float            QuotaRadio = 5;// 激励额度占比
+  uint32         Sid = 6;// 阶段ID
+}
+
+// 创建数据接口输出数据结构
+message CreateStageRadioRes {
+  StageRadioInfo StageRadio = 1;
+}
+
+// 获取详情接口输入数据结构
+message GetOneStageRadioReq {
+  StageRadioInfo StageRadio = 1;
+}
+
+// 获取详情接口输出数据结构
+message GetOneStageRadioRes {
+  StageRadioInfo StageRadio = 1;
+}
+
+// 列表接口输入数据结构
+message GetListStageRadioReq {
+  int32 Page = 1;
+  int32 Size = 2;
+  StageRadioInfo StageRadio = 3;
+}
+
+// 列表接口输出数据结构
+message GetListStageRadioRes {
+  int32 Page = 1;
+  int32 Size = 2;
+  int32 TotalSize = 3;
+  repeated StageRadioInfo Data = 4;
+}
+
+// 修改数据接口输入数据结构
+message ModifyStageRadioReq {
+  string Remark = 1;
+  float          ScoreMin = 2;// 分值下限
+  float          ScoreMax = 3;// 分值上限
+  ScoreRange          ScoreRange = 4;// 分数区间包含关系（1：左闭右开，2：左开右闭）
+  float            QuotaRadio = 5;// 激励额度占比
+  uint32         Sid = 6;// 阶段ID
+  int32 Id = 7; // v: required
+}
+
+// 修改数据接口输出数据结构
+message ModifyStageRadioRes {
+  StageRadioInfo StageRadio = 1;
+}
+
+// 删除数据接口输入数据结构
+message DeleteStageRadioReq {
+  int32 Id = 1; // v: required
+}
+
+// 删除数据接口输出数据结构
+message DeleteStageRadioRes {
+  bool IsSuccess = 1; // v: required
+  string Msg = 2; // v: required
+}

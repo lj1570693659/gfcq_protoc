@@ -8,4 +8,5 @@
 *  protoc --proto_path=.\ --go_out=plugins=grpc:user user\v1\user.proto
 *  protoc --proto_path=.\ --go_out=plugins=grpc:pbentity pbentity\user.proto
 *  protoc --proto_path=.\ --go_out=plugins=grpc:common common\v1\department.proto
-   protoc --proto_path=.\ --gogofaster_out=. --plugin="protoc-gen-gogofaste=D:\code\product\golang\bin\protoc-gen-gogofaster.exe" common\v1\department.proto
+*  protoc --proto_path=.\ --go_out=plugins=grpc:config config\product\v1\level_assess.proto
+  

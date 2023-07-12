@@ -1,0 +1,89 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+package config;
+
+option go_package = "github.com/lj1570693659/gfcq_protoc/config/product/v1";
+
+service ModeStage {
+  rpc Create(CreateModeStageReq) returns (CreateModeStageRes) {}
+  rpc GetOne(GetOneModeStageReq) returns (GetOneModeStageRes) {}
+  rpc GetList(GetListModeStageReq) returns (GetListModeStageRes) {}
+  rpc Modify(ModifyModeStageReq) returns (ModifyModeStageRes) {}
+  rpc Delete(DeleteModeStageReq) returns (DeleteModeStageRes) {}
+}
+
+// 项目开发模式-包含阶段关联信息
+message ModeStageInfo {
+  int32          Id = 1;    // ""
+  int32       Tid = 2;  // 项目开发模式ID
+  int32      Sid = 3; // 项目阶段ID
+  float      QuotaRadio = 4; // 阶段额度占比
+  string         Remark = 5; // 预留备注说明信息
+  string  CreateTime = 6; // "新增数据时间"
+  string  UpdateTime = 7; // "最新更新数据"
+}
+
+// 创建数据接口输入数据结构
+message CreateModeStageReq {
+  int32       Tid = 1;  // 项目开发模式ID
+  int32      Sid = 2; // 项目阶段ID
+  float      QuotaRadio = 3; // 阶段额度占比
+  string         Remark = 4; // 预留备注说明信息
+}
+
+// 创建数据接口输出数据结构
+message CreateModeStageRes {
+  ModeStageInfo ModeStage = 1;
+}
+
+// 获取详情接口输入数据结构
+message GetOneModeStageReq {
+  ModeStageInfo ModeStage = 1;
+}
+
+// 获取详情接口输出数据结构
+message GetOneModeStageRes {
+  ModeStageInfo ModeStage = 1;
+}
+
+// 列表接口输入数据结构
+message GetListModeStageReq {
+  int32 Page = 1;
+  int32 Size = 2;
+  ModeStageInfo ModeStage = 3;
+}
+
+// 列表接口输出数据结构
+message GetListModeStageRes {
+  int32 Page = 1;
+  int32 Size = 2;
+  int32 TotalSize = 3;
+  repeated ModeStageInfo Data = 4;
+}
+
+// 修改数据接口输入数据结构
+message ModifyModeStageReq {
+  int32       Tid = 1;  // 项目开发模式ID
+  int32      Sid = 2; // 项目阶段ID
+  float      QuotaRadio = 3; // 阶段额度占比
+  string         Remark = 4; // 预留备注说明信息
+  int32 Id = 5; // v: required
+}
+
+// 修改数据接口输出数据结构
+message ModifyModeStageRes {
+  ModeStageInfo ModeStage = 3;
+}
+
+// 删除数据接口输入数据结构
+message DeleteModeStageReq {
+  int32 Id = 1; // v: required
+}
+
+// 删除数据接口输出数据结构
+message DeleteModeStageRes {
+  bool IsSuccess = 1; // v: required
+  string Msg = 2; // v: required
+}

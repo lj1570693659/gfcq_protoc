@@ -1,0 +1,88 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+package config;
+
+option go_package = "github.com/lj1570693659/gfcq_protoc/config/inspirit/v1";
+
+// 团队成员绩效等级配置信息
+service CrewKpiRule {
+  rpc Create(CreateCrewKpiRuleReq) returns (CreateCrewKpiRuleRes) {}
+  rpc GetOne(GetOneCrewKpiRuleReq) returns (GetOneCrewKpiRuleRes) {}
+  rpc GetList(GetListCrewKpiRuleReq) returns (GetListCrewKpiRuleRes) {}
+  rpc Modify(ModifyCrewKpiRuleReq) returns (ModifyCrewKpiRuleRes) {}
+  rpc Delete(DeleteCrewKpiRuleReq) returns (DeleteCrewKpiRuleRes) {}
+}
+
+// CrewKpiRule is the golang structure for table cqgf_crew_kpi_rule.
+message CrewKpiRuleInfo {
+  int32             Id = 1;
+  float          Redio = 2;// 比例
+  string          LevelName = 3;// 等级名称
+  string          Remark = 4;// 预留备注说明信息
+  string CreateTime = 5;// 数据新增时间
+  string  UpdateTime = 6;// 最后一次更新数据时间
+}
+
+// 创建数据接口输入数据结构
+message CreateCrewKpiRuleReq {
+  string Remark = 1;
+  float          Redio = 2;// 比例
+  string          LevelName = 3;// 等级名称
+
+}
+
+// 创建数据接口输出数据结构
+message CreateCrewKpiRuleRes {
+  CrewKpiRuleInfo CrewKpiRule = 1;
+}
+
+// 获取详情接口输入数据结构
+message GetOneCrewKpiRuleReq {
+  CrewKpiRuleInfo CrewKpiRule = 1;
+}
+
+// 获取详情接口输出数据结构
+message GetOneCrewKpiRuleRes {
+  CrewKpiRuleInfo CrewKpiRule = 1;
+}
+
+// 列表接口输入数据结构
+message GetListCrewKpiRuleReq {
+  int32 Page = 1;
+  int32 Size = 2;
+  CrewKpiRuleInfo CrewKpiRule = 3;
+}
+
+// 列表接口输出数据结构
+message GetListCrewKpiRuleRes {
+  int32 Page = 1;
+  int32 Size = 2;
+  int32 TotalSize = 3;
+  repeated CrewKpiRuleInfo Data = 4;
+}
+
+// 修改数据接口输入数据结构
+message ModifyCrewKpiRuleReq {
+  string Remark = 1;
+  float          Redio = 2;// 比例
+  string          LevelName = 3;// 等级名称
+  int32 Id = 4; // v: required
+}
+
+// 修改数据接口输出数据结构
+message ModifyCrewKpiRuleRes {
+  CrewKpiRuleInfo CrewKpiRule = 3;
+}
+
+// 删除数据接口输入数据结构
+message DeleteCrewKpiRuleReq {
+  int32 Id = 1; // v: required
+}
+
+// 删除数据接口输出数据结构
+message DeleteCrewKpiRuleRes {
+  bool IsSuccess = 1; // v: required
+  string Msg = 2; // v: required
+}

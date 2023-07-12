@@ -1,0 +1,83 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+package config;
+
+option go_package = "github.com/lj1570693659/gfcq_protoc/config/product/v1";
+
+service Type {
+  rpc Create(CreateTypeReq) returns (CreateTypeRes) {}
+  rpc GetOne(GetOneTypeReq) returns (GetOneTypeRes) {}
+  rpc GetList(GetListTypeReq) returns (GetListTypeRes) {}
+  rpc Modify(ModifyTypeReq) returns (ModifyTypeRes) {}
+  rpc Delete(DeleteTypeReq) returns (DeleteTypeRes) {}
+}
+
+// 员工信息公共数据结构
+message TypeInfo {
+  int32          Id = 1;    // ""
+  string       Name = 2;  // 开发模型名称
+  string         Remark = 3; // 预留备注说明信息
+  string  CreateTime = 4; // "新增数据时间"
+  string  UpdateTime = 5; // "最新更新数据"
+}
+
+// 创建数据接口输入数据结构
+message CreateTypeReq {
+  string       Name = 1;  // 开发模型名称
+  string         Remark = 2; // 预留备注说明信息
+}
+
+// 创建数据接口输出数据结构
+message CreateTypeRes {
+  TypeInfo Type = 1;
+}
+
+// 获取详情接口输入数据结构
+message GetOneTypeReq {
+  TypeInfo Type = 1;
+}
+
+// 获取详情接口输出数据结构
+message GetOneTypeRes {
+  TypeInfo Type = 1;
+}
+
+// 列表接口输入数据结构
+message GetListTypeReq {
+  int32 Page = 1;
+  int32 Size = 2;
+  TypeInfo Type = 3;
+}
+
+// 列表接口输出数据结构
+message GetListTypeRes {
+  int32 Page = 1;
+  int32 Size = 2;
+  int32 TotalSize = 3;
+  repeated TypeInfo Data = 4;
+}
+
+// 修改数据接口输入数据结构
+message ModifyTypeReq {
+  string       Name = 1;  // 开发模型名称
+  string         Remark = 2; // 预留备注说明信息
+  int32 Id = 3; // v: required
+}
+
+// 修改数据接口输出数据结构
+message ModifyTypeRes {
+  TypeInfo Type = 3;
+}
+
+// 删除数据接口输入数据结构
+message DeleteTypeReq {
+  int32 Id = 1; // v: required
+}
+
+// 删除数据接口输出数据结构
+message DeleteTypeRes {
+  bool IsSuccess = 1; // v: required
+  string Msg = 2; // v: required
+}

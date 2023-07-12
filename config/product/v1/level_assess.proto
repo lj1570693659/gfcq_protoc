@@ -1,0 +1,97 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+package config;
+
+option go_package = "github.com/lj1570693659/gfcq_protoc/config/product/v1";
+
+service LevelAssess {
+  rpc Create(CreateLevelAssessReq) returns (CreateLevelAssessRes) {}
+  rpc GetOne(GetOneLevelAssessReq) returns (GetOneLevelAssessRes) {}
+  rpc GetList(GetListLevelAssessReq) returns (GetListLevelAssessRes) {}
+  rpc Modify(ModifyLevelAssessReq) returns (ModifyLevelAssessRes) {}
+  rpc Delete(DeleteLevelAssessReq) returns (DeleteLevelAssessRes) {}
+}
+
+// 员工信息公共数据结构
+message LevelAssessInfo {
+  int32             Id = 1;
+  string          EvaluateDimensions = 2;// 评价维度
+  string          EvaluateCriteria = 3;// 评价标准
+  string          ScoreCriteria = 4;// 评分标准
+  int32            EvaluateId = 5;// 上级评价维度
+  float         Weight = 6;// 权重
+  string          Remark = 7;// 预留备注说明信息
+  string CreateTime = 8;// 数据新增时间
+  string  UpdateTime = 9;// 最后一次更新数据时间
+}
+
+// 创建数据接口输入数据结构
+message CreateLevelAssessReq {
+  string          EvaluateDimensions = 1;// 评价维度
+  string          EvaluateCriteria = 2;// 评价标准
+  string          ScoreCriteria = 3;// 评分标准
+  int32            EvaluateId = 4;// 上级评价维度
+  float         Weight = 5;// 权重
+  string          Remark = 6;// 预留备注说明信息
+}
+
+// 创建数据接口输出数据结构
+message CreateLevelAssessRes {
+  LevelAssessInfo LevelAssess = 1;
+}
+
+// 获取详情接口输入数据结构
+message GetOneLevelAssessReq {
+  LevelAssessInfo LevelAssess = 1;
+}
+
+// 获取详情接口输出数据结构
+message GetOneLevelAssessRes {
+  LevelAssessInfo LevelAssess = 1;
+}
+
+// 列表接口输入数据结构
+message GetListLevelAssessReq {
+  int32 Page = 1;
+  int32 Size = 2;
+  LevelAssessInfo LevelAssess = 3;
+}
+
+// 列表接口输出数据结构
+message GetListLevelAssessRes {
+  int32 Page = 1;
+  int32 Size = 2;
+  int32 TotalSize = 3;
+  repeated LevelAssessInfo Data = 4;
+}
+
+// 修改数据接口输入数据结构
+message ModifyLevelAssessReq {
+  int32             Id = 1;
+  string          EvaluateDimensions = 2;// 评价维度
+  string          EvaluateCriteria = 3;// 评价标准
+  string          ScoreCriteria = 4;// 评分标准
+  int32            EvaluateId = 5;// 上级评价维度
+  float         Weight = 6;// 权重
+  string          Remark = 7;// 预留备注说明信息
+  string CreateTime = 8;// 数据新增时间
+  string  UpdateTime = 9;// 最后一次更新数据时间
+}
+
+// 修改数据接口输出数据结构
+message ModifyLevelAssessRes {
+  LevelAssessInfo LevelAssess = 1;
+}
+
+// 删除数据接口输入数据结构
+message DeleteLevelAssessReq {
+  int32 Id = 1; // v: required
+}
+
+// 删除数据接口输出数据结构
+message DeleteLevelAssessRes {
+  bool IsSuccess = 1; // v: required
+  string Msg = 2; // v: required
+}
