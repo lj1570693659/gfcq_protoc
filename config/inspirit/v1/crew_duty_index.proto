@@ -17,7 +17,7 @@ service CrewDutyIndex {
 
 //  ArithEnum 运算方式
 enum ArithEnum {
-  anything = 0; // 默认空值
+  notSureArith = 0; // 默认空值
   gt = 1; // 大于
   lt = 2; // 小于
   egt = 3; // 大于等于
