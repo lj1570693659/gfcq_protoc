@@ -22,7 +22,7 @@ message StageRadioInfo {
   int32             Id = 1;
   float          ScoreMin = 2;// 分值下限
   float          ScoreMax = 3;// 分值上限
-  ScoreRange          ScoreRange = 4;// 分数区间包含关系（1：左闭右开，2：左开右闭）
+  ScoreRangeEnum          ScoreRange = 4;// 分数区间包含关系（1：左闭右开，2：左开右闭）
   float            QuotaRadio = 5;// 激励额度占比
   uint32         Sid = 6;// 阶段ID
   string          Remark = 7;// 预留备注说明信息
@@ -35,7 +35,7 @@ message CreateStageRadioReq {
   string Remark = 1;
   float          ScoreMin = 2;// 分值下限
   float          ScoreMax = 3;// 分值上限
-  ScoreRange          ScoreRange = 4;// 分数区间包含关系（1：左闭右开，2：左开右闭）
+  ScoreRangeEnum          ScoreRange = 4;// 分数区间包含关系（1：左闭右开，2：左开右闭）
   float            QuotaRadio = 5;// 激励额度占比
   uint32         Sid = 6;// 阶段ID
 }
@@ -75,7 +75,7 @@ message ModifyStageRadioReq {
   string Remark = 1;
   float          ScoreMin = 2;// 分值下限
   float          ScoreMax = 3;// 分值上限
-  ScoreRange          ScoreRange = 4;// 分数区间包含关系（1：左闭右开，2：左开右闭）
+  ScoreRangeEnum          ScoreRange = 4;// 分数区间包含关系（1：左闭右开，2：左开右闭）
   float            QuotaRadio = 5;// 激励额度占比
   uint32         Sid = 6;// 阶段ID
   int32 Id = 7; // v: required
