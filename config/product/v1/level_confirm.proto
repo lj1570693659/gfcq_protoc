@@ -21,6 +21,21 @@ enum ScoreRange {
   includeMax = 2;
 }
 
+// 是否委派PM(1:是 2：否)
+enum IsNeedPm {
+  _ = 0;
+  NeedPm = 1;
+  NotNeedPm = 2;
+}
+
+// 是否委派PMl(1:是 2：否)
+enum IsNeedPml {
+  NotSureIsNeedPml = 0;
+  NeedPml = 1;
+  NotNeedPml = 2;
+}
+
+
 // LevelConfirmInfo 项目优先级确认配置信息
 message LevelConfirmInfo {
   int32          Id = 1;    // ""
@@ -28,11 +43,11 @@ message LevelConfirmInfo {
   float      ScoreMin = 3; // "得分下限"
   float      ScoreMax = 4; // "得分上线"
   ScoreRange         ScoreRange = 5; // "得分区间包含关系（1：左闭右开，2：左开右闭）"
-  int32         IsNeedPm = 6;   // "是否委派PM(1:是 2：否)"
+  IsNeedPm         IsNeedPm = 6;   // "是否委派PM(1:是 2：否)"
   string       PmDemand = 7;    // "pm要求"
   string       ProductDemand = 8;// "项目工作相关要求"
   string       MonitDemand = 9;  // "监控要求"
-  int32         IsNeedPml = 10;   // "是否需要项目负责人(1:是 2：否)"
+  IsNeedPml         IsNeedPml = 10;   // "是否需要项目负责人(1:是 2：否)"
   string       Remark = 11;    // "预留备注说明信息"
   string  CreateTime = 12; // "新增数据时间"
   string  UpdateTime = 13; // "最新更新数据"
@@ -44,11 +59,11 @@ message CreateLevelConfirmReq {
   float      ScoreMin = 2; // "得分下限"
   float      ScoreMax = 3; // "得分上线"
   ScoreRange         ScoreRange = 4; // "得分区间包含关系（1：左闭右开，2：左开右闭）"
-  int32         IsNeedPm = 5;   // "是否委派PM(1:是 2：否)"
+  IsNeedPm         IsNeedPm = 5;   // "是否委派PM(1:是 2：否)"
   string       PmDemand = 6;    // "pm要求"
   string       ProductDemand = 7;// "项目工作相关要求"
   string       MonitDemand = 8;  // "监控要求"
-  int32         IsNeedPml = 9;   // "是否需要项目负责人(1:是 2：否)"
+  IsNeedPml         IsNeedPml = 9;   // "是否需要项目负责人(1:是 2：否)"
   string       Remark = 10;    // "预留备注说明信息"
 }
 
@@ -88,11 +103,11 @@ message ModifyLevelConfirmReq {
   float      ScoreMin = 2; // "得分下限"
   float      ScoreMax = 3; // "得分上线"
   ScoreRange         ScoreRange = 4; // "得分区间包含关系（1：左闭右开，2：左开右闭）"
-  int32         IsNeedPm = 5;   // "是否委派PM(1:是 2：否)"
+  IsNeedPm         IsNeedPm = 5;   // "是否委派PM(1:是 2：否)"
   string       PmDemand = 6;    // "pm要求"
   string       ProductDemand = 7;// "项目工作相关要求"
   string       MonitDemand = 8;  // "监控要求"
-  int32         IsNeedPml = 9;   // "是否需要项目负责人(1:是 2：否)"
+  IsNeedPml         IsNeedPml = 9;   // "是否需要项目负责人(1:是 2：否)"
   string       Remark = 10;    // "预留备注说明信息"
   int32 Id = 11; // v: required
 }
