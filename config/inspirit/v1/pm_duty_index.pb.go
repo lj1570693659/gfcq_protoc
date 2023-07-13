@@ -99,7 +99,7 @@ func (x *PmDutyIndexInfo) GetArith() ArithEnum {
 	if x != nil {
 		return x.Arith
 	}
-	return ArithEnum_anything
+	return ArithEnum_notSureArith
 }
 
 func (x *PmDutyIndexInfo) GetRemark() string {
@@ -192,7 +192,7 @@ func (x *CreatePmDutyIndexReq) GetArith() ArithEnum {
 	if x != nil {
 		return x.Arith
 	}
-	return ArithEnum_anything
+	return ArithEnum_notSureArith
 }
 
 // 创建数据接口输出数据结构
@@ -545,7 +545,7 @@ func (x *ModifyPmDutyIndexReq) GetArith() ArithEnum {
 	if x != nil {
 		return x.Arith
 	}
-	return ArithEnum_anything
+	return ArithEnum_notSureArith
 }
 
 func (x *ModifyPmDutyIndexReq) GetId() int32 {
