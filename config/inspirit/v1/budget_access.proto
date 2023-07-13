@@ -22,10 +22,10 @@ message BudgetAssessInfo {
   int32             Id = 1;
   uint32          ScoreMin = 2;// 分值下限
   uint32          ScoreMax = 3;// 分值上限
-  ScoreRange          ScoreRange = 4;// 分数区间包含关系（1：左闭右开，2：左开右闭）
-  float            BudgetMin = 5;// 预算额度下限
+  ScoreRangeEnum      ScoreRange = 4;// 分数区间包含关系（1：左闭右开，2：左开右闭）
+  float           BudgetMin = 5;// 预算额度下限
   float         BudgetMax = 6;// 预算额度上线
-  ScoreRange         BudgetRange = 7;// 额度区间包含关系（1：左闭右开，2：左开右闭）
+  ScoreRangeEnum         BudgetRange = 7;// 额度区间包含关系（1：左闭右开，2：左开右闭）
   string          Remark = 8;// 预留备注说明信息
   string CreateTime = 9;// 数据新增时间
   string  UpdateTime = 10;// 最后一次更新数据时间
@@ -35,10 +35,10 @@ message BudgetAssessInfo {
 message CreateBudgetAssessReq {
   uint32          ScoreMin = 1;// 分值下限
   uint32          ScoreMax = 2;// 分值上限
-  ScoreRange          ScoreRange = 3;// 分数区间包含关系（1：左闭右开，2：左开右闭）
+  ScoreRangeEnum          ScoreRange = 3;// 分数区间包含关系（1：左闭右开，2：左开右闭）
   float            BudgetMin = 4;// 预算额度下限
   float         BudgetMax = 5;// 预算额度上线
-  ScoreRange         BudgetRange = 6;// 额度区间包含关系（1：左闭右开，2：左开右闭）
+  ScoreRangeEnum         BudgetRange = 6;// 额度区间包含关系（1：左闭右开，2：左开右闭）
   string          Remark = 7;// 预留备注说明信息
 }
 
@@ -76,10 +76,10 @@ message GetListBudgetAssessRes {
 message ModifyBudgetAssessReq {
   uint32          ScoreMin = 1;// 分值下限
   uint32          ScoreMax = 2;// 分值上限
-  ScoreRange          ScoreRange = 3;// 分数区间包含关系（1：左闭右开，2：左开右闭）
+  ScoreRangeEnum          ScoreRange = 3;// 分数区间包含关系（1：左闭右开，2：左开右闭）
   float            BudgetMin = 4;// 预算额度下限
   float         BudgetMax = 5;// 预算额度上线
-  ScoreRange         BudgetRange = 6;// 额度区间包含关系（1：左闭右开，2：左开右闭）
+  ScoreRangeEnum         BudgetRange = 6;// 额度区间包含关系（1：左闭右开，2：左开右闭）
   string          Remark = 7;// 预留备注说明信息
   int32 Id = 8; // v: required
 }
