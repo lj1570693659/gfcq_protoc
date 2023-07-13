@@ -18,7 +18,7 @@ service ModeStage {
 message ModeStageInfo {
   int32          Id = 1;    // ""
   int32       Tid = 2;  // 项目开发模式ID
-  int32      Sid = 3; // 项目阶段ID
+  string      Name = 3; // 项目阶段名称
   float      QuotaRadio = 4; // 阶段额度占比
   string         Remark = 5; // 预留备注说明信息
   string  CreateTime = 6; // "新增数据时间"
@@ -28,7 +28,7 @@ message ModeStageInfo {
 // 创建数据接口输入数据结构
 message CreateModeStageReq {
   int32       Tid = 1;  // 项目开发模式ID
-  int32      Sid = 2; // 项目阶段ID
+  string      Name = 2; // 项目阶段名称
   float      QuotaRadio = 3; // 阶段额度占比
   string         Remark = 4; // 预留备注说明信息
 }
@@ -66,7 +66,7 @@ message GetListModeStageRes {
 // 修改数据接口输入数据结构
 message ModifyModeStageReq {
   int32       Tid = 1;  // 项目开发模式ID
-  int32      Sid = 2; // 项目阶段ID
+  string      Name = 2; // 项目阶段名称
   float      QuotaRadio = 3; // 阶段额度占比
   string         Remark = 4; // 预留备注说明信息
   int32 Id = 5; // v: required
