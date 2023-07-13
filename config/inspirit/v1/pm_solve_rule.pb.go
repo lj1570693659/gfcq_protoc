@@ -91,7 +91,7 @@ func (x *PmSolveRuleInfo) GetDemand() DemandEnum {
 	if x != nil {
 		return x.Demand
 	}
-	return DemandEnum_anything
+	return DemandEnum_notSureDemand
 }
 
 func (x *PmSolveRuleInfo) GetRemark() string {
@@ -176,7 +176,7 @@ func (x *CreatePmSolveRuleReq) GetDemand() DemandEnum {
 	if x != nil {
 		return x.Demand
 	}
-	return DemandEnum_anything
+	return DemandEnum_notSureDemand
 }
 
 // 创建数据接口输出数据结构
@@ -521,7 +521,7 @@ func (x *ModifyPmSolveRuleReq) GetDemand() DemandEnum {
 	if x != nil {
 		return x.Demand
 	}
-	return DemandEnum_anything
+	return DemandEnum_notSureDemand
 }
 
 func (x *ModifyPmSolveRuleReq) GetId() int32 {

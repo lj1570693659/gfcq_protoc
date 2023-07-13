@@ -16,7 +16,7 @@ service CrewSolveRule {
 
 // 贡献标准（1：有突出贡献，2：有重要贡献，3：较低/无贡献）
 enum DemandEnum {
-  anything = 0;
+  notSureDemand = 0;
   highlight = 1;
   middle = 2;
   less = 3;
