@@ -67,6 +67,8 @@ message GetListEmployeeJobRes {
 // 数量求和接口输入数据结构
 message GetCountEmployeeJobReq {
   EmployeeJobInfo EmployeeJob = 1;
+  string GroupBy = 2;
+  string GetFiledNameCount = 3;
 }
 
 // 数量求和接口输出数据结构
