@@ -10,6 +10,7 @@ service LevelAssess {
   rpc Create(CreateLevelAssessReq) returns (CreateLevelAssessRes) {}
   rpc GetOne(GetOneLevelAssessReq) returns (GetOneLevelAssessRes) {}
   rpc GetList(GetListLevelAssessReq) returns (GetListLevelAssessRes) {}
+  rpc GetListWithoutPage(GetListWithoutLevelAssessReq) returns (GetListWithoutLevelAssessRes) {}
   rpc Modify(ModifyLevelAssessReq) returns (ModifyLevelAssessRes) {}
   rpc Delete(DeleteLevelAssessReq) returns (DeleteLevelAssessRes) {}
 }
@@ -65,6 +66,16 @@ message GetListLevelAssessRes {
   int32 Size = 2;
   int32 TotalSize = 3;
   repeated LevelAssessInfo Data = 4;
+}
+
+// 列表接口输入数据结构
+message GetListWithoutLevelAssessReq {
+  LevelAssessInfo LevelAssess = 1;
+}
+
+// 列表接口输出数据结构
+message GetListWithoutLevelAssessRes {
+  repeated LevelAssessInfo Data = 1;
 }
 
 // 修改数据接口输入数据结构
