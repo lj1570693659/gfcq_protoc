@@ -10,6 +10,7 @@ service Mode {
   rpc Create(CreateModeReq) returns (CreateModeRes) {}
   rpc GetOne(GetOneModeReq) returns (GetOneModeRes) {}
   rpc GetList(GetListModeReq) returns (GetListModeRes) {}
+  rpc GetAll(GetAllModeReq) returns (GetAllModeRes) {}
   rpc Modify(ModifyModeReq) returns (ModifyModeRes) {}
   rpc Delete(DeleteModeReq) returns (DeleteModeRes) {}
 }
@@ -60,6 +61,16 @@ message GetListModeRes {
   int32 TotalSize = 3;
   repeated ModeInfo Data = 4;
 }
+
+// 列表接口输入数据结构
+message GetAllModeReq {
+  ModeInfo Mode = 1;
+}
+// 列表接口输入数据结构
+message GetAllModeRes {
+  repeated ModeInfo Data = 1;
+}
+
 
 // 修改数据接口输入数据结构
 message ModifyModeReq {

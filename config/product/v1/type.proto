@@ -10,6 +10,7 @@ service Type {
   rpc Create(CreateTypeReq) returns (CreateTypeRes) {}
   rpc GetOne(GetOneTypeReq) returns (GetOneTypeRes) {}
   rpc GetList(GetListTypeReq) returns (GetListTypeRes) {}
+  rpc GetAll(GetAllTypeReq) returns (GetAllTypeRes) {}
   rpc Modify(ModifyTypeReq) returns (ModifyTypeRes) {}
   rpc Delete(DeleteTypeReq) returns (DeleteTypeRes) {}
 }
@@ -58,6 +59,17 @@ message GetListTypeRes {
   int32 TotalSize = 3;
   repeated TypeInfo Data = 4;
 }
+
+// 列表接口输入数据结构
+message GetAllTypeReq {
+  TypeInfo Type = 1;
+}
+
+// 列表接口输出数据结构
+message GetAllTypeRes {
+  repeated TypeInfo Data = 1;
+}
+
 
 // 修改数据接口输入数据结构
 message ModifyTypeReq {
