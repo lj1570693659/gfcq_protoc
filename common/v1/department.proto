@@ -10,6 +10,7 @@ service Department {
   rpc Create(CreateDepartmentReq) returns (CreateDepartmentRes) {}
   rpc GetOne(GetOneDepartmentReq) returns (GetOneDepartmentRes) {}
   rpc GetList(GetListDepartmentReq) returns (GetListDepartmentRes) {}
+  rpc GetListWithoutPage(GetListWithoutDepartmentReq) returns (GetListWithoutDepartmentRes) {}
   rpc Modify(ModifyDepartmentReq) returns (ModifyDepartmentRes) {}
   rpc Delete(DeleteDepartmentReq) returns (DeleteDepartmentRes) {}
 }
@@ -60,6 +61,17 @@ message GetListDepartmentRes {
   int32 Size = 2;
   int32 TotalSize = 3;
   repeated DepartmentInfo Data = 4;
+}
+
+
+// 部门列表接口(不分页)输入数据结构
+message GetListWithoutDepartmentReq {
+  DepartmentInfo Department = 1;
+}
+
+// 部门列表接口(不分页)输出数据结构
+message GetListWithoutDepartmentRes {
+  repeated DepartmentInfo Data = 1;
 }
 
 // 修改数据接口输入数据结构
