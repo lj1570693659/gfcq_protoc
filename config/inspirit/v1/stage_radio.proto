@@ -21,8 +21,8 @@ service StageRadio {
 // ProductStageRadio is the golang structure for table product_stage_radio.
 message StageRadioInfo {
   int32             Id = 1;
-  float          ScoreMin = 2;// 分值下限
-  float          ScoreMax = 3;// 分值上限
+  uint32          ScoreMin = 2;// 分值下限
+  uint32          ScoreMax = 3;// 分值上限
   ScoreRangeEnum          ScoreRange = 4;// 分数区间包含关系（1：左闭右开，2：左开右闭）
   float            QuotaRadio = 5;// 激励额度占比
   uint32         Sid = 6;// 阶段ID
@@ -34,8 +34,8 @@ message StageRadioInfo {
 // 创建数据接口输入数据结构
 message CreateStageRadioReq {
   string Remark = 1;
-  float          ScoreMin = 2;// 分值下限
-  float          ScoreMax = 3;// 分值上限
+  uint32          ScoreMin = 2;// 分值下限
+  uint32          ScoreMax = 3;// 分值上限
   ScoreRangeEnum          ScoreRange = 4;// 分数区间包含关系（1：左闭右开，2：左开右闭）
   float            QuotaRadio = 5;// 激励额度占比
   uint32         Sid = 6;// 阶段ID
@@ -86,8 +86,8 @@ message GetAllStageRadioRes {
 // 修改数据接口输入数据结构
 message ModifyStageRadioReq {
   string Remark = 1;
-  float          ScoreMin = 2;// 分值下限
-  float          ScoreMax = 3;// 分值上限
+  uint32          ScoreMin = 2;// 分值下限
+  uint32          ScoreMax = 3;// 分值上限
   ScoreRangeEnum          ScoreRange = 4;// 分数区间包含关系（1：左闭右开，2：左开右闭）
   float            QuotaRadio = 5;// 激励额度占比
   uint32         Sid = 6;// 阶段ID
