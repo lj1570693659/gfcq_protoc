@@ -10,6 +10,7 @@ service CrewSolveRule {
   rpc Create(CreateCrewSolveRuleReq) returns (CreateCrewSolveRuleRes) {}
   rpc GetOne(GetOneCrewSolveRuleReq) returns (GetOneCrewSolveRuleRes) {}
   rpc GetList(GetListCrewSolveRuleReq) returns (GetListCrewSolveRuleRes) {}
+  rpc GetAll(GetAllCrewSolveRuleReq) returns (GetAllCrewSolveRuleRes) {}
   rpc Modify(ModifyCrewSolveRuleReq) returns (ModifyCrewSolveRuleRes) {}
   rpc Delete(DeleteCrewSolveRuleReq) returns (DeleteCrewSolveRuleRes) {}
 }
@@ -67,6 +68,15 @@ message GetListCrewSolveRuleRes {
   int32 Size = 2;
   int32 TotalSize = 3;
   repeated CrewSolveRuleInfo Data = 4;
+}
+// 列表接口输入数据结构
+message GetAllCrewSolveRuleReq {
+  CrewSolveRuleInfo CrewSolveRule = 1;
+}
+
+// 列表接口输出数据结构
+message GetAllCrewSolveRuleRes {
+  repeated CrewSolveRuleInfo Data = 1;
 }
 
 // 修改数据接口输入数据结构

@@ -13,6 +13,7 @@ service StageRadio {
   rpc Create(CreateStageRadioReq) returns (CreateStageRadioRes) {}
   rpc GetOne(GetOneStageRadioReq) returns (GetOneStageRadioRes) {}
   rpc GetList(GetListStageRadioReq) returns (GetListStageRadioRes) {}
+  rpc GetAll(GetAllStageRadioReq) returns (GetAllStageRadioRes) {}
   rpc Modify(ModifyStageRadioReq) returns (ModifyStageRadioRes) {}
   rpc Delete(DeleteStageRadioReq) returns (DeleteStageRadioRes) {}
 }
@@ -69,6 +70,23 @@ message GetListStageRadioRes {
   int32 TotalSize = 3;
   repeated StageRadioInfo Data = 4;
 }
+
+
+// 列表接口输入数据结构
+message GetAllStageRadioReq {
+  int32 Page = 1;
+  int32 Size = 2;
+  StageRadioInfo StageRadio = 3;
+}
+
+// 列表接口输出数据结构
+message GetAllStageRadioRes {
+  int32 Page = 1;
+  int32 Size = 2;
+  int32 TotalSize = 3;
+  repeated StageRadioInfo Data = 4;
+}
+
 
 // 修改数据接口输入数据结构
 message ModifyStageRadioReq {

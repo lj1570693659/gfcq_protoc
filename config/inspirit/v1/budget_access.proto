@@ -13,6 +13,7 @@ service BudgetAssess {
   rpc Create(CreateBudgetAssessReq) returns (CreateBudgetAssessRes) {}
   rpc GetOne(GetOneBudgetAssessReq) returns (GetOneBudgetAssessRes) {}
   rpc GetList(GetListBudgetAssessReq) returns (GetListBudgetAssessRes) {}
+  rpc GetAll(GetAllBudgetAssessReq) returns (GetAllBudgetAssessRes) {}
   rpc Modify(ModifyBudgetAssessReq) returns (ModifyBudgetAssessRes) {}
   rpc Delete(DeleteBudgetAssessReq) returns (DeleteBudgetAssessRes) {}
 }
@@ -70,6 +71,16 @@ message GetListBudgetAssessRes {
   int32 Size = 2;
   int32 TotalSize = 3;
   repeated BudgetAssessInfo Data = 4;
+}
+
+// 列表接口输入数据结构
+message GetAllBudgetAssessReq {
+  BudgetAssessInfo BudgetAssess = 1;
+}
+
+// 列表接口输出数据结构
+message GetAllBudgetAssessRes {
+  repeated BudgetAssessInfo Data = 1;
 }
 
 // 修改数据接口输入数据结构

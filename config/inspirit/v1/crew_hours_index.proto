@@ -13,6 +13,7 @@ service CrewHoursIndex {
   rpc Create(CreateCrewHoursIndexReq) returns (CreateCrewHoursIndexRes) {}
   rpc GetOne(GetOneCrewHoursIndexReq) returns (GetOneCrewHoursIndexRes) {}
   rpc GetList(GetListCrewHoursIndexReq) returns (GetListCrewHoursIndexRes) {}
+  rpc GetAll(GetAllCrewHoursIndexReq) returns (GetAllCrewHoursIndexRes) {}
   rpc Modify(ModifyCrewHoursIndexReq) returns (ModifyCrewHoursIndexRes) {}
   rpc Delete(DeleteCrewHoursIndexReq) returns (DeleteCrewHoursIndexRes) {}
 }
@@ -67,6 +68,15 @@ message GetListCrewHoursIndexRes {
   int32 Size = 2;
   int32 TotalSize = 3;
   repeated CrewHoursIndexInfo Data = 4;
+}
+// 列表接口输入数据结构
+message GetAllCrewHoursIndexReq {
+  CrewHoursIndexInfo CrewHoursIndex = 1;
+}
+
+// 列表接口输出数据结构
+message GetAllCrewHoursIndexRes {
+  repeated CrewHoursIndexInfo Data = 1;
 }
 
 // 修改数据接口输入数据结构

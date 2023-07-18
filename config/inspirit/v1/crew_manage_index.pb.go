@@ -459,6 +459,102 @@ func (x *GetListCrewManageIndexRes) GetData() []*CrewManageIndexInfo {
 	return nil
 }
 
+// 列表接口输入数据结构
+type GetAllCrewManageIndexReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	CrewManageIndex *CrewManageIndexInfo `protobuf:"bytes,1,opt,name=CrewManageIndex,proto3" json:"CrewManageIndex"`
+}
+
+func (x *GetAllCrewManageIndexReq) Reset() {
+	*x = GetAllCrewManageIndexReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_config_inspirit_v1_crew_manage_index_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetAllCrewManageIndexReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllCrewManageIndexReq) ProtoMessage() {}
+
+func (x *GetAllCrewManageIndexReq) ProtoReflect() protoreflect.Message {
+	mi := &file_config_inspirit_v1_crew_manage_index_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllCrewManageIndexReq.ProtoReflect.Descriptor instead.
+func (*GetAllCrewManageIndexReq) Descriptor() ([]byte, []int) {
+	return file_config_inspirit_v1_crew_manage_index_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GetAllCrewManageIndexReq) GetCrewManageIndex() *CrewManageIndexInfo {
+	if x != nil {
+		return x.CrewManageIndex
+	}
+	return nil
+}
+
+// 列表接口输出数据结构
+type GetAllCrewManageIndexRes struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Data []*CrewManageIndexInfo `protobuf:"bytes,1,rep,name=Data,proto3" json:"Data"`
+}
+
+func (x *GetAllCrewManageIndexRes) Reset() {
+	*x = GetAllCrewManageIndexRes{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_config_inspirit_v1_crew_manage_index_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetAllCrewManageIndexRes) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllCrewManageIndexRes) ProtoMessage() {}
+
+func (x *GetAllCrewManageIndexRes) ProtoReflect() protoreflect.Message {
+	mi := &file_config_inspirit_v1_crew_manage_index_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllCrewManageIndexRes.ProtoReflect.Descriptor instead.
+func (*GetAllCrewManageIndexRes) Descriptor() ([]byte, []int) {
+	return file_config_inspirit_v1_crew_manage_index_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetAllCrewManageIndexRes) GetData() []*CrewManageIndexInfo {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
 // 修改数据接口输入数据结构
 type ModifyCrewManageIndexReq struct {
 	state         protoimpl.MessageState
@@ -474,7 +570,7 @@ type ModifyCrewManageIndexReq struct {
 func (x *ModifyCrewManageIndexReq) Reset() {
 	*x = ModifyCrewManageIndexReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_config_inspirit_v1_crew_manage_index_proto_msgTypes[7]
+		mi := &file_config_inspirit_v1_crew_manage_index_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -487,7 +583,7 @@ func (x *ModifyCrewManageIndexReq) String() string {
 func (*ModifyCrewManageIndexReq) ProtoMessage() {}
 
 func (x *ModifyCrewManageIndexReq) ProtoReflect() protoreflect.Message {
-	mi := &file_config_inspirit_v1_crew_manage_index_proto_msgTypes[7]
+	mi := &file_config_inspirit_v1_crew_manage_index_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -500,7 +596,7 @@ func (x *ModifyCrewManageIndexReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ModifyCrewManageIndexReq.ProtoReflect.Descriptor instead.
 func (*ModifyCrewManageIndexReq) Descriptor() ([]byte, []int) {
-	return file_config_inspirit_v1_crew_manage_index_proto_rawDescGZIP(), []int{7}
+	return file_config_inspirit_v1_crew_manage_index_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ModifyCrewManageIndexReq) GetRemark() string {
@@ -543,7 +639,7 @@ type ModifyCrewManageIndexRes struct {
 func (x *ModifyCrewManageIndexRes) Reset() {
 	*x = ModifyCrewManageIndexRes{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_config_inspirit_v1_crew_manage_index_proto_msgTypes[8]
+		mi := &file_config_inspirit_v1_crew_manage_index_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -556,7 +652,7 @@ func (x *ModifyCrewManageIndexRes) String() string {
 func (*ModifyCrewManageIndexRes) ProtoMessage() {}
 
 func (x *ModifyCrewManageIndexRes) ProtoReflect() protoreflect.Message {
-	mi := &file_config_inspirit_v1_crew_manage_index_proto_msgTypes[8]
+	mi := &file_config_inspirit_v1_crew_manage_index_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -569,7 +665,7 @@ func (x *ModifyCrewManageIndexRes) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ModifyCrewManageIndexRes.ProtoReflect.Descriptor instead.
 func (*ModifyCrewManageIndexRes) Descriptor() ([]byte, []int) {
-	return file_config_inspirit_v1_crew_manage_index_proto_rawDescGZIP(), []int{8}
+	return file_config_inspirit_v1_crew_manage_index_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ModifyCrewManageIndexRes) GetCrewManageIndex() *CrewManageIndexInfo {
@@ -591,7 +687,7 @@ type DeleteCrewManageIndexReq struct {
 func (x *DeleteCrewManageIndexReq) Reset() {
 	*x = DeleteCrewManageIndexReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_config_inspirit_v1_crew_manage_index_proto_msgTypes[9]
+		mi := &file_config_inspirit_v1_crew_manage_index_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -604,7 +700,7 @@ func (x *DeleteCrewManageIndexReq) String() string {
 func (*DeleteCrewManageIndexReq) ProtoMessage() {}
 
 func (x *DeleteCrewManageIndexReq) ProtoReflect() protoreflect.Message {
-	mi := &file_config_inspirit_v1_crew_manage_index_proto_msgTypes[9]
+	mi := &file_config_inspirit_v1_crew_manage_index_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -617,7 +713,7 @@ func (x *DeleteCrewManageIndexReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteCrewManageIndexReq.ProtoReflect.Descriptor instead.
 func (*DeleteCrewManageIndexReq) Descriptor() ([]byte, []int) {
-	return file_config_inspirit_v1_crew_manage_index_proto_rawDescGZIP(), []int{9}
+	return file_config_inspirit_v1_crew_manage_index_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *DeleteCrewManageIndexReq) GetId() int32 {
@@ -640,7 +736,7 @@ type DeleteCrewManageIndexRes struct {
 func (x *DeleteCrewManageIndexRes) Reset() {
 	*x = DeleteCrewManageIndexRes{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_config_inspirit_v1_crew_manage_index_proto_msgTypes[10]
+		mi := &file_config_inspirit_v1_crew_manage_index_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -653,7 +749,7 @@ func (x *DeleteCrewManageIndexRes) String() string {
 func (*DeleteCrewManageIndexRes) ProtoMessage() {}
 
 func (x *DeleteCrewManageIndexRes) ProtoReflect() protoreflect.Message {
-	mi := &file_config_inspirit_v1_crew_manage_index_proto_msgTypes[10]
+	mi := &file_config_inspirit_v1_crew_manage_index_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -666,7 +762,7 @@ func (x *DeleteCrewManageIndexRes) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteCrewManageIndexRes.ProtoReflect.Descriptor instead.
 func (*DeleteCrewManageIndexRes) Descriptor() ([]byte, []int) {
-	return file_config_inspirit_v1_crew_manage_index_proto_rawDescGZIP(), []int{10}
+	return file_config_inspirit_v1_crew_manage_index_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *DeleteCrewManageIndexRes) GetIsSuccess() bool {
@@ -746,6 +842,17 @@ var file_config_inspirit_v1_crew_manage_index_proto_rawDesc = []byte{
 	0x0a, 0x04, 0x44, 0x61, 0x74, 0x61, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x63,
 	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x43, 0x72, 0x65, 0x77, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
 	0x49, 0x6e, 0x64, 0x65, 0x78, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x44, 0x61, 0x74, 0x61, 0x22,
+	0x61, 0x0a, 0x18, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x43, 0x72, 0x65, 0x77, 0x4d, 0x61, 0x6e,
+	0x61, 0x67, 0x65, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x52, 0x65, 0x71, 0x12, 0x45, 0x0a, 0x0f, 0x43,
+	0x72, 0x65, 0x77, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x43, 0x72,
+	0x65, 0x77, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x49, 0x6e, 0x66,
+	0x6f, 0x52, 0x0f, 0x43, 0x72, 0x65, 0x77, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x49, 0x6e, 0x64,
+	0x65, 0x78, 0x22, 0x4b, 0x0a, 0x18, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x43, 0x72, 0x65, 0x77,
+	0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x52, 0x65, 0x73, 0x12, 0x2f,
+	0x0a, 0x04, 0x44, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x63,
+	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x43, 0x72, 0x65, 0x77, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
+	0x49, 0x6e, 0x64, 0x65, 0x78, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x44, 0x61, 0x74, 0x61, 0x22,
 	0x88, 0x01, 0x0a, 0x18, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x43, 0x72, 0x65, 0x77, 0x4d, 0x61,
 	0x6e, 0x61, 0x67, 0x65, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x52, 0x65, 0x71, 0x12, 0x16, 0x0a, 0x06,
 	0x52, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x52, 0x65,
@@ -768,7 +875,7 @@ var file_config_inspirit_v1_crew_manage_index_proto_rawDesc = []byte{
 	0x65, 0x78, 0x52, 0x65, 0x73, 0x12, 0x1c, 0x0a, 0x09, 0x49, 0x73, 0x53, 0x75, 0x63, 0x63, 0x65,
 	0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x09, 0x49, 0x73, 0x53, 0x75, 0x63, 0x63,
 	0x65, 0x73, 0x73, 0x12, 0x10, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x03, 0x4d, 0x73, 0x67, 0x32, 0xa4, 0x03, 0x0a, 0x0f, 0x43, 0x72, 0x65, 0x77, 0x4d, 0x61,
+	0x52, 0x03, 0x4d, 0x73, 0x67, 0x32, 0xf4, 0x03, 0x0a, 0x0f, 0x43, 0x72, 0x65, 0x77, 0x4d, 0x61,
 	0x6e, 0x61, 0x67, 0x65, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x12, 0x4e, 0x0a, 0x06, 0x43, 0x72, 0x65,
 	0x61, 0x74, 0x65, 0x12, 0x20, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x43, 0x72, 0x65,
 	0x61, 0x74, 0x65, 0x43, 0x72, 0x65, 0x77, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x49, 0x6e, 0x64,
@@ -784,6 +891,11 @@ var file_config_inspirit_v1_crew_manage_index_proto_rawDesc = []byte{
 	0x74, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x72, 0x65, 0x77, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x49,
 	0x6e, 0x64, 0x65, 0x78, 0x52, 0x65, 0x71, 0x1a, 0x21, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67,
 	0x2e, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x72, 0x65, 0x77, 0x4d, 0x61, 0x6e, 0x61,
+	0x67, 0x65, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x4e, 0x0a, 0x06,
+	0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x12, 0x20, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e,
+	0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x43, 0x72, 0x65, 0x77, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
+	0x49, 0x6e, 0x64, 0x65, 0x78, 0x52, 0x65, 0x71, 0x1a, 0x20, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69,
+	0x67, 0x2e, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x43, 0x72, 0x65, 0x77, 0x4d, 0x61, 0x6e, 0x61,
 	0x67, 0x65, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x4e, 0x0a, 0x06,
 	0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x12, 0x20, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e,
 	0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x43, 0x72, 0x65, 0x77, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65,
@@ -813,7 +925,7 @@ func file_config_inspirit_v1_crew_manage_index_proto_rawDescGZIP() []byte {
 	return file_config_inspirit_v1_crew_manage_index_proto_rawDescData
 }
 
-var file_config_inspirit_v1_crew_manage_index_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_config_inspirit_v1_crew_manage_index_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_config_inspirit_v1_crew_manage_index_proto_goTypes = []interface{}{
 	(*CrewManageIndexInfo)(nil),       // 0: config.CrewManageIndexInfo
 	(*CreateCrewManageIndexReq)(nil),  // 1: config.CreateCrewManageIndexReq
@@ -822,10 +934,12 @@ var file_config_inspirit_v1_crew_manage_index_proto_goTypes = []interface{}{
 	(*GetOneCrewManageIndexRes)(nil),  // 4: config.GetOneCrewManageIndexRes
 	(*GetListCrewManageIndexReq)(nil), // 5: config.GetListCrewManageIndexReq
 	(*GetListCrewManageIndexRes)(nil), // 6: config.GetListCrewManageIndexRes
-	(*ModifyCrewManageIndexReq)(nil),  // 7: config.ModifyCrewManageIndexReq
-	(*ModifyCrewManageIndexRes)(nil),  // 8: config.ModifyCrewManageIndexRes
-	(*DeleteCrewManageIndexReq)(nil),  // 9: config.DeleteCrewManageIndexReq
-	(*DeleteCrewManageIndexRes)(nil),  // 10: config.DeleteCrewManageIndexRes
+	(*GetAllCrewManageIndexReq)(nil),  // 7: config.GetAllCrewManageIndexReq
+	(*GetAllCrewManageIndexRes)(nil),  // 8: config.GetAllCrewManageIndexRes
+	(*ModifyCrewManageIndexReq)(nil),  // 9: config.ModifyCrewManageIndexReq
+	(*ModifyCrewManageIndexRes)(nil),  // 10: config.ModifyCrewManageIndexRes
+	(*DeleteCrewManageIndexReq)(nil),  // 11: config.DeleteCrewManageIndexReq
+	(*DeleteCrewManageIndexRes)(nil),  // 12: config.DeleteCrewManageIndexRes
 }
 var file_config_inspirit_v1_crew_manage_index_proto_depIdxs = []int32{
 	0,  // 0: config.CreateCrewManageIndexRes.CrewManageIndex:type_name -> config.CrewManageIndexInfo
@@ -833,22 +947,26 @@ var file_config_inspirit_v1_crew_manage_index_proto_depIdxs = []int32{
 	0,  // 2: config.GetOneCrewManageIndexRes.CrewManageIndex:type_name -> config.CrewManageIndexInfo
 	0,  // 3: config.GetListCrewManageIndexReq.CrewManageIndex:type_name -> config.CrewManageIndexInfo
 	0,  // 4: config.GetListCrewManageIndexRes.Data:type_name -> config.CrewManageIndexInfo
-	0,  // 5: config.ModifyCrewManageIndexRes.CrewManageIndex:type_name -> config.CrewManageIndexInfo
-	1,  // 6: config.CrewManageIndex.Create:input_type -> config.CreateCrewManageIndexReq
-	3,  // 7: config.CrewManageIndex.GetOne:input_type -> config.GetOneCrewManageIndexReq
-	5,  // 8: config.CrewManageIndex.GetList:input_type -> config.GetListCrewManageIndexReq
-	7,  // 9: config.CrewManageIndex.Modify:input_type -> config.ModifyCrewManageIndexReq
-	9,  // 10: config.CrewManageIndex.Delete:input_type -> config.DeleteCrewManageIndexReq
-	2,  // 11: config.CrewManageIndex.Create:output_type -> config.CreateCrewManageIndexRes
-	4,  // 12: config.CrewManageIndex.GetOne:output_type -> config.GetOneCrewManageIndexRes
-	6,  // 13: config.CrewManageIndex.GetList:output_type -> config.GetListCrewManageIndexRes
-	8,  // 14: config.CrewManageIndex.Modify:output_type -> config.ModifyCrewManageIndexRes
-	10, // 15: config.CrewManageIndex.Delete:output_type -> config.DeleteCrewManageIndexRes
-	11, // [11:16] is the sub-list for method output_type
-	6,  // [6:11] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	0,  // 5: config.GetAllCrewManageIndexReq.CrewManageIndex:type_name -> config.CrewManageIndexInfo
+	0,  // 6: config.GetAllCrewManageIndexRes.Data:type_name -> config.CrewManageIndexInfo
+	0,  // 7: config.ModifyCrewManageIndexRes.CrewManageIndex:type_name -> config.CrewManageIndexInfo
+	1,  // 8: config.CrewManageIndex.Create:input_type -> config.CreateCrewManageIndexReq
+	3,  // 9: config.CrewManageIndex.GetOne:input_type -> config.GetOneCrewManageIndexReq
+	5,  // 10: config.CrewManageIndex.GetList:input_type -> config.GetListCrewManageIndexReq
+	7,  // 11: config.CrewManageIndex.GetAll:input_type -> config.GetAllCrewManageIndexReq
+	9,  // 12: config.CrewManageIndex.Modify:input_type -> config.ModifyCrewManageIndexReq
+	11, // 13: config.CrewManageIndex.Delete:input_type -> config.DeleteCrewManageIndexReq
+	2,  // 14: config.CrewManageIndex.Create:output_type -> config.CreateCrewManageIndexRes
+	4,  // 15: config.CrewManageIndex.GetOne:output_type -> config.GetOneCrewManageIndexRes
+	6,  // 16: config.CrewManageIndex.GetList:output_type -> config.GetListCrewManageIndexRes
+	8,  // 17: config.CrewManageIndex.GetAll:output_type -> config.GetAllCrewManageIndexRes
+	10, // 18: config.CrewManageIndex.Modify:output_type -> config.ModifyCrewManageIndexRes
+	12, // 19: config.CrewManageIndex.Delete:output_type -> config.DeleteCrewManageIndexRes
+	14, // [14:20] is the sub-list for method output_type
+	8,  // [8:14] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_config_inspirit_v1_crew_manage_index_proto_init() }
@@ -942,7 +1060,7 @@ func file_config_inspirit_v1_crew_manage_index_proto_init() {
 			}
 		}
 		file_config_inspirit_v1_crew_manage_index_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ModifyCrewManageIndexReq); i {
+			switch v := v.(*GetAllCrewManageIndexReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -954,7 +1072,7 @@ func file_config_inspirit_v1_crew_manage_index_proto_init() {
 			}
 		}
 		file_config_inspirit_v1_crew_manage_index_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ModifyCrewManageIndexRes); i {
+			switch v := v.(*GetAllCrewManageIndexRes); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -966,7 +1084,7 @@ func file_config_inspirit_v1_crew_manage_index_proto_init() {
 			}
 		}
 		file_config_inspirit_v1_crew_manage_index_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteCrewManageIndexReq); i {
+			switch v := v.(*ModifyCrewManageIndexReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -978,6 +1096,30 @@ func file_config_inspirit_v1_crew_manage_index_proto_init() {
 			}
 		}
 		file_config_inspirit_v1_crew_manage_index_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ModifyCrewManageIndexRes); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_config_inspirit_v1_crew_manage_index_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DeleteCrewManageIndexReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_config_inspirit_v1_crew_manage_index_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*DeleteCrewManageIndexRes); i {
 			case 0:
 				return &v.state
@@ -996,7 +1138,7 @@ func file_config_inspirit_v1_crew_manage_index_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_config_inspirit_v1_crew_manage_index_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -1025,6 +1167,7 @@ type CrewManageIndexClient interface {
 	Create(ctx context.Context, in *CreateCrewManageIndexReq, opts ...grpc.CallOption) (*CreateCrewManageIndexRes, error)
 	GetOne(ctx context.Context, in *GetOneCrewManageIndexReq, opts ...grpc.CallOption) (*GetOneCrewManageIndexRes, error)
 	GetList(ctx context.Context, in *GetListCrewManageIndexReq, opts ...grpc.CallOption) (*GetListCrewManageIndexRes, error)
+	GetAll(ctx context.Context, in *GetAllCrewManageIndexReq, opts ...grpc.CallOption) (*GetAllCrewManageIndexRes, error)
 	Modify(ctx context.Context, in *ModifyCrewManageIndexReq, opts ...grpc.CallOption) (*ModifyCrewManageIndexRes, error)
 	Delete(ctx context.Context, in *DeleteCrewManageIndexReq, opts ...grpc.CallOption) (*DeleteCrewManageIndexRes, error)
 }
@@ -1064,6 +1207,15 @@ func (c *crewManageIndexClient) GetList(ctx context.Context, in *GetListCrewMana
 	return out, nil
 }
 
+func (c *crewManageIndexClient) GetAll(ctx context.Context, in *GetAllCrewManageIndexReq, opts ...grpc.CallOption) (*GetAllCrewManageIndexRes, error) {
+	out := new(GetAllCrewManageIndexRes)
+	err := c.cc.Invoke(ctx, "/config.CrewManageIndex/GetAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *crewManageIndexClient) Modify(ctx context.Context, in *ModifyCrewManageIndexReq, opts ...grpc.CallOption) (*ModifyCrewManageIndexRes, error) {
 	out := new(ModifyCrewManageIndexRes)
 	err := c.cc.Invoke(ctx, "/config.CrewManageIndex/Modify", in, out, opts...)
@@ -1087,6 +1239,7 @@ type CrewManageIndexServer interface {
 	Create(context.Context, *CreateCrewManageIndexReq) (*CreateCrewManageIndexRes, error)
 	GetOne(context.Context, *GetOneCrewManageIndexReq) (*GetOneCrewManageIndexRes, error)
 	GetList(context.Context, *GetListCrewManageIndexReq) (*GetListCrewManageIndexRes, error)
+	GetAll(context.Context, *GetAllCrewManageIndexReq) (*GetAllCrewManageIndexRes, error)
 	Modify(context.Context, *ModifyCrewManageIndexReq) (*ModifyCrewManageIndexRes, error)
 	Delete(context.Context, *DeleteCrewManageIndexReq) (*DeleteCrewManageIndexRes, error)
 }
@@ -1103,6 +1256,9 @@ func (*UnimplementedCrewManageIndexServer) GetOne(context.Context, *GetOneCrewMa
 }
 func (*UnimplementedCrewManageIndexServer) GetList(context.Context, *GetListCrewManageIndexReq) (*GetListCrewManageIndexRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetList not implemented")
+}
+func (*UnimplementedCrewManageIndexServer) GetAll(context.Context, *GetAllCrewManageIndexReq) (*GetAllCrewManageIndexRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
 }
 func (*UnimplementedCrewManageIndexServer) Modify(context.Context, *ModifyCrewManageIndexReq) (*ModifyCrewManageIndexRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Modify not implemented")
@@ -1169,6 +1325,24 @@ func _CrewManageIndex_GetList_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CrewManageIndex_GetAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllCrewManageIndexReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CrewManageIndexServer).GetAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/config.CrewManageIndex/GetAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CrewManageIndexServer).GetAll(ctx, req.(*GetAllCrewManageIndexReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _CrewManageIndex_Modify_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ModifyCrewManageIndexReq)
 	if err := dec(in); err != nil {
@@ -1220,6 +1394,10 @@ var _CrewManageIndex_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetList",
 			Handler:    _CrewManageIndex_GetList_Handler,
+		},
+		{
+			MethodName: "GetAll",
+			Handler:    _CrewManageIndex_GetAll_Handler,
 		},
 		{
 			MethodName: "Modify",

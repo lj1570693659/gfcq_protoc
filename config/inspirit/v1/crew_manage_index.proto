@@ -10,6 +10,7 @@ service CrewManageIndex {
   rpc Create(CreateCrewManageIndexReq) returns (CreateCrewManageIndexRes) {}
   rpc GetOne(GetOneCrewManageIndexReq) returns (GetOneCrewManageIndexRes) {}
   rpc GetList(GetListCrewManageIndexReq) returns (GetListCrewManageIndexRes) {}
+  rpc GetAll(GetAllCrewManageIndexReq) returns (GetAllCrewManageIndexRes) {}
   rpc Modify(ModifyCrewManageIndexReq) returns (ModifyCrewManageIndexRes) {}
   rpc Delete(DeleteCrewManageIndexReq) returns (DeleteCrewManageIndexRes) {}
 }
@@ -60,6 +61,16 @@ message GetListCrewManageIndexRes {
   int32 Size = 2;
   int32 TotalSize = 3;
   repeated CrewManageIndexInfo Data = 4;
+}
+
+// 列表接口输入数据结构
+message GetAllCrewManageIndexReq {
+  CrewManageIndexInfo CrewManageIndex = 1;
+}
+
+// 列表接口输出数据结构
+message GetAllCrewManageIndexRes {
+  repeated CrewManageIndexInfo Data = 1;
 }
 
 // 修改数据接口输入数据结构
