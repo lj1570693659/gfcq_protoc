@@ -10,6 +10,7 @@ service Roles {
   rpc Create(CreateRolesReq) returns (CreateRolesRes) {}
   rpc GetOne(GetOneRolesReq) returns (GetOneRolesRes) {}
   rpc GetList(GetListRolesReq) returns (GetListRolesRes) {}
+  rpc GetAll(GetAllRolesReq) returns (GetAllRolesRes) {}
   rpc Modify(ModifyRolesReq) returns (ModifyRolesRes) {}
   rpc Delete(DeleteRolesReq) returns (DeleteRolesRes) {}
 }
@@ -61,6 +62,16 @@ message GetListRolesRes {
   int32 Size = 2;
   int32 TotalSize = 3;
   repeated RolesInfo Data = 4;
+}
+
+// 列表接口输入数据结构
+message GetAllRolesReq {
+  RolesInfo Roles = 1;
+}
+
+// 列表接口输出数据结构
+message GetAllRolesRes {
+  repeated RolesInfo Data = 1;
 }
 
 // 修改数据接口输入数据结构

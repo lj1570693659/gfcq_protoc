@@ -475,6 +475,102 @@ func (x *GetListRolesRes) GetData() []*RolesInfo {
 	return nil
 }
 
+// 列表接口输入数据结构
+type GetAllRolesReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Roles *RolesInfo `protobuf:"bytes,1,opt,name=Roles,proto3" json:"Roles"`
+}
+
+func (x *GetAllRolesReq) Reset() {
+	*x = GetAllRolesReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_config_product_v1_roles_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetAllRolesReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllRolesReq) ProtoMessage() {}
+
+func (x *GetAllRolesReq) ProtoReflect() protoreflect.Message {
+	mi := &file_config_product_v1_roles_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllRolesReq.ProtoReflect.Descriptor instead.
+func (*GetAllRolesReq) Descriptor() ([]byte, []int) {
+	return file_config_product_v1_roles_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GetAllRolesReq) GetRoles() *RolesInfo {
+	if x != nil {
+		return x.Roles
+	}
+	return nil
+}
+
+// 列表接口输出数据结构
+type GetAllRolesRes struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Data []*RolesInfo `protobuf:"bytes,1,rep,name=Data,proto3" json:"Data"`
+}
+
+func (x *GetAllRolesRes) Reset() {
+	*x = GetAllRolesRes{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_config_product_v1_roles_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetAllRolesRes) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllRolesRes) ProtoMessage() {}
+
+func (x *GetAllRolesRes) ProtoReflect() protoreflect.Message {
+	mi := &file_config_product_v1_roles_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllRolesRes.ProtoReflect.Descriptor instead.
+func (*GetAllRolesRes) Descriptor() ([]byte, []int) {
+	return file_config_product_v1_roles_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetAllRolesRes) GetData() []*RolesInfo {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
 // 修改数据接口输入数据结构
 type ModifyRolesReq struct {
 	state         protoimpl.MessageState
@@ -491,7 +587,7 @@ type ModifyRolesReq struct {
 func (x *ModifyRolesReq) Reset() {
 	*x = ModifyRolesReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_config_product_v1_roles_proto_msgTypes[7]
+		mi := &file_config_product_v1_roles_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -504,7 +600,7 @@ func (x *ModifyRolesReq) String() string {
 func (*ModifyRolesReq) ProtoMessage() {}
 
 func (x *ModifyRolesReq) ProtoReflect() protoreflect.Message {
-	mi := &file_config_product_v1_roles_proto_msgTypes[7]
+	mi := &file_config_product_v1_roles_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -517,7 +613,7 @@ func (x *ModifyRolesReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ModifyRolesReq.ProtoReflect.Descriptor instead.
 func (*ModifyRolesReq) Descriptor() ([]byte, []int) {
-	return file_config_product_v1_roles_proto_rawDescGZIP(), []int{7}
+	return file_config_product_v1_roles_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ModifyRolesReq) GetName() string {
@@ -567,7 +663,7 @@ type ModifyRolesRes struct {
 func (x *ModifyRolesRes) Reset() {
 	*x = ModifyRolesRes{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_config_product_v1_roles_proto_msgTypes[8]
+		mi := &file_config_product_v1_roles_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -580,7 +676,7 @@ func (x *ModifyRolesRes) String() string {
 func (*ModifyRolesRes) ProtoMessage() {}
 
 func (x *ModifyRolesRes) ProtoReflect() protoreflect.Message {
-	mi := &file_config_product_v1_roles_proto_msgTypes[8]
+	mi := &file_config_product_v1_roles_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -593,7 +689,7 @@ func (x *ModifyRolesRes) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ModifyRolesRes.ProtoReflect.Descriptor instead.
 func (*ModifyRolesRes) Descriptor() ([]byte, []int) {
-	return file_config_product_v1_roles_proto_rawDescGZIP(), []int{8}
+	return file_config_product_v1_roles_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ModifyRolesRes) GetRoles() *RolesInfo {
@@ -615,7 +711,7 @@ type DeleteRolesReq struct {
 func (x *DeleteRolesReq) Reset() {
 	*x = DeleteRolesReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_config_product_v1_roles_proto_msgTypes[9]
+		mi := &file_config_product_v1_roles_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -628,7 +724,7 @@ func (x *DeleteRolesReq) String() string {
 func (*DeleteRolesReq) ProtoMessage() {}
 
 func (x *DeleteRolesReq) ProtoReflect() protoreflect.Message {
-	mi := &file_config_product_v1_roles_proto_msgTypes[9]
+	mi := &file_config_product_v1_roles_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -641,7 +737,7 @@ func (x *DeleteRolesReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteRolesReq.ProtoReflect.Descriptor instead.
 func (*DeleteRolesReq) Descriptor() ([]byte, []int) {
-	return file_config_product_v1_roles_proto_rawDescGZIP(), []int{9}
+	return file_config_product_v1_roles_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *DeleteRolesReq) GetId() int32 {
@@ -664,7 +760,7 @@ type DeleteRolesRes struct {
 func (x *DeleteRolesRes) Reset() {
 	*x = DeleteRolesRes{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_config_product_v1_roles_proto_msgTypes[10]
+		mi := &file_config_product_v1_roles_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -677,7 +773,7 @@ func (x *DeleteRolesRes) String() string {
 func (*DeleteRolesRes) ProtoMessage() {}
 
 func (x *DeleteRolesRes) ProtoReflect() protoreflect.Message {
-	mi := &file_config_product_v1_roles_proto_msgTypes[10]
+	mi := &file_config_product_v1_roles_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -690,7 +786,7 @@ func (x *DeleteRolesRes) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteRolesRes.ProtoReflect.Descriptor instead.
 func (*DeleteRolesRes) Descriptor() ([]byte, []int) {
-	return file_config_product_v1_roles_proto_rawDescGZIP(), []int{10}
+	return file_config_product_v1_roles_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *DeleteRolesRes) GetIsSuccess() bool {
@@ -755,36 +851,47 @@ var file_config_product_v1_roles_proto_rawDesc = []byte{
 	0x53, 0x69, 0x7a, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x54, 0x6f, 0x74, 0x61,
 	0x6c, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x25, 0x0a, 0x04, 0x44, 0x61, 0x74, 0x61, 0x18, 0x04, 0x20,
 	0x03, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x52, 0x6f, 0x6c,
-	0x65, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x44, 0x61, 0x74, 0x61, 0x22, 0x78, 0x0a, 0x0e,
-	0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x71, 0x12, 0x12,
-	0x0a, 0x04, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x4e, 0x61,
-	0x6d, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x50, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52,
-	0x03, 0x50, 0x69, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x45, 0x78, 0x70, 0x6c, 0x61, 0x69, 0x6e, 0x18,
-	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x45, 0x78, 0x70, 0x6c, 0x61, 0x69, 0x6e, 0x12, 0x16,
-	0x0a, 0x06, 0x52, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06,
-	0x52, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x64, 0x18, 0x05, 0x20, 0x01,
-	0x28, 0x05, 0x52, 0x02, 0x49, 0x64, 0x22, 0x39, 0x0a, 0x0e, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79,
-	0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x73, 0x12, 0x27, 0x0a, 0x05, 0x52, 0x6f, 0x6c, 0x65,
-	0x73, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67,
-	0x2e, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x05, 0x52, 0x6f, 0x6c, 0x65,
-	0x73, 0x22, 0x20, 0x0a, 0x0e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x6f, 0x6c, 0x65, 0x73,
-	0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52,
-	0x02, 0x49, 0x64, 0x22, 0x40, 0x0a, 0x0e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x6f, 0x6c,
-	0x65, 0x73, 0x52, 0x65, 0x73, 0x12, 0x1c, 0x0a, 0x09, 0x49, 0x73, 0x53, 0x75, 0x63, 0x63, 0x65,
-	0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x09, 0x49, 0x73, 0x53, 0x75, 0x63, 0x63,
-	0x65, 0x73, 0x73, 0x12, 0x10, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x03, 0x4d, 0x73, 0x67, 0x32, 0xb6, 0x02, 0x0a, 0x05, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x12,
-	0x3a, 0x0a, 0x06, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x12, 0x16, 0x2e, 0x63, 0x6f, 0x6e, 0x66,
-	0x69, 0x67, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65,
-	0x71, 0x1a, 0x16, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74,
-	0x65, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x3a, 0x0a, 0x06, 0x47,
-	0x65, 0x74, 0x4f, 0x6e, 0x65, 0x12, 0x16, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x47,
-	0x65, 0x74, 0x4f, 0x6e, 0x65, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e,
-	0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x52, 0x6f, 0x6c,
-	0x65, 0x73, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x3d, 0x0a, 0x07, 0x47, 0x65, 0x74, 0x4c, 0x69,
-	0x73, 0x74, 0x12, 0x17, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x47, 0x65, 0x74, 0x4c,
-	0x69, 0x73, 0x74, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x17, 0x2e, 0x63, 0x6f,
-	0x6e, 0x66, 0x69, 0x67, 0x2e, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x6f, 0x6c, 0x65,
+	0x65, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x44, 0x61, 0x74, 0x61, 0x22, 0x39, 0x0a, 0x0e,
+	0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x71, 0x12, 0x27,
+	0x0a, 0x05, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x11, 0x2e,
+	0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x49, 0x6e, 0x66, 0x6f,
+	0x52, 0x05, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x22, 0x37, 0x0a, 0x0e, 0x47, 0x65, 0x74, 0x41, 0x6c,
+	0x6c, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x73, 0x12, 0x25, 0x0a, 0x04, 0x44, 0x61, 0x74,
+	0x61, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x2e, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x44, 0x61, 0x74, 0x61,
+	0x22, 0x78, 0x0a, 0x0e, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52,
+	0x65, 0x71, 0x12, 0x12, 0x0a, 0x04, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x04, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x50, 0x69, 0x64, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x03, 0x50, 0x69, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x45, 0x78, 0x70, 0x6c,
+	0x61, 0x69, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x45, 0x78, 0x70, 0x6c, 0x61,
+	0x69, 0x6e, 0x12, 0x16, 0x0a, 0x06, 0x52, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x04, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x06, 0x52, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x64,
+	0x18, 0x05, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x49, 0x64, 0x22, 0x39, 0x0a, 0x0e, 0x4d, 0x6f,
+	0x64, 0x69, 0x66, 0x79, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x73, 0x12, 0x27, 0x0a, 0x05,
+	0x52, 0x6f, 0x6c, 0x65, 0x73, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x63, 0x6f,
+	0x6e, 0x66, 0x69, 0x67, 0x2e, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x05,
+	0x52, 0x6f, 0x6c, 0x65, 0x73, 0x22, 0x20, 0x0a, 0x0e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52,
+	0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x64, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x02, 0x49, 0x64, 0x22, 0x40, 0x0a, 0x0e, 0x44, 0x65, 0x6c, 0x65, 0x74,
+	0x65, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x73, 0x12, 0x1c, 0x0a, 0x09, 0x49, 0x73, 0x53,
+	0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x09, 0x49, 0x73,
+	0x53, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x12, 0x10, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x4d, 0x73, 0x67, 0x32, 0xf2, 0x02, 0x0a, 0x05, 0x52, 0x6f,
+	0x6c, 0x65, 0x73, 0x12, 0x3a, 0x0a, 0x06, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x12, 0x16, 0x2e,
+	0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x6f, 0x6c,
+	0x65, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x43,
+	0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12,
+	0x3a, 0x0a, 0x06, 0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x12, 0x16, 0x2e, 0x63, 0x6f, 0x6e, 0x66,
+	0x69, 0x67, 0x2e, 0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65,
+	0x71, 0x1a, 0x16, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x47, 0x65, 0x74, 0x4f, 0x6e,
+	0x65, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x3d, 0x0a, 0x07, 0x47,
+	0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x17, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e,
+	0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x71, 0x1a,
+	0x17, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74,
+	0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x3a, 0x0a, 0x06, 0x47, 0x65,
+	0x74, 0x41, 0x6c, 0x6c, 0x12, 0x16, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x47, 0x65,
+	0x74, 0x41, 0x6c, 0x6c, 0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x63,
+	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x52, 0x6f, 0x6c, 0x65,
 	0x73, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x3a, 0x0a, 0x06, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79,
 	0x12, 0x16, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79,
 	0x52, 0x6f, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69,
@@ -811,7 +918,7 @@ func file_config_product_v1_roles_proto_rawDescGZIP() []byte {
 	return file_config_product_v1_roles_proto_rawDescData
 }
 
-var file_config_product_v1_roles_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_config_product_v1_roles_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_config_product_v1_roles_proto_goTypes = []interface{}{
 	(*RolesInfo)(nil),       // 0: config.RolesInfo
 	(*CreateRolesReq)(nil),  // 1: config.CreateRolesReq
@@ -820,10 +927,12 @@ var file_config_product_v1_roles_proto_goTypes = []interface{}{
 	(*GetOneRolesRes)(nil),  // 4: config.GetOneRolesRes
 	(*GetListRolesReq)(nil), // 5: config.GetListRolesReq
 	(*GetListRolesRes)(nil), // 6: config.GetListRolesRes
-	(*ModifyRolesReq)(nil),  // 7: config.ModifyRolesReq
-	(*ModifyRolesRes)(nil),  // 8: config.ModifyRolesRes
-	(*DeleteRolesReq)(nil),  // 9: config.DeleteRolesReq
-	(*DeleteRolesRes)(nil),  // 10: config.DeleteRolesRes
+	(*GetAllRolesReq)(nil),  // 7: config.GetAllRolesReq
+	(*GetAllRolesRes)(nil),  // 8: config.GetAllRolesRes
+	(*ModifyRolesReq)(nil),  // 9: config.ModifyRolesReq
+	(*ModifyRolesRes)(nil),  // 10: config.ModifyRolesRes
+	(*DeleteRolesReq)(nil),  // 11: config.DeleteRolesReq
+	(*DeleteRolesRes)(nil),  // 12: config.DeleteRolesRes
 }
 var file_config_product_v1_roles_proto_depIdxs = []int32{
 	0,  // 0: config.CreateRolesRes.Roles:type_name -> config.RolesInfo
@@ -831,22 +940,26 @@ var file_config_product_v1_roles_proto_depIdxs = []int32{
 	0,  // 2: config.GetOneRolesRes.Roles:type_name -> config.RolesInfo
 	0,  // 3: config.GetListRolesReq.Roles:type_name -> config.RolesInfo
 	0,  // 4: config.GetListRolesRes.Data:type_name -> config.RolesInfo
-	0,  // 5: config.ModifyRolesRes.Roles:type_name -> config.RolesInfo
-	1,  // 6: config.Roles.Create:input_type -> config.CreateRolesReq
-	3,  // 7: config.Roles.GetOne:input_type -> config.GetOneRolesReq
-	5,  // 8: config.Roles.GetList:input_type -> config.GetListRolesReq
-	7,  // 9: config.Roles.Modify:input_type -> config.ModifyRolesReq
-	9,  // 10: config.Roles.Delete:input_type -> config.DeleteRolesReq
-	2,  // 11: config.Roles.Create:output_type -> config.CreateRolesRes
-	4,  // 12: config.Roles.GetOne:output_type -> config.GetOneRolesRes
-	6,  // 13: config.Roles.GetList:output_type -> config.GetListRolesRes
-	8,  // 14: config.Roles.Modify:output_type -> config.ModifyRolesRes
-	10, // 15: config.Roles.Delete:output_type -> config.DeleteRolesRes
-	11, // [11:16] is the sub-list for method output_type
-	6,  // [6:11] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	0,  // 5: config.GetAllRolesReq.Roles:type_name -> config.RolesInfo
+	0,  // 6: config.GetAllRolesRes.Data:type_name -> config.RolesInfo
+	0,  // 7: config.ModifyRolesRes.Roles:type_name -> config.RolesInfo
+	1,  // 8: config.Roles.Create:input_type -> config.CreateRolesReq
+	3,  // 9: config.Roles.GetOne:input_type -> config.GetOneRolesReq
+	5,  // 10: config.Roles.GetList:input_type -> config.GetListRolesReq
+	7,  // 11: config.Roles.GetAll:input_type -> config.GetAllRolesReq
+	9,  // 12: config.Roles.Modify:input_type -> config.ModifyRolesReq
+	11, // 13: config.Roles.Delete:input_type -> config.DeleteRolesReq
+	2,  // 14: config.Roles.Create:output_type -> config.CreateRolesRes
+	4,  // 15: config.Roles.GetOne:output_type -> config.GetOneRolesRes
+	6,  // 16: config.Roles.GetList:output_type -> config.GetListRolesRes
+	8,  // 17: config.Roles.GetAll:output_type -> config.GetAllRolesRes
+	10, // 18: config.Roles.Modify:output_type -> config.ModifyRolesRes
+	12, // 19: config.Roles.Delete:output_type -> config.DeleteRolesRes
+	14, // [14:20] is the sub-list for method output_type
+	8,  // [8:14] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_config_product_v1_roles_proto_init() }
@@ -940,7 +1053,7 @@ func file_config_product_v1_roles_proto_init() {
 			}
 		}
 		file_config_product_v1_roles_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ModifyRolesReq); i {
+			switch v := v.(*GetAllRolesReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -952,7 +1065,7 @@ func file_config_product_v1_roles_proto_init() {
 			}
 		}
 		file_config_product_v1_roles_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ModifyRolesRes); i {
+			switch v := v.(*GetAllRolesRes); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -964,7 +1077,7 @@ func file_config_product_v1_roles_proto_init() {
 			}
 		}
 		file_config_product_v1_roles_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteRolesReq); i {
+			switch v := v.(*ModifyRolesReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -976,6 +1089,30 @@ func file_config_product_v1_roles_proto_init() {
 			}
 		}
 		file_config_product_v1_roles_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ModifyRolesRes); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_config_product_v1_roles_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DeleteRolesReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_config_product_v1_roles_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*DeleteRolesRes); i {
 			case 0:
 				return &v.state
@@ -994,7 +1131,7 @@ func file_config_product_v1_roles_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_config_product_v1_roles_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -1023,6 +1160,7 @@ type RolesClient interface {
 	Create(ctx context.Context, in *CreateRolesReq, opts ...grpc.CallOption) (*CreateRolesRes, error)
 	GetOne(ctx context.Context, in *GetOneRolesReq, opts ...grpc.CallOption) (*GetOneRolesRes, error)
 	GetList(ctx context.Context, in *GetListRolesReq, opts ...grpc.CallOption) (*GetListRolesRes, error)
+	GetAll(ctx context.Context, in *GetAllRolesReq, opts ...grpc.CallOption) (*GetAllRolesRes, error)
 	Modify(ctx context.Context, in *ModifyRolesReq, opts ...grpc.CallOption) (*ModifyRolesRes, error)
 	Delete(ctx context.Context, in *DeleteRolesReq, opts ...grpc.CallOption) (*DeleteRolesRes, error)
 }
@@ -1062,6 +1200,15 @@ func (c *rolesClient) GetList(ctx context.Context, in *GetListRolesReq, opts ...
 	return out, nil
 }
 
+func (c *rolesClient) GetAll(ctx context.Context, in *GetAllRolesReq, opts ...grpc.CallOption) (*GetAllRolesRes, error) {
+	out := new(GetAllRolesRes)
+	err := c.cc.Invoke(ctx, "/config.Roles/GetAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rolesClient) Modify(ctx context.Context, in *ModifyRolesReq, opts ...grpc.CallOption) (*ModifyRolesRes, error) {
 	out := new(ModifyRolesRes)
 	err := c.cc.Invoke(ctx, "/config.Roles/Modify", in, out, opts...)
@@ -1085,6 +1232,7 @@ type RolesServer interface {
 	Create(context.Context, *CreateRolesReq) (*CreateRolesRes, error)
 	GetOne(context.Context, *GetOneRolesReq) (*GetOneRolesRes, error)
 	GetList(context.Context, *GetListRolesReq) (*GetListRolesRes, error)
+	GetAll(context.Context, *GetAllRolesReq) (*GetAllRolesRes, error)
 	Modify(context.Context, *ModifyRolesReq) (*ModifyRolesRes, error)
 	Delete(context.Context, *DeleteRolesReq) (*DeleteRolesRes, error)
 }
@@ -1101,6 +1249,9 @@ func (*UnimplementedRolesServer) GetOne(context.Context, *GetOneRolesReq) (*GetO
 }
 func (*UnimplementedRolesServer) GetList(context.Context, *GetListRolesReq) (*GetListRolesRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetList not implemented")
+}
+func (*UnimplementedRolesServer) GetAll(context.Context, *GetAllRolesReq) (*GetAllRolesRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
 }
 func (*UnimplementedRolesServer) Modify(context.Context, *ModifyRolesReq) (*ModifyRolesRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Modify not implemented")
@@ -1167,6 +1318,24 @@ func _Roles_GetList_Handler(srv interface{}, ctx context.Context, dec func(inter
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Roles_GetAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllRolesReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RolesServer).GetAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/config.Roles/GetAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RolesServer).GetAll(ctx, req.(*GetAllRolesReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Roles_Modify_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ModifyRolesReq)
 	if err := dec(in); err != nil {
@@ -1218,6 +1387,10 @@ var _Roles_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetList",
 			Handler:    _Roles_GetList_Handler,
+		},
+		{
+			MethodName: "GetAll",
+			Handler:    _Roles_GetAll_Handler,
 		},
 		{
 			MethodName: "Modify",
