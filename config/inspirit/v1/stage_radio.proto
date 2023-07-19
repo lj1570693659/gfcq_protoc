@@ -14,6 +14,7 @@ service StageRadio {
   rpc GetOne(GetOneStageRadioReq) returns (GetOneStageRadioRes) {}
   rpc GetList(GetListStageRadioReq) returns (GetListStageRadioRes) {}
   rpc GetAll(GetAllStageRadioReq) returns (GetAllStageRadioRes) {}
+  rpc GetQuotaRadioByScore(GetQuotaRadioByScoreReq) returns (GetQuotaRadioByScoreRes) {}
   rpc Modify(ModifyStageRadioReq) returns (ModifyStageRadioRes) {}
   rpc Delete(DeleteStageRadioReq) returns (DeleteStageRadioRes) {}
 }
@@ -81,7 +82,15 @@ message GetAllStageRadioReq {
 message GetAllStageRadioRes {
   repeated StageRadioInfo Data = 1;
 }
+// 列表接口输入数据结构
+message GetQuotaRadioByScoreReq {
+  uint32          Score = 1;// 得分分值
+}
 
+// 列表接口输出数据结构
+message GetQuotaRadioByScoreRes {
+  float            QuotaRadio = 1;// 激励额度占比
+}
 
 // 修改数据接口输入数据结构
 message ModifyStageRadioReq {
