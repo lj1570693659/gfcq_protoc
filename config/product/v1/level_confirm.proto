@@ -19,6 +19,7 @@ enum ScoreRangeEnum {
   anything = 0;
   includeMin = 1;
   includeMax = 2;
+  includeMinMax = 3;
 }
 
 // 是否委派PM(1:是 2：否)
