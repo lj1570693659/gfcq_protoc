@@ -10,8 +10,15 @@ service JobLevel {
   rpc Create(CreateJobLevelReq) returns (CreateJobLevelRes) {}
   rpc GetOne(GetOneJobLevelReq) returns (GetOneJobLevelRes) {}
   rpc GetList(GetListJobLevelReq) returns (GetListJobLevelRes) {}
+  rpc GetAll(GetAllJobLevelReq) returns (GetAllJobLevelRes) {}
   rpc Modify(ModifyJobLevelReq) returns (ModifyJobLevelRes) {}
   rpc Delete(DeleteJobLevelReq) returns (DeleteJobLevelRes) {}
+}
+
+enum OrderEnum {
+  random = 0; // 不排序，随机
+  desc = 1; // 倒叙
+  asc = 2; // 顺序
 }
 
 // 公共数据结构
@@ -58,6 +65,17 @@ message GetListJobLevelRes {
   int32 Size = 2;
   int32 TotalSize = 3;
   repeated JobLevelInfo Data = 4;
+}
+
+// 列表接口输入数据结构
+message GetAllJobLevelReq {
+  JobLevelInfo JobLevel = 1;
+  OrderEnum Sort = 2;
+}
+
+// 列表接口输出数据结构
+message GetAllJobLevelRes {
+  repeated JobLevelInfo Data = 1;
 }
 
 // 修改数据接口输入数据结构
