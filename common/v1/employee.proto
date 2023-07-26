@@ -6,14 +6,11 @@ package common;
 
 option go_package = "github.com/lj1570693659/gfcq_protoc/common/v1/employee";
 
-import "common/v1/employee_job.proto";
-import "common/v1/job.proto";
-import "common/v1/department.proto";
-
 service Employee {
   rpc Create(CreateEmployeeReq) returns (CreateEmployeeRes) {}
   rpc GetOne(GetOneEmployeeReq) returns (GetOneEmployeeRes) {}
   rpc GetList(GetListEmployeeReq) returns (GetListEmployeeRes) {}
+  rpc GetAll(GetAllEmployeeReq) returns (GetAllEmployeeRes) {}
   rpc Modify(ModifyEmployeeReq) returns (ModifyEmployeeRes) {}
   rpc Delete(DeleteEmployeeReq) returns (DeleteEmployeeRes) {}
 }
@@ -108,6 +105,16 @@ message GetListEmployeeRes {
   int32 Size = 2;
   int32 TotalSize = 3;
   repeated EmployeeInfo Data = 4;
+}
+
+// 列表接口输入数据结构
+message GetAllEmployeeReq {
+  EmployeeInfo Employee = 1;
+}
+
+// 列表接口输出数据结构
+message GetAllEmployeeRes {
+  repeated EmployeeInfo Data = 1;
 }
 
 // 修改数据接口输入数据结构

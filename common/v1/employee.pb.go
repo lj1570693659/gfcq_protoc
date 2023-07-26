@@ -139,20 +139,20 @@ type EmployeeInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id           int32      `protobuf:"varint,1,opt,name=Id,proto3" json:"Id"`
-	UserName     string     `protobuf:"bytes,2,opt,name=UserName,proto3" json:"UserName"`                      // 员工姓名
-	WorkNumber   string     `protobuf:"bytes,3,opt,name=WorkNumber,proto3" json:"WorkNumber"`                  // 员工工号
-	Sex          SexEnum    `protobuf:"varint,4,opt,name=Sex,proto3,enum=common.SexEnum" json:"Sex"`           // 性别（0：未知 1：男  2：女）
-	Phone        string     `protobuf:"bytes,5,opt,name=Phone,proto3" json:"Phone"`                            // 手机号码
-	Email        string     `protobuf:"bytes,6,opt,name=Email,proto3" json:"Email"`                            // 邮箱号码
-	DepartId     string     `protobuf:"bytes,7,opt,name=DepartId,proto3" json:"DepartId"`                      // 部门ID
-	JobLevel     int32      `protobuf:"varint,8,opt,name=JobLevel,proto3" json:"JobLevel"`                     // 职级
-	JobId        string     `protobuf:"bytes,9,opt,name=JobId,proto3" json:"JobId"`                            // 岗位信息
-	InstructorId int32      `protobuf:"varint,10,opt,name=InstructorId,proto3" json:"InstructorId"`            // 指导老师
-	Status       StatusEnum `protobuf:"varint,11,opt,name=Status,proto3,enum=common.StatusEnum" json:"Status"` // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
-	Remark       string     `protobuf:"bytes,12,opt,name=Remark,proto3" json:"Remark"`                         // 预留备注信息
-	CreateTime   string     `protobuf:"bytes,13,opt,name=CreateTime,proto3" json:"CreateTime"`                 // 数据新增时间
-	UpdateTime   string     `protobuf:"bytes,14,opt,name=UpdateTime,proto3" json:"UpdateTime"`                 // 最后一次更新数据时间
+	Id           int32      `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"`
+	UserName     string     `protobuf:"bytes,2,opt,name=UserName,proto3" json:"UserName,omitempty"`                      // 员工姓名
+	WorkNumber   string     `protobuf:"bytes,3,opt,name=WorkNumber,proto3" json:"WorkNumber,omitempty"`                  // 员工工号
+	Sex          SexEnum    `protobuf:"varint,4,opt,name=Sex,proto3,enum=common.SexEnum" json:"Sex,omitempty"`           // 性别（0：未知 1：男  2：女）
+	Phone        string     `protobuf:"bytes,5,opt,name=Phone,proto3" json:"Phone,omitempty"`                            // 手机号码
+	Email        string     `protobuf:"bytes,6,opt,name=Email,proto3" json:"Email,omitempty"`                            // 邮箱号码
+	DepartId     string     `protobuf:"bytes,7,opt,name=DepartId,proto3" json:"DepartId,omitempty"`                      // 部门ID
+	JobLevel     int32      `protobuf:"varint,8,opt,name=JobLevel,proto3" json:"JobLevel,omitempty"`                     // 职级
+	JobId        string     `protobuf:"bytes,9,opt,name=JobId,proto3" json:"JobId,omitempty"`                            // 岗位信息
+	InstructorId int32      `protobuf:"varint,10,opt,name=InstructorId,proto3" json:"InstructorId,omitempty"`            // 指导老师
+	Status       StatusEnum `protobuf:"varint,11,opt,name=Status,proto3,enum=common.StatusEnum" json:"Status,omitempty"` // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+	Remark       string     `protobuf:"bytes,12,opt,name=Remark,proto3" json:"Remark,omitempty"`                         // 预留备注信息
+	CreateTime   string     `protobuf:"bytes,13,opt,name=CreateTime,proto3" json:"CreateTime,omitempty"`                 // 数据新增时间
+	UpdateTime   string     `protobuf:"bytes,14,opt,name=UpdateTime,proto3" json:"UpdateTime,omitempty"`                 // 最后一次更新数据时间
 }
 
 func (x *EmployeeInfo) Reset() {
@@ -291,17 +291,17 @@ type CreateEmployeeReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Remark       string     `protobuf:"bytes,1,opt,name=Remark,proto3" json:"Remark"`
-	UserName     string     `protobuf:"bytes,2,opt,name=UserName,proto3" json:"UserName"`                      // 员工姓名
-	WorkNumber   string     `protobuf:"bytes,3,opt,name=WorkNumber,proto3" json:"WorkNumber"`                  // 员工工号
-	Sex          SexEnum    `protobuf:"varint,4,opt,name=Sex,proto3,enum=common.SexEnum" json:"Sex"`           // 性别（0：未知 1：男  2：女）
-	Phone        string     `protobuf:"bytes,5,opt,name=Phone,proto3" json:"Phone"`                            // 手机号码
-	Email        string     `protobuf:"bytes,6,opt,name=Email,proto3" json:"Email"`                            // 邮箱号码
-	JobLevel     int32      `protobuf:"varint,7,opt,name=JobLevel,proto3" json:"JobLevel"`                     // 职级
-	JobId        []int32    `protobuf:"varint,8,rep,packed,name=JobId,proto3" json:"JobId"`                    // 岗位信息
-	InstructorId int32      `protobuf:"varint,9,opt,name=InstructorId,proto3" json:"InstructorId"`             // 指导老师
-	Status       StatusEnum `protobuf:"varint,10,opt,name=Status,proto3,enum=common.StatusEnum" json:"Status"` // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
-	DepartId     string     `protobuf:"bytes,11,opt,name=DepartId,proto3" json:"DepartId"`                     // 部门ID
+	Remark       string     `protobuf:"bytes,1,opt,name=Remark,proto3" json:"Remark,omitempty"`
+	UserName     string     `protobuf:"bytes,2,opt,name=UserName,proto3" json:"UserName,omitempty"`                      // 员工姓名
+	WorkNumber   string     `protobuf:"bytes,3,opt,name=WorkNumber,proto3" json:"WorkNumber,omitempty"`                  // 员工工号
+	Sex          SexEnum    `protobuf:"varint,4,opt,name=Sex,proto3,enum=common.SexEnum" json:"Sex,omitempty"`           // 性别（0：未知 1：男  2：女）
+	Phone        string     `protobuf:"bytes,5,opt,name=Phone,proto3" json:"Phone,omitempty"`                            // 手机号码
+	Email        string     `protobuf:"bytes,6,opt,name=Email,proto3" json:"Email,omitempty"`                            // 邮箱号码
+	JobLevel     int32      `protobuf:"varint,7,opt,name=JobLevel,proto3" json:"JobLevel,omitempty"`                     // 职级
+	JobId        []int32    `protobuf:"varint,8,rep,packed,name=JobId,proto3" json:"JobId,omitempty"`                    // 岗位信息
+	InstructorId int32      `protobuf:"varint,9,opt,name=InstructorId,proto3" json:"InstructorId,omitempty"`             // 指导老师
+	Status       StatusEnum `protobuf:"varint,10,opt,name=Status,proto3,enum=common.StatusEnum" json:"Status,omitempty"` // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+	DepartId     string     `protobuf:"bytes,11,opt,name=DepartId,proto3" json:"DepartId,omitempty"`                     // 部门ID
 }
 
 func (x *CreateEmployeeReq) Reset() {
@@ -419,7 +419,7 @@ type CreateEmployeeRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Employee *EmployeeInfo `protobuf:"bytes,1,opt,name=Employee,proto3" json:"Employee"`
+	Employee *EmployeeInfo `protobuf:"bytes,1,opt,name=Employee,proto3" json:"Employee,omitempty"`
 }
 
 func (x *CreateEmployeeRes) Reset() {
@@ -467,15 +467,15 @@ type GetOneEmployeeReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id         int32      `protobuf:"varint,1,opt,name=Id,proto3" json:"Id"`                                // v: required
-	UserName   string     `protobuf:"bytes,2,opt,name=UserName,proto3" json:"UserName"`                     // 员工姓名
-	WorkNumber string     `protobuf:"bytes,3,opt,name=WorkNumber,proto3" json:"WorkNumber"`                 // 员工工号
-	Phone      string     `protobuf:"bytes,4,opt,name=Phone,proto3" json:"Phone"`                           // 手机号码
-	Email      string     `protobuf:"bytes,5,opt,name=Email,proto3" json:"Email"`                           // 邮箱号码
-	DepartId   []int32    `protobuf:"varint,6,rep,packed,name=DepartId,proto3" json:"DepartId"`             // 部门ID
-	JobId      []int32    `protobuf:"varint,7,rep,packed,name=JobId,proto3" json:"JobId"`                   // 岗位ID
-	JobLevel   []int32    `protobuf:"varint,8,rep,packed,name=JobLevel,proto3" json:"JobLevel"`             // 职级
-	Status     StatusEnum `protobuf:"varint,9,opt,name=status,proto3,enum=common.StatusEnum" json:"status"` // 在职状态
+	Id         int32      `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"`                                // v: required
+	UserName   string     `protobuf:"bytes,2,opt,name=UserName,proto3" json:"UserName,omitempty"`                     // 员工姓名
+	WorkNumber string     `protobuf:"bytes,3,opt,name=WorkNumber,proto3" json:"WorkNumber,omitempty"`                 // 员工工号
+	Phone      string     `protobuf:"bytes,4,opt,name=Phone,proto3" json:"Phone,omitempty"`                           // 手机号码
+	Email      string     `protobuf:"bytes,5,opt,name=Email,proto3" json:"Email,omitempty"`                           // 邮箱号码
+	DepartId   []int32    `protobuf:"varint,6,rep,packed,name=DepartId,proto3" json:"DepartId,omitempty"`             // 部门ID
+	JobId      []int32    `protobuf:"varint,7,rep,packed,name=JobId,proto3" json:"JobId,omitempty"`                   // 岗位ID
+	JobLevel   []int32    `protobuf:"varint,8,rep,packed,name=JobLevel,proto3" json:"JobLevel,omitempty"`             // 职级
+	Status     StatusEnum `protobuf:"varint,9,opt,name=status,proto3,enum=common.StatusEnum" json:"status,omitempty"` // 在职状态
 }
 
 func (x *GetOneEmployeeReq) Reset() {
@@ -579,11 +579,11 @@ type GetOneEmployeeRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Employee     *EmployeeInfo `protobuf:"bytes,1,opt,name=Employee,proto3" json:"Employee"`
-	DepartString string        `protobuf:"bytes,2,opt,name=DepartString,proto3" json:"DepartString"`
-	DepartIds    []int32       `protobuf:"varint,3,rep,packed,name=DepartIds,proto3" json:"DepartIds"` // 部门ID
-	JobIdString  string        `protobuf:"bytes,4,opt,name=JobIdString,proto3" json:"JobIdString"`     // 岗位信息
-	JobIds       []int32       `protobuf:"varint,5,rep,packed,name=JobIds,proto3" json:"JobIds"`       // 岗位ID
+	Employee     *EmployeeInfo `protobuf:"bytes,1,opt,name=Employee,proto3" json:"Employee,omitempty"`
+	DepartString string        `protobuf:"bytes,2,opt,name=DepartString,proto3" json:"DepartString,omitempty"`
+	DepartIds    []int32       `protobuf:"varint,3,rep,packed,name=DepartIds,proto3" json:"DepartIds,omitempty"` // 部门ID
+	JobIdString  string        `protobuf:"bytes,4,opt,name=JobIdString,proto3" json:"JobIdString,omitempty"`     // 岗位信息
+	JobIds       []int32       `protobuf:"varint,5,rep,packed,name=JobIds,proto3" json:"JobIds,omitempty"`       // 岗位ID
 }
 
 func (x *GetOneEmployeeRes) Reset() {
@@ -659,9 +659,9 @@ type GetListEmployeeReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Page     int32         `protobuf:"varint,1,opt,name=Page,proto3" json:"Page"`
-	Size     int32         `protobuf:"varint,2,opt,name=Size,proto3" json:"Size"`
-	Employee *EmployeeInfo `protobuf:"bytes,3,opt,name=Employee,proto3" json:"Employee"`
+	Page     int32         `protobuf:"varint,1,opt,name=Page,proto3" json:"Page,omitempty"`
+	Size     int32         `protobuf:"varint,2,opt,name=Size,proto3" json:"Size,omitempty"`
+	Employee *EmployeeInfo `protobuf:"bytes,3,opt,name=Employee,proto3" json:"Employee,omitempty"`
 }
 
 func (x *GetListEmployeeReq) Reset() {
@@ -723,10 +723,10 @@ type GetListEmployeeRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Page      int32           `protobuf:"varint,1,opt,name=Page,proto3" json:"Page"`
-	Size      int32           `protobuf:"varint,2,opt,name=Size,proto3" json:"Size"`
-	TotalSize int32           `protobuf:"varint,3,opt,name=TotalSize,proto3" json:"TotalSize"`
-	Data      []*EmployeeInfo `protobuf:"bytes,4,rep,name=Data,proto3" json:"Data"`
+	Page      int32           `protobuf:"varint,1,opt,name=Page,proto3" json:"Page,omitempty"`
+	Size      int32           `protobuf:"varint,2,opt,name=Size,proto3" json:"Size,omitempty"`
+	TotalSize int32           `protobuf:"varint,3,opt,name=TotalSize,proto3" json:"TotalSize,omitempty"`
+	Data      []*EmployeeInfo `protobuf:"bytes,4,rep,name=Data,proto3" json:"Data,omitempty"`
 }
 
 func (x *GetListEmployeeRes) Reset() {
@@ -789,30 +789,126 @@ func (x *GetListEmployeeRes) GetData() []*EmployeeInfo {
 	return nil
 }
 
+// 列表接口输入数据结构
+type GetAllEmployeeReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Employee *EmployeeInfo `protobuf:"bytes,1,opt,name=Employee,proto3" json:"Employee,omitempty"`
+}
+
+func (x *GetAllEmployeeReq) Reset() {
+	*x = GetAllEmployeeReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_common_v1_employee_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetAllEmployeeReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllEmployeeReq) ProtoMessage() {}
+
+func (x *GetAllEmployeeReq) ProtoReflect() protoreflect.Message {
+	mi := &file_common_v1_employee_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllEmployeeReq.ProtoReflect.Descriptor instead.
+func (*GetAllEmployeeReq) Descriptor() ([]byte, []int) {
+	return file_common_v1_employee_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GetAllEmployeeReq) GetEmployee() *EmployeeInfo {
+	if x != nil {
+		return x.Employee
+	}
+	return nil
+}
+
+// 列表接口输出数据结构
+type GetAllEmployeeRes struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Data []*EmployeeInfo `protobuf:"bytes,1,rep,name=Data,proto3" json:"Data,omitempty"`
+}
+
+func (x *GetAllEmployeeRes) Reset() {
+	*x = GetAllEmployeeRes{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_common_v1_employee_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetAllEmployeeRes) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllEmployeeRes) ProtoMessage() {}
+
+func (x *GetAllEmployeeRes) ProtoReflect() protoreflect.Message {
+	mi := &file_common_v1_employee_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllEmployeeRes.ProtoReflect.Descriptor instead.
+func (*GetAllEmployeeRes) Descriptor() ([]byte, []int) {
+	return file_common_v1_employee_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetAllEmployeeRes) GetData() []*EmployeeInfo {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
 // 修改数据接口输入数据结构
 type ModifyEmployeeReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Remark       string     `protobuf:"bytes,1,opt,name=Remark,proto3" json:"Remark"`
-	UserName     string     `protobuf:"bytes,2,opt,name=UserName,proto3" json:"UserName"`                      // 员工姓名
-	WorkNumber   string     `protobuf:"bytes,3,opt,name=WorkNumber,proto3" json:"WorkNumber"`                  // 员工工号
-	Sex          SexEnum    `protobuf:"varint,4,opt,name=Sex,proto3,enum=common.SexEnum" json:"Sex"`           // 性别（0：未知 1：男  2：女）
-	Phone        string     `protobuf:"bytes,5,opt,name=Phone,proto3" json:"Phone"`                            // 手机号码
-	Email        string     `protobuf:"bytes,6,opt,name=Email,proto3" json:"Email"`                            // 邮箱号码
-	JobLevel     int32      `protobuf:"varint,7,opt,name=JobLevel,proto3" json:"JobLevel"`                     // 职级
-	JobId        []int32    `protobuf:"varint,8,rep,packed,name=JobId,proto3" json:"JobId"`                    // 岗位信息
-	InstructorId int32      `protobuf:"varint,9,opt,name=InstructorId,proto3" json:"InstructorId"`             // 指导老师
-	Status       StatusEnum `protobuf:"varint,10,opt,name=Status,proto3,enum=common.StatusEnum" json:"Status"` // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
-	Id           int32      `protobuf:"varint,11,opt,name=Id,proto3" json:"Id"`                                // v: required
-	DepartId     string     `protobuf:"bytes,12,opt,name=DepartId,proto3" json:"DepartId"`                     // 部门ID
+	Remark       string     `protobuf:"bytes,1,opt,name=Remark,proto3" json:"Remark,omitempty"`
+	UserName     string     `protobuf:"bytes,2,opt,name=UserName,proto3" json:"UserName,omitempty"`                      // 员工姓名
+	WorkNumber   string     `protobuf:"bytes,3,opt,name=WorkNumber,proto3" json:"WorkNumber,omitempty"`                  // 员工工号
+	Sex          SexEnum    `protobuf:"varint,4,opt,name=Sex,proto3,enum=common.SexEnum" json:"Sex,omitempty"`           // 性别（0：未知 1：男  2：女）
+	Phone        string     `protobuf:"bytes,5,opt,name=Phone,proto3" json:"Phone,omitempty"`                            // 手机号码
+	Email        string     `protobuf:"bytes,6,opt,name=Email,proto3" json:"Email,omitempty"`                            // 邮箱号码
+	JobLevel     int32      `protobuf:"varint,7,opt,name=JobLevel,proto3" json:"JobLevel,omitempty"`                     // 职级
+	JobId        []int32    `protobuf:"varint,8,rep,packed,name=JobId,proto3" json:"JobId,omitempty"`                    // 岗位信息
+	InstructorId int32      `protobuf:"varint,9,opt,name=InstructorId,proto3" json:"InstructorId,omitempty"`             // 指导老师
+	Status       StatusEnum `protobuf:"varint,10,opt,name=Status,proto3,enum=common.StatusEnum" json:"Status,omitempty"` // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+	Id           int32      `protobuf:"varint,11,opt,name=Id,proto3" json:"Id,omitempty"`                                // v: required
+	DepartId     string     `protobuf:"bytes,12,opt,name=DepartId,proto3" json:"DepartId,omitempty"`                     // 部门ID
 }
 
 func (x *ModifyEmployeeReq) Reset() {
 	*x = ModifyEmployeeReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_common_v1_employee_proto_msgTypes[7]
+		mi := &file_common_v1_employee_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -825,7 +921,7 @@ func (x *ModifyEmployeeReq) String() string {
 func (*ModifyEmployeeReq) ProtoMessage() {}
 
 func (x *ModifyEmployeeReq) ProtoReflect() protoreflect.Message {
-	mi := &file_common_v1_employee_proto_msgTypes[7]
+	mi := &file_common_v1_employee_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -838,7 +934,7 @@ func (x *ModifyEmployeeReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ModifyEmployeeReq.ProtoReflect.Descriptor instead.
 func (*ModifyEmployeeReq) Descriptor() ([]byte, []int) {
-	return file_common_v1_employee_proto_rawDescGZIP(), []int{7}
+	return file_common_v1_employee_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ModifyEmployeeReq) GetRemark() string {
@@ -931,13 +1027,13 @@ type ModifyEmployeeRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Employee *EmployeeInfo `protobuf:"bytes,3,opt,name=Employee,proto3" json:"Employee"`
+	Employee *EmployeeInfo `protobuf:"bytes,3,opt,name=Employee,proto3" json:"Employee,omitempty"`
 }
 
 func (x *ModifyEmployeeRes) Reset() {
 	*x = ModifyEmployeeRes{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_common_v1_employee_proto_msgTypes[8]
+		mi := &file_common_v1_employee_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -950,7 +1046,7 @@ func (x *ModifyEmployeeRes) String() string {
 func (*ModifyEmployeeRes) ProtoMessage() {}
 
 func (x *ModifyEmployeeRes) ProtoReflect() protoreflect.Message {
-	mi := &file_common_v1_employee_proto_msgTypes[8]
+	mi := &file_common_v1_employee_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -963,7 +1059,7 @@ func (x *ModifyEmployeeRes) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ModifyEmployeeRes.ProtoReflect.Descriptor instead.
 func (*ModifyEmployeeRes) Descriptor() ([]byte, []int) {
-	return file_common_v1_employee_proto_rawDescGZIP(), []int{8}
+	return file_common_v1_employee_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ModifyEmployeeRes) GetEmployee() *EmployeeInfo {
@@ -979,13 +1075,13 @@ type DeleteEmployeeReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id int32 `protobuf:"varint,1,opt,name=Id,proto3" json:"Id"` // v: required
+	Id int32 `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"` // v: required
 }
 
 func (x *DeleteEmployeeReq) Reset() {
 	*x = DeleteEmployeeReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_common_v1_employee_proto_msgTypes[9]
+		mi := &file_common_v1_employee_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -998,7 +1094,7 @@ func (x *DeleteEmployeeReq) String() string {
 func (*DeleteEmployeeReq) ProtoMessage() {}
 
 func (x *DeleteEmployeeReq) ProtoReflect() protoreflect.Message {
-	mi := &file_common_v1_employee_proto_msgTypes[9]
+	mi := &file_common_v1_employee_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1011,7 +1107,7 @@ func (x *DeleteEmployeeReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteEmployeeReq.ProtoReflect.Descriptor instead.
 func (*DeleteEmployeeReq) Descriptor() ([]byte, []int) {
-	return file_common_v1_employee_proto_rawDescGZIP(), []int{9}
+	return file_common_v1_employee_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *DeleteEmployeeReq) GetId() int32 {
@@ -1027,14 +1123,14 @@ type DeleteEmployeeRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	IsSuccess bool   `protobuf:"varint,1,opt,name=IsSuccess,proto3" json:"IsSuccess"` // v: required
-	Msg       string `protobuf:"bytes,2,opt,name=Msg,proto3" json:"Msg"`              // v: required
+	IsSuccess bool   `protobuf:"varint,1,opt,name=IsSuccess,proto3" json:"IsSuccess,omitempty"` // v: required
+	Msg       string `protobuf:"bytes,2,opt,name=Msg,proto3" json:"Msg,omitempty"`              // v: required
 }
 
 func (x *DeleteEmployeeRes) Reset() {
 	*x = DeleteEmployeeRes{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_common_v1_employee_proto_msgTypes[10]
+		mi := &file_common_v1_employee_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1047,7 +1143,7 @@ func (x *DeleteEmployeeRes) String() string {
 func (*DeleteEmployeeRes) ProtoMessage() {}
 
 func (x *DeleteEmployeeRes) ProtoReflect() protoreflect.Message {
-	mi := &file_common_v1_employee_proto_msgTypes[10]
+	mi := &file_common_v1_employee_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1060,7 +1156,7 @@ func (x *DeleteEmployeeRes) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteEmployeeRes.ProtoReflect.Descriptor instead.
 func (*DeleteEmployeeRes) Descriptor() ([]byte, []int) {
-	return file_common_v1_employee_proto_rawDescGZIP(), []int{10}
+	return file_common_v1_employee_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *DeleteEmployeeRes) GetIsSuccess() bool {
@@ -1178,74 +1274,86 @@ var file_common_v1_employee_proto_rawDesc = []byte{
 	0x52, 0x09, 0x54, 0x6f, 0x74, 0x61, 0x6c, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x28, 0x0a, 0x04, 0x44,
 	0x61, 0x74, 0x61, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x63, 0x6f, 0x6d, 0x6d,
 	0x6f, 0x6e, 0x2e, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52,
-	0x04, 0x44, 0x61, 0x74, 0x61, 0x22, 0xe4, 0x02, 0x0a, 0x11, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79,
-	0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x71, 0x12, 0x16, 0x0a, 0x06, 0x52,
-	0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x52, 0x65, 0x6d,
-	0x61, 0x72, 0x6b, 0x12, 0x1a, 0x0a, 0x08, 0x55, 0x73, 0x65, 0x72, 0x4e, 0x61, 0x6d, 0x65, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x55, 0x73, 0x65, 0x72, 0x4e, 0x61, 0x6d, 0x65, 0x12,
-	0x1e, 0x0a, 0x0a, 0x57, 0x6f, 0x72, 0x6b, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x03, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x0a, 0x57, 0x6f, 0x72, 0x6b, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x12,
-	0x21, 0x0a, 0x03, 0x53, 0x65, 0x78, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x0f, 0x2e, 0x63,
-	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x53, 0x65, 0x78, 0x45, 0x6e, 0x75, 0x6d, 0x52, 0x03, 0x53,
-	0x65, 0x78, 0x12, 0x14, 0x0a, 0x05, 0x50, 0x68, 0x6f, 0x6e, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x05, 0x50, 0x68, 0x6f, 0x6e, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x45, 0x6d, 0x61, 0x69,
-	0x6c, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x12, 0x1a,
-	0x0a, 0x08, 0x4a, 0x6f, 0x62, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x18, 0x07, 0x20, 0x01, 0x28, 0x05,
-	0x52, 0x08, 0x4a, 0x6f, 0x62, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x12, 0x14, 0x0a, 0x05, 0x4a, 0x6f,
-	0x62, 0x49, 0x64, 0x18, 0x08, 0x20, 0x03, 0x28, 0x05, 0x52, 0x05, 0x4a, 0x6f, 0x62, 0x49, 0x64,
-	0x12, 0x22, 0x0a, 0x0c, 0x49, 0x6e, 0x73, 0x74, 0x72, 0x75, 0x63, 0x74, 0x6f, 0x72, 0x49, 0x64,
-	0x18, 0x09, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0c, 0x49, 0x6e, 0x73, 0x74, 0x72, 0x75, 0x63, 0x74,
-	0x6f, 0x72, 0x49, 0x64, 0x12, 0x2a, 0x0a, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x0a,
-	0x20, 0x01, 0x28, 0x0e, 0x32, 0x12, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x53, 0x74,
-	0x61, 0x74, 0x75, 0x73, 0x45, 0x6e, 0x75, 0x6d, 0x52, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73,
-	0x12, 0x0e, 0x0a, 0x02, 0x49, 0x64, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x49, 0x64,
-	0x12, 0x1a, 0x0a, 0x08, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x49, 0x64, 0x18, 0x0c, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x08, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x49, 0x64, 0x22, 0x45, 0x0a, 0x11,
+	0x04, 0x44, 0x61, 0x74, 0x61, 0x22, 0x45, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x45,
+	0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x71, 0x12, 0x30, 0x0a, 0x08, 0x45, 0x6d,
+	0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x63,
+	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x49, 0x6e,
+	0x66, 0x6f, 0x52, 0x08, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x22, 0x3d, 0x0a, 0x11,
+	0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65,
+	0x73, 0x12, 0x28, 0x0a, 0x04, 0x44, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x14, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65,
+	0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x44, 0x61, 0x74, 0x61, 0x22, 0xe4, 0x02, 0x0a, 0x11,
 	0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65,
-	0x73, 0x12, 0x30, 0x0a, 0x08, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x18, 0x03, 0x20,
-	0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x45, 0x6d, 0x70,
-	0x6c, 0x6f, 0x79, 0x65, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x08, 0x45, 0x6d, 0x70, 0x6c, 0x6f,
-	0x79, 0x65, 0x65, 0x22, 0x23, 0x0a, 0x11, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x45, 0x6d, 0x70,
-	0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x64, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x49, 0x64, 0x22, 0x43, 0x0a, 0x11, 0x44, 0x65, 0x6c, 0x65,
-	0x74, 0x65, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x73, 0x12, 0x1c, 0x0a,
-	0x09, 0x49, 0x73, 0x53, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08,
-	0x52, 0x09, 0x49, 0x73, 0x53, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x12, 0x10, 0x0a, 0x03, 0x4d,
-	0x73, 0x67, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x4d, 0x73, 0x67, 0x2a, 0x50, 0x0a,
-	0x0a, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x45, 0x6e, 0x75, 0x6d, 0x12, 0x0c, 0x0a, 0x08, 0x61,
-	0x6e, 0x79, 0x74, 0x68, 0x69, 0x6e, 0x67, 0x10, 0x00, 0x12, 0x0b, 0x0a, 0x07, 0x77, 0x6f, 0x72,
-	0x6b, 0x69, 0x6e, 0x67, 0x10, 0x01, 0x12, 0x0a, 0x0a, 0x06, 0x74, 0x72, 0x79, 0x6f, 0x75, 0x74,
-	0x10, 0x02, 0x12, 0x0b, 0x0a, 0x07, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x73, 0x10, 0x03, 0x12,
-	0x0e, 0x0a, 0x0a, 0x74, 0x65, 0x72, 0x6d, 0x69, 0x6e, 0x61, 0x74, 0x65, 0x64, 0x10, 0x04, 0x2a,
-	0x29, 0x0a, 0x07, 0x53, 0x65, 0x78, 0x45, 0x6e, 0x75, 0x6d, 0x12, 0x0a, 0x0a, 0x06, 0x75, 0x6e,
-	0x6b, 0x6e, 0x6f, 0x77, 0x10, 0x00, 0x12, 0x07, 0x0a, 0x03, 0x6d, 0x61, 0x6e, 0x10, 0x01, 0x12,
-	0x09, 0x0a, 0x05, 0x77, 0x6f, 0x6d, 0x61, 0x6e, 0x10, 0x02, 0x32, 0xd7, 0x02, 0x0a, 0x08, 0x45,
-	0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x12, 0x40, 0x0a, 0x06, 0x43, 0x72, 0x65, 0x61, 0x74,
-	0x65, 0x12, 0x19, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74,
-	0x65, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x19, 0x2e, 0x63,
-	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x45, 0x6d, 0x70, 0x6c,
-	0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x40, 0x0a, 0x06, 0x47, 0x65, 0x74,
-	0x4f, 0x6e, 0x65, 0x12, 0x19, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74,
-	0x4f, 0x6e, 0x65, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x19,
-	0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x45, 0x6d,
-	0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x43, 0x0a, 0x07, 0x47,
-	0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x1a, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e,
-	0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52,
-	0x65, 0x71, 0x1a, 0x1a, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x4c,
-	0x69, 0x73, 0x74, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x73, 0x22, 0x00,
-	0x12, 0x40, 0x0a, 0x06, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x12, 0x19, 0x2e, 0x63, 0x6f, 0x6d,
-	0x6d, 0x6f, 0x6e, 0x2e, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79,
-	0x65, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x19, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x4d,
-	0x6f, 0x64, 0x69, 0x66, 0x79, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x73,
-	0x22, 0x00, 0x12, 0x40, 0x0a, 0x06, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x12, 0x19, 0x2e, 0x63,
-	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x45, 0x6d, 0x70, 0x6c,
-	0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x19, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
-	0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52,
-	0x65, 0x73, 0x22, 0x00, 0x42, 0x38, 0x5a, 0x36, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63,
-	0x6f, 0x6d, 0x2f, 0x6c, 0x6a, 0x31, 0x35, 0x37, 0x30, 0x36, 0x39, 0x33, 0x36, 0x35, 0x39, 0x2f,
-	0x67, 0x66, 0x63, 0x71, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x2f, 0x63, 0x6f, 0x6d, 0x6d,
-	0x6f, 0x6e, 0x2f, 0x76, 0x31, 0x2f, 0x65, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x62, 0x06,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x71, 0x12, 0x16, 0x0a, 0x06, 0x52, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x06, 0x52, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x12, 0x1a, 0x0a, 0x08, 0x55, 0x73, 0x65,
+	0x72, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x55, 0x73, 0x65,
+	0x72, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1e, 0x0a, 0x0a, 0x57, 0x6f, 0x72, 0x6b, 0x4e, 0x75, 0x6d,
+	0x62, 0x65, 0x72, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x57, 0x6f, 0x72, 0x6b, 0x4e,
+	0x75, 0x6d, 0x62, 0x65, 0x72, 0x12, 0x21, 0x0a, 0x03, 0x53, 0x65, 0x78, 0x18, 0x04, 0x20, 0x01,
+	0x28, 0x0e, 0x32, 0x0f, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x53, 0x65, 0x78, 0x45,
+	0x6e, 0x75, 0x6d, 0x52, 0x03, 0x53, 0x65, 0x78, 0x12, 0x14, 0x0a, 0x05, 0x50, 0x68, 0x6f, 0x6e,
+	0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x50, 0x68, 0x6f, 0x6e, 0x65, 0x12, 0x14,
+	0x0a, 0x05, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x45,
+	0x6d, 0x61, 0x69, 0x6c, 0x12, 0x1a, 0x0a, 0x08, 0x4a, 0x6f, 0x62, 0x4c, 0x65, 0x76, 0x65, 0x6c,
+	0x18, 0x07, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x4a, 0x6f, 0x62, 0x4c, 0x65, 0x76, 0x65, 0x6c,
+	0x12, 0x14, 0x0a, 0x05, 0x4a, 0x6f, 0x62, 0x49, 0x64, 0x18, 0x08, 0x20, 0x03, 0x28, 0x05, 0x52,
+	0x05, 0x4a, 0x6f, 0x62, 0x49, 0x64, 0x12, 0x22, 0x0a, 0x0c, 0x49, 0x6e, 0x73, 0x74, 0x72, 0x75,
+	0x63, 0x74, 0x6f, 0x72, 0x49, 0x64, 0x18, 0x09, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0c, 0x49, 0x6e,
+	0x73, 0x74, 0x72, 0x75, 0x63, 0x74, 0x6f, 0x72, 0x49, 0x64, 0x12, 0x2a, 0x0a, 0x06, 0x53, 0x74,
+	0x61, 0x74, 0x75, 0x73, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x12, 0x2e, 0x63, 0x6f, 0x6d,
+	0x6d, 0x6f, 0x6e, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x45, 0x6e, 0x75, 0x6d, 0x52, 0x06,
+	0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x64, 0x18, 0x0b, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x02, 0x49, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74,
+	0x49, 0x64, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74,
+	0x49, 0x64, 0x22, 0x45, 0x0a, 0x11, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x45, 0x6d, 0x70, 0x6c,
+	0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x73, 0x12, 0x30, 0x0a, 0x08, 0x45, 0x6d, 0x70, 0x6c, 0x6f,
+	0x79, 0x65, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x63, 0x6f, 0x6d, 0x6d,
+	0x6f, 0x6e, 0x2e, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52,
+	0x08, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x22, 0x23, 0x0a, 0x11, 0x44, 0x65, 0x6c,
+	0x65, 0x74, 0x65, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e,
+	0x0a, 0x02, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x49, 0x64, 0x22, 0x43,
+	0x0a, 0x11, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65,
+	0x52, 0x65, 0x73, 0x12, 0x1c, 0x0a, 0x09, 0x49, 0x73, 0x53, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x09, 0x49, 0x73, 0x53, 0x75, 0x63, 0x63, 0x65, 0x73,
+	0x73, 0x12, 0x10, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03,
+	0x4d, 0x73, 0x67, 0x2a, 0x50, 0x0a, 0x0a, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x45, 0x6e, 0x75,
+	0x6d, 0x12, 0x0c, 0x0a, 0x08, 0x61, 0x6e, 0x79, 0x74, 0x68, 0x69, 0x6e, 0x67, 0x10, 0x00, 0x12,
+	0x0b, 0x0a, 0x07, 0x77, 0x6f, 0x72, 0x6b, 0x69, 0x6e, 0x67, 0x10, 0x01, 0x12, 0x0a, 0x0a, 0x06,
+	0x74, 0x72, 0x79, 0x6f, 0x75, 0x74, 0x10, 0x02, 0x12, 0x0b, 0x0a, 0x07, 0x69, 0x6e, 0x74, 0x65,
+	0x72, 0x6e, 0x73, 0x10, 0x03, 0x12, 0x0e, 0x0a, 0x0a, 0x74, 0x65, 0x72, 0x6d, 0x69, 0x6e, 0x61,
+	0x74, 0x65, 0x64, 0x10, 0x04, 0x2a, 0x29, 0x0a, 0x07, 0x53, 0x65, 0x78, 0x45, 0x6e, 0x75, 0x6d,
+	0x12, 0x0a, 0x0a, 0x06, 0x75, 0x6e, 0x6b, 0x6e, 0x6f, 0x77, 0x10, 0x00, 0x12, 0x07, 0x0a, 0x03,
+	0x6d, 0x61, 0x6e, 0x10, 0x01, 0x12, 0x09, 0x0a, 0x05, 0x77, 0x6f, 0x6d, 0x61, 0x6e, 0x10, 0x02,
+	0x32, 0x99, 0x03, 0x0a, 0x08, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x12, 0x40, 0x0a,
+	0x06, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x12, 0x19, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
+	0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52,
+	0x65, 0x71, 0x1a, 0x19, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43, 0x72, 0x65, 0x61,
+	0x74, 0x65, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12,
+	0x40, 0x0a, 0x06, 0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x12, 0x19, 0x2e, 0x63, 0x6f, 0x6d, 0x6d,
+	0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65,
+	0x65, 0x52, 0x65, 0x71, 0x1a, 0x19, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x47, 0x65,
+	0x74, 0x4f, 0x6e, 0x65, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x73, 0x22,
+	0x00, 0x12, 0x43, 0x0a, 0x07, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x1a, 0x2e, 0x63,
+	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x45, 0x6d, 0x70,
+	0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x1a, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
+	0x6e, 0x2e, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65,
+	0x65, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x40, 0x0a, 0x06, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c,
+	0x12, 0x19, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c,
+	0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x19, 0x2e, 0x63, 0x6f,
+	0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x45, 0x6d, 0x70, 0x6c, 0x6f,
+	0x79, 0x65, 0x65, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x40, 0x0a, 0x06, 0x4d, 0x6f, 0x64, 0x69,
+	0x66, 0x79, 0x12, 0x19, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x4d, 0x6f, 0x64, 0x69,
+	0x66, 0x79, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x19, 0x2e,
+	0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x45, 0x6d, 0x70,
+	0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x40, 0x0a, 0x06, 0x44, 0x65,
+	0x6c, 0x65, 0x74, 0x65, 0x12, 0x19, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x44, 0x65,
+	0x6c, 0x65, 0x74, 0x65, 0x45, 0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x71, 0x1a,
+	0x19, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x45,
+	0x6d, 0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x52, 0x65, 0x73, 0x22, 0x00, 0x42, 0x38, 0x5a, 0x36,
+	0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x6c, 0x6a, 0x31, 0x35, 0x37,
+	0x30, 0x36, 0x39, 0x33, 0x36, 0x35, 0x39, 0x2f, 0x67, 0x66, 0x63, 0x71, 0x5f, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x63, 0x2f, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2f, 0x76, 0x31, 0x2f, 0x65, 0x6d,
+	0x70, 0x6c, 0x6f, 0x79, 0x65, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1261,7 +1369,7 @@ func file_common_v1_employee_proto_rawDescGZIP() []byte {
 }
 
 var file_common_v1_employee_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_common_v1_employee_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_common_v1_employee_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_common_v1_employee_proto_goTypes = []interface{}{
 	(StatusEnum)(0),            // 0: common.StatusEnum
 	(SexEnum)(0),               // 1: common.SexEnum
@@ -1272,10 +1380,12 @@ var file_common_v1_employee_proto_goTypes = []interface{}{
 	(*GetOneEmployeeRes)(nil),  // 6: common.GetOneEmployeeRes
 	(*GetListEmployeeReq)(nil), // 7: common.GetListEmployeeReq
 	(*GetListEmployeeRes)(nil), // 8: common.GetListEmployeeRes
-	(*ModifyEmployeeReq)(nil),  // 9: common.ModifyEmployeeReq
-	(*ModifyEmployeeRes)(nil),  // 10: common.ModifyEmployeeRes
-	(*DeleteEmployeeReq)(nil),  // 11: common.DeleteEmployeeReq
-	(*DeleteEmployeeRes)(nil),  // 12: common.DeleteEmployeeRes
+	(*GetAllEmployeeReq)(nil),  // 9: common.GetAllEmployeeReq
+	(*GetAllEmployeeRes)(nil),  // 10: common.GetAllEmployeeRes
+	(*ModifyEmployeeReq)(nil),  // 11: common.ModifyEmployeeReq
+	(*ModifyEmployeeRes)(nil),  // 12: common.ModifyEmployeeRes
+	(*DeleteEmployeeReq)(nil),  // 13: common.DeleteEmployeeReq
+	(*DeleteEmployeeRes)(nil),  // 14: common.DeleteEmployeeRes
 }
 var file_common_v1_employee_proto_depIdxs = []int32{
 	1,  // 0: common.EmployeeInfo.Sex:type_name -> common.SexEnum
@@ -1287,24 +1397,28 @@ var file_common_v1_employee_proto_depIdxs = []int32{
 	2,  // 6: common.GetOneEmployeeRes.Employee:type_name -> common.EmployeeInfo
 	2,  // 7: common.GetListEmployeeReq.Employee:type_name -> common.EmployeeInfo
 	2,  // 8: common.GetListEmployeeRes.Data:type_name -> common.EmployeeInfo
-	1,  // 9: common.ModifyEmployeeReq.Sex:type_name -> common.SexEnum
-	0,  // 10: common.ModifyEmployeeReq.Status:type_name -> common.StatusEnum
-	2,  // 11: common.ModifyEmployeeRes.Employee:type_name -> common.EmployeeInfo
-	3,  // 12: common.Employee.Create:input_type -> common.CreateEmployeeReq
-	5,  // 13: common.Employee.GetOne:input_type -> common.GetOneEmployeeReq
-	7,  // 14: common.Employee.GetList:input_type -> common.GetListEmployeeReq
-	9,  // 15: common.Employee.Modify:input_type -> common.ModifyEmployeeReq
-	11, // 16: common.Employee.Delete:input_type -> common.DeleteEmployeeReq
-	4,  // 17: common.Employee.Create:output_type -> common.CreateEmployeeRes
-	6,  // 18: common.Employee.GetOne:output_type -> common.GetOneEmployeeRes
-	8,  // 19: common.Employee.GetList:output_type -> common.GetListEmployeeRes
-	10, // 20: common.Employee.Modify:output_type -> common.ModifyEmployeeRes
-	12, // 21: common.Employee.Delete:output_type -> common.DeleteEmployeeRes
-	17, // [17:22] is the sub-list for method output_type
-	12, // [12:17] is the sub-list for method input_type
-	12, // [12:12] is the sub-list for extension type_name
-	12, // [12:12] is the sub-list for extension extendee
-	0,  // [0:12] is the sub-list for field type_name
+	2,  // 9: common.GetAllEmployeeReq.Employee:type_name -> common.EmployeeInfo
+	2,  // 10: common.GetAllEmployeeRes.Data:type_name -> common.EmployeeInfo
+	1,  // 11: common.ModifyEmployeeReq.Sex:type_name -> common.SexEnum
+	0,  // 12: common.ModifyEmployeeReq.Status:type_name -> common.StatusEnum
+	2,  // 13: common.ModifyEmployeeRes.Employee:type_name -> common.EmployeeInfo
+	3,  // 14: common.Employee.Create:input_type -> common.CreateEmployeeReq
+	5,  // 15: common.Employee.GetOne:input_type -> common.GetOneEmployeeReq
+	7,  // 16: common.Employee.GetList:input_type -> common.GetListEmployeeReq
+	9,  // 17: common.Employee.GetAll:input_type -> common.GetAllEmployeeReq
+	11, // 18: common.Employee.Modify:input_type -> common.ModifyEmployeeReq
+	13, // 19: common.Employee.Delete:input_type -> common.DeleteEmployeeReq
+	4,  // 20: common.Employee.Create:output_type -> common.CreateEmployeeRes
+	6,  // 21: common.Employee.GetOne:output_type -> common.GetOneEmployeeRes
+	8,  // 22: common.Employee.GetList:output_type -> common.GetListEmployeeRes
+	10, // 23: common.Employee.GetAll:output_type -> common.GetAllEmployeeRes
+	12, // 24: common.Employee.Modify:output_type -> common.ModifyEmployeeRes
+	14, // 25: common.Employee.Delete:output_type -> common.DeleteEmployeeRes
+	20, // [20:26] is the sub-list for method output_type
+	14, // [14:20] is the sub-list for method input_type
+	14, // [14:14] is the sub-list for extension type_name
+	14, // [14:14] is the sub-list for extension extendee
+	0,  // [0:14] is the sub-list for field type_name
 }
 
 func init() { file_common_v1_employee_proto_init() }
@@ -1398,7 +1512,7 @@ func file_common_v1_employee_proto_init() {
 			}
 		}
 		file_common_v1_employee_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ModifyEmployeeReq); i {
+			switch v := v.(*GetAllEmployeeReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1410,7 +1524,7 @@ func file_common_v1_employee_proto_init() {
 			}
 		}
 		file_common_v1_employee_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ModifyEmployeeRes); i {
+			switch v := v.(*GetAllEmployeeRes); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1422,7 +1536,7 @@ func file_common_v1_employee_proto_init() {
 			}
 		}
 		file_common_v1_employee_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteEmployeeReq); i {
+			switch v := v.(*ModifyEmployeeReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1434,6 +1548,30 @@ func file_common_v1_employee_proto_init() {
 			}
 		}
 		file_common_v1_employee_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ModifyEmployeeRes); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_common_v1_employee_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DeleteEmployeeReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_common_v1_employee_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*DeleteEmployeeRes); i {
 			case 0:
 				return &v.state
@@ -1452,7 +1590,7 @@ func file_common_v1_employee_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_common_v1_employee_proto_rawDesc,
 			NumEnums:      2,
-			NumMessages:   11,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -1482,6 +1620,7 @@ type EmployeeClient interface {
 	Create(ctx context.Context, in *CreateEmployeeReq, opts ...grpc.CallOption) (*CreateEmployeeRes, error)
 	GetOne(ctx context.Context, in *GetOneEmployeeReq, opts ...grpc.CallOption) (*GetOneEmployeeRes, error)
 	GetList(ctx context.Context, in *GetListEmployeeReq, opts ...grpc.CallOption) (*GetListEmployeeRes, error)
+	GetAll(ctx context.Context, in *GetAllEmployeeReq, opts ...grpc.CallOption) (*GetAllEmployeeRes, error)
 	Modify(ctx context.Context, in *ModifyEmployeeReq, opts ...grpc.CallOption) (*ModifyEmployeeRes, error)
 	Delete(ctx context.Context, in *DeleteEmployeeReq, opts ...grpc.CallOption) (*DeleteEmployeeRes, error)
 }
@@ -1521,6 +1660,15 @@ func (c *employeeClient) GetList(ctx context.Context, in *GetListEmployeeReq, op
 	return out, nil
 }
 
+func (c *employeeClient) GetAll(ctx context.Context, in *GetAllEmployeeReq, opts ...grpc.CallOption) (*GetAllEmployeeRes, error) {
+	out := new(GetAllEmployeeRes)
+	err := c.cc.Invoke(ctx, "/common.Employee/GetAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *employeeClient) Modify(ctx context.Context, in *ModifyEmployeeReq, opts ...grpc.CallOption) (*ModifyEmployeeRes, error) {
 	out := new(ModifyEmployeeRes)
 	err := c.cc.Invoke(ctx, "/common.Employee/Modify", in, out, opts...)
@@ -1544,6 +1692,7 @@ type EmployeeServer interface {
 	Create(context.Context, *CreateEmployeeReq) (*CreateEmployeeRes, error)
 	GetOne(context.Context, *GetOneEmployeeReq) (*GetOneEmployeeRes, error)
 	GetList(context.Context, *GetListEmployeeReq) (*GetListEmployeeRes, error)
+	GetAll(context.Context, *GetAllEmployeeReq) (*GetAllEmployeeRes, error)
 	Modify(context.Context, *ModifyEmployeeReq) (*ModifyEmployeeRes, error)
 	Delete(context.Context, *DeleteEmployeeReq) (*DeleteEmployeeRes, error)
 }
@@ -1560,6 +1709,9 @@ func (*UnimplementedEmployeeServer) GetOne(context.Context, *GetOneEmployeeReq) 
 }
 func (*UnimplementedEmployeeServer) GetList(context.Context, *GetListEmployeeReq) (*GetListEmployeeRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetList not implemented")
+}
+func (*UnimplementedEmployeeServer) GetAll(context.Context, *GetAllEmployeeReq) (*GetAllEmployeeRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
 }
 func (*UnimplementedEmployeeServer) Modify(context.Context, *ModifyEmployeeReq) (*ModifyEmployeeRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Modify not implemented")
@@ -1626,6 +1778,24 @@ func _Employee_GetList_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Employee_GetAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllEmployeeReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EmployeeServer).GetAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/common.Employee/GetAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EmployeeServer).GetAll(ctx, req.(*GetAllEmployeeReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Employee_Modify_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ModifyEmployeeReq)
 	if err := dec(in); err != nil {
@@ -1677,6 +1847,10 @@ var _Employee_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetList",
 			Handler:    _Employee_GetList_Handler,
+		},
+		{
+			MethodName: "GetAll",
+			Handler:    _Employee_GetAll_Handler,
 		},
 		{
 			MethodName: "Modify",
