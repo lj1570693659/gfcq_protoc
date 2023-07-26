@@ -33,12 +33,12 @@ type JobInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id         int32  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id"`
-	Name       string `protobuf:"bytes,2,opt,name=Name,proto3" json:"Name"`             // 岗位名称
-	DepartId   int32  `protobuf:"varint,3,opt,name=DepartId,proto3" json:"DepartId"`    // 部门ID
-	Remark     string `protobuf:"bytes,4,opt,name=Remark,proto3" json:"Remark"`         // 预留备注信息
-	CreateTime string `protobuf:"bytes,5,opt,name=CreateTime,proto3" json:"CreateTime"` // 数据新增时间
-	UpdateTime string `protobuf:"bytes,6,opt,name=UpdateTime,proto3" json:"UpdateTime"` // 最后一次更新数据时间
+	Id         int32  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"`
+	Name       string `protobuf:"bytes,2,opt,name=Name,proto3" json:"Name,omitempty"`             // 岗位名称
+	DepartId   int32  `protobuf:"varint,3,opt,name=DepartId,proto3" json:"DepartId,omitempty"`    // 部门ID
+	Remark     string `protobuf:"bytes,4,opt,name=Remark,proto3" json:"Remark,omitempty"`         // 预留备注信息
+	CreateTime string `protobuf:"bytes,5,opt,name=CreateTime,proto3" json:"CreateTime,omitempty"` // 数据新增时间
+	UpdateTime string `protobuf:"bytes,6,opt,name=UpdateTime,proto3" json:"UpdateTime,omitempty"` // 最后一次更新数据时间
 }
 
 func (x *JobInfo) Reset() {
@@ -121,9 +121,9 @@ type CreateJobReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	DepartId int32  `protobuf:"varint,1,opt,name=DepartId,proto3" json:"DepartId"` // v: required
-	Name     string `protobuf:"bytes,2,opt,name=Name,proto3" json:"Name"`          // v: required
-	Remark   string `protobuf:"bytes,3,opt,name=Remark,proto3" json:"Remark"`      // v: required
+	DepartId int32  `protobuf:"varint,1,opt,name=DepartId,proto3" json:"DepartId,omitempty"` // v: required
+	Name     string `protobuf:"bytes,2,opt,name=Name,proto3" json:"Name,omitempty"`          // v: required
+	Remark   string `protobuf:"bytes,3,opt,name=Remark,proto3" json:"Remark,omitempty"`      // v: required
 }
 
 func (x *CreateJobReq) Reset() {
@@ -185,7 +185,7 @@ type CreateJobRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Job *JobInfo `protobuf:"bytes,1,opt,name=Job,proto3" json:"Job"`
+	Job *JobInfo `protobuf:"bytes,1,opt,name=Job,proto3" json:"Job,omitempty"`
 }
 
 func (x *CreateJobRes) Reset() {
@@ -233,8 +233,8 @@ type GetOneJobReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id   int32  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id"`    // v: required
-	Name string `protobuf:"bytes,2,opt,name=Name,proto3" json:"Name"` // 岗位名称
+	Id   int32  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"`    // v: required
+	Name string `protobuf:"bytes,2,opt,name=Name,proto3" json:"Name,omitempty"` // 岗位名称
 }
 
 func (x *GetOneJobReq) Reset() {
@@ -289,7 +289,7 @@ type GetOneJobRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Job *JobInfo `protobuf:"bytes,1,opt,name=Job,proto3" json:"Job"`
+	Job *JobInfo `protobuf:"bytes,1,opt,name=Job,proto3" json:"Job,omitempty"`
 }
 
 func (x *GetOneJobRes) Reset() {
@@ -337,9 +337,9 @@ type GetListJobReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Page int32    `protobuf:"varint,1,opt,name=Page,proto3" json:"Page"`
-	Size int32    `protobuf:"varint,2,opt,name=Size,proto3" json:"Size"`
-	Job  *JobInfo `protobuf:"bytes,3,opt,name=Job,proto3" json:"Job"`
+	Page int32    `protobuf:"varint,1,opt,name=Page,proto3" json:"Page,omitempty"`
+	Size int32    `protobuf:"varint,2,opt,name=Size,proto3" json:"Size,omitempty"`
+	Job  *JobInfo `protobuf:"bytes,3,opt,name=Job,proto3" json:"Job,omitempty"`
 }
 
 func (x *GetListJobReq) Reset() {
@@ -401,10 +401,10 @@ type GetListJobRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Page      int32      `protobuf:"varint,1,opt,name=Page,proto3" json:"Page"`
-	Size      int32      `protobuf:"varint,2,opt,name=Size,proto3" json:"Size"`
-	TotalSize int32      `protobuf:"varint,3,opt,name=TotalSize,proto3" json:"TotalSize"`
-	Data      []*JobInfo `protobuf:"bytes,4,rep,name=Data,proto3" json:"Data"`
+	Page      int32      `protobuf:"varint,1,opt,name=Page,proto3" json:"Page,omitempty"`
+	Size      int32      `protobuf:"varint,2,opt,name=Size,proto3" json:"Size,omitempty"`
+	TotalSize int32      `protobuf:"varint,3,opt,name=TotalSize,proto3" json:"TotalSize,omitempty"`
+	Data      []*JobInfo `protobuf:"bytes,4,rep,name=Data,proto3" json:"Data,omitempty"`
 }
 
 func (x *GetListJobRes) Reset() {
@@ -467,22 +467,118 @@ func (x *GetListJobRes) GetData() []*JobInfo {
 	return nil
 }
 
+// 列表接口输入数据结构
+type GetAllJobReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Job *JobInfo `protobuf:"bytes,1,opt,name=Job,proto3" json:"Job,omitempty"`
+}
+
+func (x *GetAllJobReq) Reset() {
+	*x = GetAllJobReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_common_v1_job_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetAllJobReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllJobReq) ProtoMessage() {}
+
+func (x *GetAllJobReq) ProtoReflect() protoreflect.Message {
+	mi := &file_common_v1_job_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllJobReq.ProtoReflect.Descriptor instead.
+func (*GetAllJobReq) Descriptor() ([]byte, []int) {
+	return file_common_v1_job_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GetAllJobReq) GetJob() *JobInfo {
+	if x != nil {
+		return x.Job
+	}
+	return nil
+}
+
+// 列表接口输出数据结构
+type GetAllJobRes struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Data []*JobInfo `protobuf:"bytes,1,rep,name=Data,proto3" json:"Data,omitempty"`
+}
+
+func (x *GetAllJobRes) Reset() {
+	*x = GetAllJobRes{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_common_v1_job_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetAllJobRes) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllJobRes) ProtoMessage() {}
+
+func (x *GetAllJobRes) ProtoReflect() protoreflect.Message {
+	mi := &file_common_v1_job_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllJobRes.ProtoReflect.Descriptor instead.
+func (*GetAllJobRes) Descriptor() ([]byte, []int) {
+	return file_common_v1_job_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetAllJobRes) GetData() []*JobInfo {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
 // 修改数据接口输入数据结构
 type ModifyJobReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id       int32  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id"`             // v: required
-	DepartId int32  `protobuf:"varint,2,opt,name=DepartId,proto3" json:"DepartId"` // v: required
-	Name     string `protobuf:"bytes,3,opt,name=Name,proto3" json:"Name"`          // v: required
-	Remark   string `protobuf:"bytes,4,opt,name=Remark,proto3" json:"Remark"`      // v: required
+	Id       int32  `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"`             // v: required
+	DepartId int32  `protobuf:"varint,2,opt,name=DepartId,proto3" json:"DepartId,omitempty"` // v: required
+	Name     string `protobuf:"bytes,3,opt,name=Name,proto3" json:"Name,omitempty"`          // v: required
+	Remark   string `protobuf:"bytes,4,opt,name=Remark,proto3" json:"Remark,omitempty"`      // v: required
 }
 
 func (x *ModifyJobReq) Reset() {
 	*x = ModifyJobReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_common_v1_job_proto_msgTypes[7]
+		mi := &file_common_v1_job_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -495,7 +591,7 @@ func (x *ModifyJobReq) String() string {
 func (*ModifyJobReq) ProtoMessage() {}
 
 func (x *ModifyJobReq) ProtoReflect() protoreflect.Message {
-	mi := &file_common_v1_job_proto_msgTypes[7]
+	mi := &file_common_v1_job_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -508,7 +604,7 @@ func (x *ModifyJobReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ModifyJobReq.ProtoReflect.Descriptor instead.
 func (*ModifyJobReq) Descriptor() ([]byte, []int) {
-	return file_common_v1_job_proto_rawDescGZIP(), []int{7}
+	return file_common_v1_job_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ModifyJobReq) GetId() int32 {
@@ -545,13 +641,13 @@ type ModifyJobRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Job *JobInfo `protobuf:"bytes,1,opt,name=Job,proto3" json:"Job"`
+	Job *JobInfo `protobuf:"bytes,1,opt,name=Job,proto3" json:"Job,omitempty"`
 }
 
 func (x *ModifyJobRes) Reset() {
 	*x = ModifyJobRes{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_common_v1_job_proto_msgTypes[8]
+		mi := &file_common_v1_job_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -564,7 +660,7 @@ func (x *ModifyJobRes) String() string {
 func (*ModifyJobRes) ProtoMessage() {}
 
 func (x *ModifyJobRes) ProtoReflect() protoreflect.Message {
-	mi := &file_common_v1_job_proto_msgTypes[8]
+	mi := &file_common_v1_job_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -577,7 +673,7 @@ func (x *ModifyJobRes) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ModifyJobRes.ProtoReflect.Descriptor instead.
 func (*ModifyJobRes) Descriptor() ([]byte, []int) {
-	return file_common_v1_job_proto_rawDescGZIP(), []int{8}
+	return file_common_v1_job_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ModifyJobRes) GetJob() *JobInfo {
@@ -593,13 +689,13 @@ type DeleteJobReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id int32 `protobuf:"varint,1,opt,name=Id,proto3" json:"Id"` // v: required
+	Id int32 `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"` // v: required
 }
 
 func (x *DeleteJobReq) Reset() {
 	*x = DeleteJobReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_common_v1_job_proto_msgTypes[9]
+		mi := &file_common_v1_job_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -612,7 +708,7 @@ func (x *DeleteJobReq) String() string {
 func (*DeleteJobReq) ProtoMessage() {}
 
 func (x *DeleteJobReq) ProtoReflect() protoreflect.Message {
-	mi := &file_common_v1_job_proto_msgTypes[9]
+	mi := &file_common_v1_job_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -625,7 +721,7 @@ func (x *DeleteJobReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteJobReq.ProtoReflect.Descriptor instead.
 func (*DeleteJobReq) Descriptor() ([]byte, []int) {
-	return file_common_v1_job_proto_rawDescGZIP(), []int{9}
+	return file_common_v1_job_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *DeleteJobReq) GetId() int32 {
@@ -641,14 +737,14 @@ type DeleteJobRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	IsSuccess bool   `protobuf:"varint,1,opt,name=IsSuccess,proto3" json:"IsSuccess"` // v: required
-	Msg       string `protobuf:"bytes,2,opt,name=Msg,proto3" json:"Msg"`              // v: required
+	IsSuccess bool   `protobuf:"varint,1,opt,name=IsSuccess,proto3" json:"IsSuccess,omitempty"` // v: required
+	Msg       string `protobuf:"bytes,2,opt,name=Msg,proto3" json:"Msg,omitempty"`              // v: required
 }
 
 func (x *DeleteJobRes) Reset() {
 	*x = DeleteJobRes{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_common_v1_job_proto_msgTypes[10]
+		mi := &file_common_v1_job_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -661,7 +757,7 @@ func (x *DeleteJobRes) String() string {
 func (*DeleteJobRes) ProtoMessage() {}
 
 func (x *DeleteJobRes) ProtoReflect() protoreflect.Message {
-	mi := &file_common_v1_job_proto_msgTypes[10]
+	mi := &file_common_v1_job_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -674,7 +770,7 @@ func (x *DeleteJobRes) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteJobRes.ProtoReflect.Descriptor instead.
 func (*DeleteJobRes) Descriptor() ([]byte, []int) {
-	return file_common_v1_job_proto_rawDescGZIP(), []int{10}
+	return file_common_v1_job_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *DeleteJobRes) GetIsSuccess() bool {
@@ -734,34 +830,44 @@ var file_common_v1_job_proto_rawDesc = []byte{
 	0x6c, 0x53, 0x69, 0x7a, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x54, 0x6f, 0x74,
 	0x61, 0x6c, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x23, 0x0a, 0x04, 0x44, 0x61, 0x74, 0x61, 0x18, 0x04,
 	0x20, 0x03, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x4a, 0x6f,
-	0x62, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x44, 0x61, 0x74, 0x61, 0x22, 0x66, 0x0a, 0x0c, 0x4d,
-	0x6f, 0x64, 0x69, 0x66, 0x79, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x49,
-	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x49, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x44,
-	0x65, 0x70, 0x61, 0x72, 0x74, 0x49, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x44,
-	0x65, 0x70, 0x61, 0x72, 0x74, 0x49, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x4e, 0x61, 0x6d, 0x65, 0x18,
-	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x52,
-	0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x52, 0x65, 0x6d,
-	0x61, 0x72, 0x6b, 0x22, 0x31, 0x0a, 0x0c, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x4a, 0x6f, 0x62,
-	0x52, 0x65, 0x73, 0x12, 0x21, 0x0a, 0x03, 0x4a, 0x6f, 0x62, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
-	0x32, 0x0f, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x4a, 0x6f, 0x62, 0x49, 0x6e, 0x66,
-	0x6f, 0x52, 0x03, 0x4a, 0x6f, 0x62, 0x22, 0x1e, 0x0a, 0x0c, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65,
-	0x4a, 0x6f, 0x62, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x05, 0x52, 0x02, 0x49, 0x64, 0x22, 0x3e, 0x0a, 0x0c, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65,
-	0x4a, 0x6f, 0x62, 0x52, 0x65, 0x73, 0x12, 0x1c, 0x0a, 0x09, 0x49, 0x73, 0x53, 0x75, 0x63, 0x63,
-	0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x09, 0x49, 0x73, 0x53, 0x75, 0x63,
-	0x63, 0x65, 0x73, 0x73, 0x12, 0x10, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x18, 0x02, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x03, 0x4d, 0x73, 0x67, 0x32, 0xa0, 0x02, 0x0a, 0x03, 0x4a, 0x6f, 0x62, 0x12, 0x36,
-	0x0a, 0x06, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x12, 0x14, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
-	0x6e, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x71, 0x1a, 0x14,
-	0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4a, 0x6f,
-	0x62, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x36, 0x0a, 0x06, 0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65,
-	0x12, 0x14, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65,
+	0x62, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x44, 0x61, 0x74, 0x61, 0x22, 0x31, 0x0a, 0x0c, 0x47,
+	0x65, 0x74, 0x41, 0x6c, 0x6c, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x71, 0x12, 0x21, 0x0a, 0x03, 0x4a,
+	0x6f, 0x62, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
+	0x6e, 0x2e, 0x4a, 0x6f, 0x62, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x03, 0x4a, 0x6f, 0x62, 0x22, 0x33,
+	0x0a, 0x0c, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x73, 0x12, 0x23,
+	0x0a, 0x04, 0x44, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x63,
+	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x4a, 0x6f, 0x62, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x44,
+	0x61, 0x74, 0x61, 0x22, 0x66, 0x0a, 0x0c, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x4a, 0x6f, 0x62,
+	0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52,
+	0x02, 0x49, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x49, 0x64, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x49, 0x64, 0x12,
+	0x12, 0x0a, 0x04, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x4e,
+	0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x52, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x04, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x06, 0x52, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x22, 0x31, 0x0a, 0x0c, 0x4d,
+	0x6f, 0x64, 0x69, 0x66, 0x79, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x73, 0x12, 0x21, 0x0a, 0x03, 0x4a,
+	0x6f, 0x62, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
+	0x6e, 0x2e, 0x4a, 0x6f, 0x62, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x03, 0x4a, 0x6f, 0x62, 0x22, 0x1e,
+	0x0a, 0x0c, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x71, 0x12, 0x0e,
+	0x0a, 0x02, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x49, 0x64, 0x22, 0x3e,
+	0x0a, 0x0c, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x73, 0x12, 0x1c,
+	0x0a, 0x09, 0x49, 0x73, 0x53, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x08, 0x52, 0x09, 0x49, 0x73, 0x53, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x12, 0x10, 0x0a, 0x03,
+	0x4d, 0x73, 0x67, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x4d, 0x73, 0x67, 0x32, 0xd8,
+	0x02, 0x0a, 0x03, 0x4a, 0x6f, 0x62, 0x12, 0x36, 0x0a, 0x06, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65,
+	0x12, 0x14, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65,
 	0x4a, 0x6f, 0x62, 0x52, 0x65, 0x71, 0x1a, 0x14, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e,
-	0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x39,
-	0x0a, 0x07, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x15, 0x2e, 0x63, 0x6f, 0x6d, 0x6d,
-	0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x71,
-	0x1a, 0x15, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73,
-	0x74, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x36, 0x0a, 0x06, 0x4d, 0x6f, 0x64,
+	0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x36,
+	0x0a, 0x06, 0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x12, 0x14, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
+	0x6e, 0x2e, 0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x71, 0x1a, 0x14,
+	0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x4a, 0x6f,
+	0x62, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x39, 0x0a, 0x07, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73,
+	0x74, 0x12, 0x15, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x4c, 0x69,
+	0x73, 0x74, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x71, 0x1a, 0x15, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
+	0x6e, 0x2e, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x73, 0x22,
+	0x00, 0x12, 0x36, 0x0a, 0x06, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x12, 0x14, 0x2e, 0x63, 0x6f,
+	0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x4a, 0x6f, 0x62, 0x52, 0x65,
+	0x71, 0x1a, 0x14, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x41, 0x6c,
+	0x6c, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x36, 0x0a, 0x06, 0x4d, 0x6f, 0x64,
 	0x69, 0x66, 0x79, 0x12, 0x14, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x4d, 0x6f, 0x64,
 	0x69, 0x66, 0x79, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x71, 0x1a, 0x14, 0x2e, 0x63, 0x6f, 0x6d, 0x6d,
 	0x6f, 0x6e, 0x2e, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x4a, 0x6f, 0x62, 0x52, 0x65, 0x73, 0x22,
@@ -787,7 +893,7 @@ func file_common_v1_job_proto_rawDescGZIP() []byte {
 	return file_common_v1_job_proto_rawDescData
 }
 
-var file_common_v1_job_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_common_v1_job_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_common_v1_job_proto_goTypes = []interface{}{
 	(*JobInfo)(nil),       // 0: common.JobInfo
 	(*CreateJobReq)(nil),  // 1: common.CreateJobReq
@@ -796,32 +902,38 @@ var file_common_v1_job_proto_goTypes = []interface{}{
 	(*GetOneJobRes)(nil),  // 4: common.GetOneJobRes
 	(*GetListJobReq)(nil), // 5: common.GetListJobReq
 	(*GetListJobRes)(nil), // 6: common.GetListJobRes
-	(*ModifyJobReq)(nil),  // 7: common.ModifyJobReq
-	(*ModifyJobRes)(nil),  // 8: common.ModifyJobRes
-	(*DeleteJobReq)(nil),  // 9: common.DeleteJobReq
-	(*DeleteJobRes)(nil),  // 10: common.DeleteJobRes
+	(*GetAllJobReq)(nil),  // 7: common.GetAllJobReq
+	(*GetAllJobRes)(nil),  // 8: common.GetAllJobRes
+	(*ModifyJobReq)(nil),  // 9: common.ModifyJobReq
+	(*ModifyJobRes)(nil),  // 10: common.ModifyJobRes
+	(*DeleteJobReq)(nil),  // 11: common.DeleteJobReq
+	(*DeleteJobRes)(nil),  // 12: common.DeleteJobRes
 }
 var file_common_v1_job_proto_depIdxs = []int32{
 	0,  // 0: common.CreateJobRes.Job:type_name -> common.JobInfo
 	0,  // 1: common.GetOneJobRes.Job:type_name -> common.JobInfo
 	0,  // 2: common.GetListJobReq.Job:type_name -> common.JobInfo
 	0,  // 3: common.GetListJobRes.Data:type_name -> common.JobInfo
-	0,  // 4: common.ModifyJobRes.Job:type_name -> common.JobInfo
-	1,  // 5: common.Job.Create:input_type -> common.CreateJobReq
-	3,  // 6: common.Job.GetOne:input_type -> common.GetOneJobReq
-	5,  // 7: common.Job.GetList:input_type -> common.GetListJobReq
-	7,  // 8: common.Job.Modify:input_type -> common.ModifyJobReq
-	9,  // 9: common.Job.Delete:input_type -> common.DeleteJobReq
-	2,  // 10: common.Job.Create:output_type -> common.CreateJobRes
-	4,  // 11: common.Job.GetOne:output_type -> common.GetOneJobRes
-	6,  // 12: common.Job.GetList:output_type -> common.GetListJobRes
-	8,  // 13: common.Job.Modify:output_type -> common.ModifyJobRes
-	10, // 14: common.Job.Delete:output_type -> common.DeleteJobRes
-	10, // [10:15] is the sub-list for method output_type
-	5,  // [5:10] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	0,  // 4: common.GetAllJobReq.Job:type_name -> common.JobInfo
+	0,  // 5: common.GetAllJobRes.Data:type_name -> common.JobInfo
+	0,  // 6: common.ModifyJobRes.Job:type_name -> common.JobInfo
+	1,  // 7: common.Job.Create:input_type -> common.CreateJobReq
+	3,  // 8: common.Job.GetOne:input_type -> common.GetOneJobReq
+	5,  // 9: common.Job.GetList:input_type -> common.GetListJobReq
+	7,  // 10: common.Job.GetAll:input_type -> common.GetAllJobReq
+	9,  // 11: common.Job.Modify:input_type -> common.ModifyJobReq
+	11, // 12: common.Job.Delete:input_type -> common.DeleteJobReq
+	2,  // 13: common.Job.Create:output_type -> common.CreateJobRes
+	4,  // 14: common.Job.GetOne:output_type -> common.GetOneJobRes
+	6,  // 15: common.Job.GetList:output_type -> common.GetListJobRes
+	8,  // 16: common.Job.GetAll:output_type -> common.GetAllJobRes
+	10, // 17: common.Job.Modify:output_type -> common.ModifyJobRes
+	12, // 18: common.Job.Delete:output_type -> common.DeleteJobRes
+	13, // [13:19] is the sub-list for method output_type
+	7,  // [7:13] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_common_v1_job_proto_init() }
@@ -915,7 +1027,7 @@ func file_common_v1_job_proto_init() {
 			}
 		}
 		file_common_v1_job_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ModifyJobReq); i {
+			switch v := v.(*GetAllJobReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -927,7 +1039,7 @@ func file_common_v1_job_proto_init() {
 			}
 		}
 		file_common_v1_job_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ModifyJobRes); i {
+			switch v := v.(*GetAllJobRes); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -939,7 +1051,7 @@ func file_common_v1_job_proto_init() {
 			}
 		}
 		file_common_v1_job_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteJobReq); i {
+			switch v := v.(*ModifyJobReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -951,6 +1063,30 @@ func file_common_v1_job_proto_init() {
 			}
 		}
 		file_common_v1_job_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ModifyJobRes); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_common_v1_job_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DeleteJobReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_common_v1_job_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*DeleteJobRes); i {
 			case 0:
 				return &v.state
@@ -969,7 +1105,7 @@ func file_common_v1_job_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_common_v1_job_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -998,6 +1134,7 @@ type JobClient interface {
 	Create(ctx context.Context, in *CreateJobReq, opts ...grpc.CallOption) (*CreateJobRes, error)
 	GetOne(ctx context.Context, in *GetOneJobReq, opts ...grpc.CallOption) (*GetOneJobRes, error)
 	GetList(ctx context.Context, in *GetListJobReq, opts ...grpc.CallOption) (*GetListJobRes, error)
+	GetAll(ctx context.Context, in *GetAllJobReq, opts ...grpc.CallOption) (*GetAllJobRes, error)
 	Modify(ctx context.Context, in *ModifyJobReq, opts ...grpc.CallOption) (*ModifyJobRes, error)
 	Delete(ctx context.Context, in *DeleteJobReq, opts ...grpc.CallOption) (*DeleteJobRes, error)
 }
@@ -1037,6 +1174,15 @@ func (c *jobClient) GetList(ctx context.Context, in *GetListJobReq, opts ...grpc
 	return out, nil
 }
 
+func (c *jobClient) GetAll(ctx context.Context, in *GetAllJobReq, opts ...grpc.CallOption) (*GetAllJobRes, error) {
+	out := new(GetAllJobRes)
+	err := c.cc.Invoke(ctx, "/common.Job/GetAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *jobClient) Modify(ctx context.Context, in *ModifyJobReq, opts ...grpc.CallOption) (*ModifyJobRes, error) {
 	out := new(ModifyJobRes)
 	err := c.cc.Invoke(ctx, "/common.Job/Modify", in, out, opts...)
@@ -1060,6 +1206,7 @@ type JobServer interface {
 	Create(context.Context, *CreateJobReq) (*CreateJobRes, error)
 	GetOne(context.Context, *GetOneJobReq) (*GetOneJobRes, error)
 	GetList(context.Context, *GetListJobReq) (*GetListJobRes, error)
+	GetAll(context.Context, *GetAllJobReq) (*GetAllJobRes, error)
 	Modify(context.Context, *ModifyJobReq) (*ModifyJobRes, error)
 	Delete(context.Context, *DeleteJobReq) (*DeleteJobRes, error)
 }
@@ -1076,6 +1223,9 @@ func (*UnimplementedJobServer) GetOne(context.Context, *GetOneJobReq) (*GetOneJo
 }
 func (*UnimplementedJobServer) GetList(context.Context, *GetListJobReq) (*GetListJobRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetList not implemented")
+}
+func (*UnimplementedJobServer) GetAll(context.Context, *GetAllJobReq) (*GetAllJobRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
 }
 func (*UnimplementedJobServer) Modify(context.Context, *ModifyJobReq) (*ModifyJobRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Modify not implemented")
@@ -1142,6 +1292,24 @@ func _Job_GetList_Handler(srv interface{}, ctx context.Context, dec func(interfa
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Job_GetAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllJobReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(JobServer).GetAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/common.Job/GetAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(JobServer).GetAll(ctx, req.(*GetAllJobReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Job_Modify_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ModifyJobReq)
 	if err := dec(in); err != nil {
@@ -1193,6 +1361,10 @@ var _Job_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetList",
 			Handler:    _Job_GetList_Handler,
+		},
+		{
+			MethodName: "GetAll",
+			Handler:    _Job_GetAll_Handler,
 		},
 		{
 			MethodName: "Modify",

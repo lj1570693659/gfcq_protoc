@@ -10,6 +10,7 @@ service Job {
   rpc Create(CreateJobReq) returns (CreateJobRes) {}
   rpc GetOne(GetOneJobReq) returns (GetOneJobRes) {}
   rpc GetList(GetListJobReq) returns (GetListJobRes) {}
+  rpc GetAll(GetAllJobReq) returns (GetAllJobRes) {}
   rpc Modify(ModifyJobReq) returns (ModifyJobRes) {}
   rpc Delete(DeleteJobReq) returns (DeleteJobRes) {}
 }
@@ -60,6 +61,16 @@ message GetListJobRes {
   int32 Size = 2;
   int32 TotalSize = 3;
   repeated JobInfo Data = 4;
+}
+
+// 列表接口输入数据结构
+message GetAllJobReq {
+  JobInfo Job = 1;
+}
+
+// 列表接口输出数据结构
+message GetAllJobRes {
+  repeated JobInfo Data = 1;
 }
 
 // 修改数据接口输入数据结构
