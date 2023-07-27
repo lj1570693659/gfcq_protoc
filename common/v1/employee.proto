@@ -9,6 +9,7 @@ option go_package = "github.com/lj1570693659/gfcq_protoc/common/v1/employee";
 service Employee {
   rpc Create(CreateEmployeeReq) returns (CreateEmployeeRes) {}
   rpc GetOne(GetOneEmployeeReq) returns (GetOneEmployeeRes) {}
+  rpc GetMainInfo(GetMainEmployeeReq) returns (GetMainEmployeeRes) {}
   rpc GetList(GetListEmployeeReq) returns (GetListEmployeeRes) {}
   rpc GetAll(GetAllEmployeeReq) returns (GetAllEmployeeRes) {}
   rpc Modify(ModifyEmployeeReq) returns (ModifyEmployeeRes) {}
@@ -90,6 +91,20 @@ message GetOneEmployeeRes {
   repeated int32  DepartIds                        = 3; // 部门ID
   string JobIdString                            = 4; // 岗位信息
   repeated int32  JobIds                        = 5; // 岗位ID
+}
+
+// 获取详情接口输入数据结构
+message GetMainEmployeeReq {
+  int32 Id                               = 1; // v: required
+  string UserName                        = 2; // 员工姓名
+  string WorkNumber                      = 3; // 员工工号
+  string Phone                           = 4; // 手机号码
+  string Email                           = 5; // 邮箱号码
+}
+
+// 获取详情接口输出数据结构
+message GetMainEmployeeRes {
+  EmployeeInfo Employee = 1;
 }
 
 // 列表接口输入数据结构
