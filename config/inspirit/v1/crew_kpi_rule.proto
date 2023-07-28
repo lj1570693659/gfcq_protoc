@@ -11,6 +11,7 @@ service CrewKpiRule {
   rpc Create(CreateCrewKpiRuleReq) returns (CreateCrewKpiRuleRes) {}
   rpc GetOne(GetOneCrewKpiRuleReq) returns (GetOneCrewKpiRuleRes) {}
   rpc GetList(GetListCrewKpiRuleReq) returns (GetListCrewKpiRuleRes) {}
+  rpc GetAll(GetAllCrewKpiRuleReq) returns (GetAllCrewKpiRuleRes) {}
   rpc Modify(ModifyCrewKpiRuleReq) returns (ModifyCrewKpiRuleRes) {}
   rpc Delete(DeleteCrewKpiRuleReq) returns (DeleteCrewKpiRuleRes) {}
 }
@@ -57,6 +58,22 @@ message GetListCrewKpiRuleReq {
 
 // 列表接口输出数据结构
 message GetListCrewKpiRuleRes {
+  int32 Page = 1;
+  int32 Size = 2;
+  int32 TotalSize = 3;
+  repeated CrewKpiRuleInfo Data = 4;
+}
+
+
+// 列表接口输入数据结构
+message GetAllCrewKpiRuleReq {
+  int32 Page = 1;
+  int32 Size = 2;
+  CrewKpiRuleInfo CrewKpiRule = 3;
+}
+
+// 列表接口输出数据结构
+message GetAllCrewKpiRuleRes {
   int32 Page = 1;
   int32 Size = 2;
   int32 TotalSize = 3;

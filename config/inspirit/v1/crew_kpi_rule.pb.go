@@ -10,14 +10,13 @@ package v1
 
 import (
 	context "context"
-	reflect "reflect"
-	sync "sync"
-
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	reflect "reflect"
+	sync "sync"
 )
 
 const (
@@ -33,12 +32,12 @@ type CrewKpiRuleInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id         int32   `protobuf:"varint,1,opt,name=Id,proto3" json:"Id"`
-	Redio      float32 `protobuf:"fixed32,2,opt,name=Redio,proto3" json:"Redio"`         // 比例
-	LevelName  string  `protobuf:"bytes,3,opt,name=LevelName,proto3" json:"LevelName"`   // 等级名称
-	Remark     string  `protobuf:"bytes,4,opt,name=Remark,proto3" json:"Remark"`         // 预留备注说明信息
-	CreateTime string  `protobuf:"bytes,5,opt,name=CreateTime,proto3" json:"CreateTime"` // 数据新增时间
-	UpdateTime string  `protobuf:"bytes,6,opt,name=UpdateTime,proto3" json:"UpdateTime"` // 最后一次更新数据时间
+	Id         int32   `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"`
+	Redio      float32 `protobuf:"fixed32,2,opt,name=Redio,proto3" json:"Redio,omitempty"`         // 比例
+	LevelName  string  `protobuf:"bytes,3,opt,name=LevelName,proto3" json:"LevelName,omitempty"`   // 等级名称
+	Remark     string  `protobuf:"bytes,4,opt,name=Remark,proto3" json:"Remark,omitempty"`         // 预留备注说明信息
+	CreateTime string  `protobuf:"bytes,5,opt,name=CreateTime,proto3" json:"CreateTime,omitempty"` // 数据新增时间
+	UpdateTime string  `protobuf:"bytes,6,opt,name=UpdateTime,proto3" json:"UpdateTime,omitempty"` // 最后一次更新数据时间
 }
 
 func (x *CrewKpiRuleInfo) Reset() {
@@ -121,9 +120,9 @@ type CreateCrewKpiRuleReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Remark    string  `protobuf:"bytes,1,opt,name=Remark,proto3" json:"Remark"`
-	Redio     float32 `protobuf:"fixed32,2,opt,name=Redio,proto3" json:"Redio"`       // 比例
-	LevelName string  `protobuf:"bytes,3,opt,name=LevelName,proto3" json:"LevelName"` // 等级名称
+	Remark    string  `protobuf:"bytes,1,opt,name=Remark,proto3" json:"Remark,omitempty"`
+	Redio     float32 `protobuf:"fixed32,2,opt,name=Redio,proto3" json:"Redio,omitempty"`       // 比例
+	LevelName string  `protobuf:"bytes,3,opt,name=LevelName,proto3" json:"LevelName,omitempty"` // 等级名称
 }
 
 func (x *CreateCrewKpiRuleReq) Reset() {
@@ -185,7 +184,7 @@ type CreateCrewKpiRuleRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CrewKpiRule *CrewKpiRuleInfo `protobuf:"bytes,1,opt,name=CrewKpiRule,proto3" json:"CrewKpiRule"`
+	CrewKpiRule *CrewKpiRuleInfo `protobuf:"bytes,1,opt,name=CrewKpiRule,proto3" json:"CrewKpiRule,omitempty"`
 }
 
 func (x *CreateCrewKpiRuleRes) Reset() {
@@ -233,7 +232,7 @@ type GetOneCrewKpiRuleReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CrewKpiRule *CrewKpiRuleInfo `protobuf:"bytes,1,opt,name=CrewKpiRule,proto3" json:"CrewKpiRule"`
+	CrewKpiRule *CrewKpiRuleInfo `protobuf:"bytes,1,opt,name=CrewKpiRule,proto3" json:"CrewKpiRule,omitempty"`
 }
 
 func (x *GetOneCrewKpiRuleReq) Reset() {
@@ -281,7 +280,7 @@ type GetOneCrewKpiRuleRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CrewKpiRule *CrewKpiRuleInfo `protobuf:"bytes,1,opt,name=CrewKpiRule,proto3" json:"CrewKpiRule"`
+	CrewKpiRule *CrewKpiRuleInfo `protobuf:"bytes,1,opt,name=CrewKpiRule,proto3" json:"CrewKpiRule,omitempty"`
 }
 
 func (x *GetOneCrewKpiRuleRes) Reset() {
@@ -329,9 +328,9 @@ type GetListCrewKpiRuleReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Page        int32            `protobuf:"varint,1,opt,name=Page,proto3" json:"Page"`
-	Size        int32            `protobuf:"varint,2,opt,name=Size,proto3" json:"Size"`
-	CrewKpiRule *CrewKpiRuleInfo `protobuf:"bytes,3,opt,name=CrewKpiRule,proto3" json:"CrewKpiRule"`
+	Page        int32            `protobuf:"varint,1,opt,name=Page,proto3" json:"Page,omitempty"`
+	Size        int32            `protobuf:"varint,2,opt,name=Size,proto3" json:"Size,omitempty"`
+	CrewKpiRule *CrewKpiRuleInfo `protobuf:"bytes,3,opt,name=CrewKpiRule,proto3" json:"CrewKpiRule,omitempty"`
 }
 
 func (x *GetListCrewKpiRuleReq) Reset() {
@@ -393,10 +392,10 @@ type GetListCrewKpiRuleRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Page      int32              `protobuf:"varint,1,opt,name=Page,proto3" json:"Page"`
-	Size      int32              `protobuf:"varint,2,opt,name=Size,proto3" json:"Size"`
-	TotalSize int32              `protobuf:"varint,3,opt,name=TotalSize,proto3" json:"TotalSize"`
-	Data      []*CrewKpiRuleInfo `protobuf:"bytes,4,rep,name=Data,proto3" json:"Data"`
+	Page      int32              `protobuf:"varint,1,opt,name=Page,proto3" json:"Page,omitempty"`
+	Size      int32              `protobuf:"varint,2,opt,name=Size,proto3" json:"Size,omitempty"`
+	TotalSize int32              `protobuf:"varint,3,opt,name=TotalSize,proto3" json:"TotalSize,omitempty"`
+	Data      []*CrewKpiRuleInfo `protobuf:"bytes,4,rep,name=Data,proto3" json:"Data,omitempty"`
 }
 
 func (x *GetListCrewKpiRuleRes) Reset() {
@@ -459,22 +458,158 @@ func (x *GetListCrewKpiRuleRes) GetData() []*CrewKpiRuleInfo {
 	return nil
 }
 
+// 列表接口输入数据结构
+type GetAllCrewKpiRuleReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Page        int32            `protobuf:"varint,1,opt,name=Page,proto3" json:"Page,omitempty"`
+	Size        int32            `protobuf:"varint,2,opt,name=Size,proto3" json:"Size,omitempty"`
+	CrewKpiRule *CrewKpiRuleInfo `protobuf:"bytes,3,opt,name=CrewKpiRule,proto3" json:"CrewKpiRule,omitempty"`
+}
+
+func (x *GetAllCrewKpiRuleReq) Reset() {
+	*x = GetAllCrewKpiRuleReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetAllCrewKpiRuleReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllCrewKpiRuleReq) ProtoMessage() {}
+
+func (x *GetAllCrewKpiRuleReq) ProtoReflect() protoreflect.Message {
+	mi := &file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllCrewKpiRuleReq.ProtoReflect.Descriptor instead.
+func (*GetAllCrewKpiRuleReq) Descriptor() ([]byte, []int) {
+	return file_config_inspirit_v1_crew_kpi_rule_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GetAllCrewKpiRuleReq) GetPage() int32 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *GetAllCrewKpiRuleReq) GetSize() int32 {
+	if x != nil {
+		return x.Size
+	}
+	return 0
+}
+
+func (x *GetAllCrewKpiRuleReq) GetCrewKpiRule() *CrewKpiRuleInfo {
+	if x != nil {
+		return x.CrewKpiRule
+	}
+	return nil
+}
+
+// 列表接口输出数据结构
+type GetAllCrewKpiRuleRes struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Page      int32              `protobuf:"varint,1,opt,name=Page,proto3" json:"Page,omitempty"`
+	Size      int32              `protobuf:"varint,2,opt,name=Size,proto3" json:"Size,omitempty"`
+	TotalSize int32              `protobuf:"varint,3,opt,name=TotalSize,proto3" json:"TotalSize,omitempty"`
+	Data      []*CrewKpiRuleInfo `protobuf:"bytes,4,rep,name=Data,proto3" json:"Data,omitempty"`
+}
+
+func (x *GetAllCrewKpiRuleRes) Reset() {
+	*x = GetAllCrewKpiRuleRes{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetAllCrewKpiRuleRes) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllCrewKpiRuleRes) ProtoMessage() {}
+
+func (x *GetAllCrewKpiRuleRes) ProtoReflect() protoreflect.Message {
+	mi := &file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllCrewKpiRuleRes.ProtoReflect.Descriptor instead.
+func (*GetAllCrewKpiRuleRes) Descriptor() ([]byte, []int) {
+	return file_config_inspirit_v1_crew_kpi_rule_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetAllCrewKpiRuleRes) GetPage() int32 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *GetAllCrewKpiRuleRes) GetSize() int32 {
+	if x != nil {
+		return x.Size
+	}
+	return 0
+}
+
+func (x *GetAllCrewKpiRuleRes) GetTotalSize() int32 {
+	if x != nil {
+		return x.TotalSize
+	}
+	return 0
+}
+
+func (x *GetAllCrewKpiRuleRes) GetData() []*CrewKpiRuleInfo {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
 // 修改数据接口输入数据结构
 type ModifyCrewKpiRuleReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Remark    string  `protobuf:"bytes,1,opt,name=Remark,proto3" json:"Remark"`
-	Redio     float32 `protobuf:"fixed32,2,opt,name=Redio,proto3" json:"Redio"`       // 比例
-	LevelName string  `protobuf:"bytes,3,opt,name=LevelName,proto3" json:"LevelName"` // 等级名称
-	Id        int32   `protobuf:"varint,4,opt,name=Id,proto3" json:"Id"`              // v: required
+	Remark    string  `protobuf:"bytes,1,opt,name=Remark,proto3" json:"Remark,omitempty"`
+	Redio     float32 `protobuf:"fixed32,2,opt,name=Redio,proto3" json:"Redio,omitempty"`       // 比例
+	LevelName string  `protobuf:"bytes,3,opt,name=LevelName,proto3" json:"LevelName,omitempty"` // 等级名称
+	Id        int32   `protobuf:"varint,4,opt,name=Id,proto3" json:"Id,omitempty"`              // v: required
 }
 
 func (x *ModifyCrewKpiRuleReq) Reset() {
 	*x = ModifyCrewKpiRuleReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[7]
+		mi := &file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -487,7 +622,7 @@ func (x *ModifyCrewKpiRuleReq) String() string {
 func (*ModifyCrewKpiRuleReq) ProtoMessage() {}
 
 func (x *ModifyCrewKpiRuleReq) ProtoReflect() protoreflect.Message {
-	mi := &file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[7]
+	mi := &file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -500,7 +635,7 @@ func (x *ModifyCrewKpiRuleReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ModifyCrewKpiRuleReq.ProtoReflect.Descriptor instead.
 func (*ModifyCrewKpiRuleReq) Descriptor() ([]byte, []int) {
-	return file_config_inspirit_v1_crew_kpi_rule_proto_rawDescGZIP(), []int{7}
+	return file_config_inspirit_v1_crew_kpi_rule_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ModifyCrewKpiRuleReq) GetRemark() string {
@@ -537,13 +672,13 @@ type ModifyCrewKpiRuleRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CrewKpiRule *CrewKpiRuleInfo `protobuf:"bytes,3,opt,name=CrewKpiRule,proto3" json:"CrewKpiRule"`
+	CrewKpiRule *CrewKpiRuleInfo `protobuf:"bytes,3,opt,name=CrewKpiRule,proto3" json:"CrewKpiRule,omitempty"`
 }
 
 func (x *ModifyCrewKpiRuleRes) Reset() {
 	*x = ModifyCrewKpiRuleRes{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[8]
+		mi := &file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -556,7 +691,7 @@ func (x *ModifyCrewKpiRuleRes) String() string {
 func (*ModifyCrewKpiRuleRes) ProtoMessage() {}
 
 func (x *ModifyCrewKpiRuleRes) ProtoReflect() protoreflect.Message {
-	mi := &file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[8]
+	mi := &file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -569,7 +704,7 @@ func (x *ModifyCrewKpiRuleRes) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ModifyCrewKpiRuleRes.ProtoReflect.Descriptor instead.
 func (*ModifyCrewKpiRuleRes) Descriptor() ([]byte, []int) {
-	return file_config_inspirit_v1_crew_kpi_rule_proto_rawDescGZIP(), []int{8}
+	return file_config_inspirit_v1_crew_kpi_rule_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ModifyCrewKpiRuleRes) GetCrewKpiRule() *CrewKpiRuleInfo {
@@ -585,13 +720,13 @@ type DeleteCrewKpiRuleReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id int32 `protobuf:"varint,1,opt,name=Id,proto3" json:"Id"` // v: required
+	Id int32 `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"` // v: required
 }
 
 func (x *DeleteCrewKpiRuleReq) Reset() {
 	*x = DeleteCrewKpiRuleReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[9]
+		mi := &file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -604,7 +739,7 @@ func (x *DeleteCrewKpiRuleReq) String() string {
 func (*DeleteCrewKpiRuleReq) ProtoMessage() {}
 
 func (x *DeleteCrewKpiRuleReq) ProtoReflect() protoreflect.Message {
-	mi := &file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[9]
+	mi := &file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -617,7 +752,7 @@ func (x *DeleteCrewKpiRuleReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteCrewKpiRuleReq.ProtoReflect.Descriptor instead.
 func (*DeleteCrewKpiRuleReq) Descriptor() ([]byte, []int) {
-	return file_config_inspirit_v1_crew_kpi_rule_proto_rawDescGZIP(), []int{9}
+	return file_config_inspirit_v1_crew_kpi_rule_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *DeleteCrewKpiRuleReq) GetId() int32 {
@@ -633,14 +768,14 @@ type DeleteCrewKpiRuleRes struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	IsSuccess bool   `protobuf:"varint,1,opt,name=IsSuccess,proto3" json:"IsSuccess"` // v: required
-	Msg       string `protobuf:"bytes,2,opt,name=Msg,proto3" json:"Msg"`              // v: required
+	IsSuccess bool   `protobuf:"varint,1,opt,name=IsSuccess,proto3" json:"IsSuccess,omitempty"` // v: required
+	Msg       string `protobuf:"bytes,2,opt,name=Msg,proto3" json:"Msg,omitempty"`              // v: required
 }
 
 func (x *DeleteCrewKpiRuleRes) Reset() {
 	*x = DeleteCrewKpiRuleRes{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[10]
+		mi := &file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -653,7 +788,7 @@ func (x *DeleteCrewKpiRuleRes) String() string {
 func (*DeleteCrewKpiRuleRes) ProtoMessage() {}
 
 func (x *DeleteCrewKpiRuleRes) ProtoReflect() protoreflect.Message {
-	mi := &file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[10]
+	mi := &file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -666,7 +801,7 @@ func (x *DeleteCrewKpiRuleRes) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteCrewKpiRuleRes.ProtoReflect.Descriptor instead.
 func (*DeleteCrewKpiRuleRes) Descriptor() ([]byte, []int) {
-	return file_config_inspirit_v1_crew_kpi_rule_proto_rawDescGZIP(), []int{10}
+	return file_config_inspirit_v1_crew_kpi_rule_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *DeleteCrewKpiRuleRes) GetIsSuccess() bool {
@@ -738,54 +873,75 @@ var file_config_inspirit_v1_crew_kpi_rule_proto_rawDesc = []byte{
 	0x54, 0x6f, 0x74, 0x61, 0x6c, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x2b, 0x0a, 0x04, 0x44, 0x61, 0x74,
 	0x61, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67,
 	0x2e, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x49, 0x6e, 0x66, 0x6f,
-	0x52, 0x04, 0x44, 0x61, 0x74, 0x61, 0x22, 0x72, 0x0a, 0x14, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79,
-	0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x12, 0x16,
-	0x0a, 0x06, 0x52, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06,
-	0x52, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x12, 0x14, 0x0a, 0x05, 0x52, 0x65, 0x64, 0x69, 0x6f, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x02, 0x52, 0x05, 0x52, 0x65, 0x64, 0x69, 0x6f, 0x12, 0x1c, 0x0a, 0x09,
-	0x4c, 0x65, 0x76, 0x65, 0x6c, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x09, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x64,
-	0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x49, 0x64, 0x22, 0x51, 0x0a, 0x14, 0x4d, 0x6f,
-	0x64, 0x69, 0x66, 0x79, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x52,
-	0x65, 0x73, 0x12, 0x39, 0x0a, 0x0b, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c,
-	0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67,
-	0x2e, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x49, 0x6e, 0x66, 0x6f,
-	0x52, 0x0b, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x22, 0x26, 0x0a,
-	0x14, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75,
-	0x6c, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x05, 0x52, 0x02, 0x49, 0x64, 0x22, 0x46, 0x0a, 0x14, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x43,
-	0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x12, 0x1c, 0x0a,
-	0x09, 0x49, 0x73, 0x53, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08,
-	0x52, 0x09, 0x49, 0x73, 0x53, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x12, 0x10, 0x0a, 0x03, 0x4d,
-	0x73, 0x67, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x4d, 0x73, 0x67, 0x32, 0xf8, 0x02,
-	0x0a, 0x0b, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x12, 0x46, 0x0a,
-	0x06, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x12, 0x1c, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67,
-	0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75,
-	0x6c, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x1c, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x43,
-	0x72, 0x65, 0x61, 0x74, 0x65, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65,
-	0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x46, 0x0a, 0x06, 0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x12,
-	0x1c, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x43,
-	0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x1c, 0x2e,
-	0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x43, 0x72, 0x65,
-	0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x49, 0x0a,
-	0x07, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x1d, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69,
-	0x67, 0x2e, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69,
-	0x52, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x1d, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67,
-	0x2e, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52,
-	0x75, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x46, 0x0a, 0x06, 0x4d, 0x6f, 0x64, 0x69,
-	0x66, 0x79, 0x12, 0x1c, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x4d, 0x6f, 0x64, 0x69,
-	0x66, 0x79, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x71,
-	0x1a, 0x1c, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79,
-	0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x22, 0x00,
-	0x12, 0x46, 0x0a, 0x06, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x12, 0x1c, 0x2e, 0x63, 0x6f, 0x6e,
-	0x66, 0x69, 0x67, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70,
-	0x69, 0x52, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x1c, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69,
-	0x67, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52,
-	0x75, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x22, 0x00, 0x42, 0x38, 0x5a, 0x36, 0x67, 0x69, 0x74, 0x68,
-	0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x6c, 0x6a, 0x31, 0x35, 0x37, 0x30, 0x36, 0x39, 0x33,
-	0x36, 0x35, 0x39, 0x2f, 0x67, 0x66, 0x63, 0x71, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x2f,
-	0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2f, 0x69, 0x6e, 0x73, 0x70, 0x69, 0x72, 0x69, 0x74, 0x2f,
-	0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x52, 0x04, 0x44, 0x61, 0x74, 0x61, 0x22, 0x79, 0x0a, 0x14, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c,
+	0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x12, 0x12,
+	0x0a, 0x04, 0x50, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x50, 0x61,
+	0x67, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x53, 0x69, 0x7a, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x04, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x39, 0x0a, 0x0b, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70,
+	0x69, 0x52, 0x75, 0x6c, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x63, 0x6f,
+	0x6e, 0x66, 0x69, 0x67, 0x2e, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65,
+	0x49, 0x6e, 0x66, 0x6f, 0x52, 0x0b, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c,
+	0x65, 0x22, 0x89, 0x01, 0x0a, 0x14, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x43, 0x72, 0x65, 0x77,
+	0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x12, 0x12, 0x0a, 0x04, 0x50, 0x61,
+	0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x50, 0x61, 0x67, 0x65, 0x12, 0x12,
+	0x0a, 0x04, 0x53, 0x69, 0x7a, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x53, 0x69,
+	0x7a, 0x65, 0x12, 0x1c, 0x0a, 0x09, 0x54, 0x6f, 0x74, 0x61, 0x6c, 0x53, 0x69, 0x7a, 0x65, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x54, 0x6f, 0x74, 0x61, 0x6c, 0x53, 0x69, 0x7a, 0x65,
+	0x12, 0x2b, 0x0a, 0x04, 0x44, 0x61, 0x74, 0x61, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17,
+	0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52,
+	0x75, 0x6c, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x44, 0x61, 0x74, 0x61, 0x22, 0x72, 0x0a,
+	0x14, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75,
+	0x6c, 0x65, 0x52, 0x65, 0x71, 0x12, 0x16, 0x0a, 0x06, 0x52, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x52, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x12, 0x14, 0x0a,
+	0x05, 0x52, 0x65, 0x64, 0x69, 0x6f, 0x18, 0x02, 0x20, 0x01, 0x28, 0x02, 0x52, 0x05, 0x52, 0x65,
+	0x64, 0x69, 0x6f, 0x12, 0x1c, 0x0a, 0x09, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x4e, 0x61, 0x6d, 0x65,
+	0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x4e, 0x61, 0x6d,
+	0x65, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x49,
+	0x64, 0x22, 0x51, 0x0a, 0x14, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x43, 0x72, 0x65, 0x77, 0x4b,
+	0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x12, 0x39, 0x0a, 0x0b, 0x43, 0x72, 0x65,
+	0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17,
+	0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52,
+	0x75, 0x6c, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x0b, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69,
+	0x52, 0x75, 0x6c, 0x65, 0x22, 0x26, 0x0a, 0x14, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x72,
+	0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02,
+	0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x49, 0x64, 0x22, 0x46, 0x0a, 0x14,
+	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c,
+	0x65, 0x52, 0x65, 0x73, 0x12, 0x1c, 0x0a, 0x09, 0x49, 0x73, 0x53, 0x75, 0x63, 0x63, 0x65, 0x73,
+	0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x09, 0x49, 0x73, 0x53, 0x75, 0x63, 0x63, 0x65,
+	0x73, 0x73, 0x12, 0x10, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x03, 0x4d, 0x73, 0x67, 0x32, 0xc0, 0x03, 0x0a, 0x0b, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69,
+	0x52, 0x75, 0x6c, 0x65, 0x12, 0x46, 0x0a, 0x06, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x12, 0x1c,
+	0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x43, 0x72,
+	0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x1c, 0x2e, 0x63,
+	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x43, 0x72, 0x65, 0x77,
+	0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x46, 0x0a, 0x06,
+	0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x12, 0x1c, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e,
+	0x47, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c,
+	0x65, 0x52, 0x65, 0x71, 0x1a, 0x1c, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x47, 0x65,
+	0x74, 0x4f, 0x6e, 0x65, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x52,
+	0x65, 0x73, 0x22, 0x00, 0x12, 0x49, 0x0a, 0x07, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x12,
+	0x1d, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74,
+	0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x1d,
+	0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x43,
+	0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12,
+	0x46, 0x0a, 0x06, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x12, 0x1c, 0x2e, 0x63, 0x6f, 0x6e, 0x66,
+	0x69, 0x67, 0x2e, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69,
+	0x52, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x1c, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x2e, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75,
+	0x6c, 0x65, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x46, 0x0a, 0x06, 0x4d, 0x6f, 0x64, 0x69, 0x66,
+	0x79, 0x12, 0x1c, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x4d, 0x6f, 0x64, 0x69, 0x66,
+	0x79, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x1a,
+	0x1c, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x43,
+	0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12,
+	0x46, 0x0a, 0x06, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x12, 0x1c, 0x2e, 0x63, 0x6f, 0x6e, 0x66,
+	0x69, 0x67, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69,
+	0x52, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x1c, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x72, 0x65, 0x77, 0x4b, 0x70, 0x69, 0x52, 0x75,
+	0x6c, 0x65, 0x52, 0x65, 0x73, 0x22, 0x00, 0x42, 0x38, 0x5a, 0x36, 0x67, 0x69, 0x74, 0x68, 0x75,
+	0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x6c, 0x6a, 0x31, 0x35, 0x37, 0x30, 0x36, 0x39, 0x33, 0x36,
+	0x35, 0x39, 0x2f, 0x67, 0x66, 0x63, 0x71, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x2f, 0x63,
+	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2f, 0x69, 0x6e, 0x73, 0x70, 0x69, 0x72, 0x69, 0x74, 0x2f, 0x76,
+	0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -800,7 +956,7 @@ func file_config_inspirit_v1_crew_kpi_rule_proto_rawDescGZIP() []byte {
 	return file_config_inspirit_v1_crew_kpi_rule_proto_rawDescData
 }
 
-var file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_config_inspirit_v1_crew_kpi_rule_proto_goTypes = []interface{}{
 	(*CrewKpiRuleInfo)(nil),       // 0: config.CrewKpiRuleInfo
 	(*CreateCrewKpiRuleReq)(nil),  // 1: config.CreateCrewKpiRuleReq
@@ -809,10 +965,12 @@ var file_config_inspirit_v1_crew_kpi_rule_proto_goTypes = []interface{}{
 	(*GetOneCrewKpiRuleRes)(nil),  // 4: config.GetOneCrewKpiRuleRes
 	(*GetListCrewKpiRuleReq)(nil), // 5: config.GetListCrewKpiRuleReq
 	(*GetListCrewKpiRuleRes)(nil), // 6: config.GetListCrewKpiRuleRes
-	(*ModifyCrewKpiRuleReq)(nil),  // 7: config.ModifyCrewKpiRuleReq
-	(*ModifyCrewKpiRuleRes)(nil),  // 8: config.ModifyCrewKpiRuleRes
-	(*DeleteCrewKpiRuleReq)(nil),  // 9: config.DeleteCrewKpiRuleReq
-	(*DeleteCrewKpiRuleRes)(nil),  // 10: config.DeleteCrewKpiRuleRes
+	(*GetAllCrewKpiRuleReq)(nil),  // 7: config.GetAllCrewKpiRuleReq
+	(*GetAllCrewKpiRuleRes)(nil),  // 8: config.GetAllCrewKpiRuleRes
+	(*ModifyCrewKpiRuleReq)(nil),  // 9: config.ModifyCrewKpiRuleReq
+	(*ModifyCrewKpiRuleRes)(nil),  // 10: config.ModifyCrewKpiRuleRes
+	(*DeleteCrewKpiRuleReq)(nil),  // 11: config.DeleteCrewKpiRuleReq
+	(*DeleteCrewKpiRuleRes)(nil),  // 12: config.DeleteCrewKpiRuleRes
 }
 var file_config_inspirit_v1_crew_kpi_rule_proto_depIdxs = []int32{
 	0,  // 0: config.CreateCrewKpiRuleRes.CrewKpiRule:type_name -> config.CrewKpiRuleInfo
@@ -820,22 +978,26 @@ var file_config_inspirit_v1_crew_kpi_rule_proto_depIdxs = []int32{
 	0,  // 2: config.GetOneCrewKpiRuleRes.CrewKpiRule:type_name -> config.CrewKpiRuleInfo
 	0,  // 3: config.GetListCrewKpiRuleReq.CrewKpiRule:type_name -> config.CrewKpiRuleInfo
 	0,  // 4: config.GetListCrewKpiRuleRes.Data:type_name -> config.CrewKpiRuleInfo
-	0,  // 5: config.ModifyCrewKpiRuleRes.CrewKpiRule:type_name -> config.CrewKpiRuleInfo
-	1,  // 6: config.CrewKpiRule.Create:input_type -> config.CreateCrewKpiRuleReq
-	3,  // 7: config.CrewKpiRule.GetOne:input_type -> config.GetOneCrewKpiRuleReq
-	5,  // 8: config.CrewKpiRule.GetList:input_type -> config.GetListCrewKpiRuleReq
-	7,  // 9: config.CrewKpiRule.Modify:input_type -> config.ModifyCrewKpiRuleReq
-	9,  // 10: config.CrewKpiRule.Delete:input_type -> config.DeleteCrewKpiRuleReq
-	2,  // 11: config.CrewKpiRule.Create:output_type -> config.CreateCrewKpiRuleRes
-	4,  // 12: config.CrewKpiRule.GetOne:output_type -> config.GetOneCrewKpiRuleRes
-	6,  // 13: config.CrewKpiRule.GetList:output_type -> config.GetListCrewKpiRuleRes
-	8,  // 14: config.CrewKpiRule.Modify:output_type -> config.ModifyCrewKpiRuleRes
-	10, // 15: config.CrewKpiRule.Delete:output_type -> config.DeleteCrewKpiRuleRes
-	11, // [11:16] is the sub-list for method output_type
-	6,  // [6:11] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	0,  // 5: config.GetAllCrewKpiRuleReq.CrewKpiRule:type_name -> config.CrewKpiRuleInfo
+	0,  // 6: config.GetAllCrewKpiRuleRes.Data:type_name -> config.CrewKpiRuleInfo
+	0,  // 7: config.ModifyCrewKpiRuleRes.CrewKpiRule:type_name -> config.CrewKpiRuleInfo
+	1,  // 8: config.CrewKpiRule.Create:input_type -> config.CreateCrewKpiRuleReq
+	3,  // 9: config.CrewKpiRule.GetOne:input_type -> config.GetOneCrewKpiRuleReq
+	5,  // 10: config.CrewKpiRule.GetList:input_type -> config.GetListCrewKpiRuleReq
+	7,  // 11: config.CrewKpiRule.GetAll:input_type -> config.GetAllCrewKpiRuleReq
+	9,  // 12: config.CrewKpiRule.Modify:input_type -> config.ModifyCrewKpiRuleReq
+	11, // 13: config.CrewKpiRule.Delete:input_type -> config.DeleteCrewKpiRuleReq
+	2,  // 14: config.CrewKpiRule.Create:output_type -> config.CreateCrewKpiRuleRes
+	4,  // 15: config.CrewKpiRule.GetOne:output_type -> config.GetOneCrewKpiRuleRes
+	6,  // 16: config.CrewKpiRule.GetList:output_type -> config.GetListCrewKpiRuleRes
+	8,  // 17: config.CrewKpiRule.GetAll:output_type -> config.GetAllCrewKpiRuleRes
+	10, // 18: config.CrewKpiRule.Modify:output_type -> config.ModifyCrewKpiRuleRes
+	12, // 19: config.CrewKpiRule.Delete:output_type -> config.DeleteCrewKpiRuleRes
+	14, // [14:20] is the sub-list for method output_type
+	8,  // [8:14] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_config_inspirit_v1_crew_kpi_rule_proto_init() }
@@ -929,7 +1091,7 @@ func file_config_inspirit_v1_crew_kpi_rule_proto_init() {
 			}
 		}
 		file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ModifyCrewKpiRuleReq); i {
+			switch v := v.(*GetAllCrewKpiRuleReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -941,7 +1103,7 @@ func file_config_inspirit_v1_crew_kpi_rule_proto_init() {
 			}
 		}
 		file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ModifyCrewKpiRuleRes); i {
+			switch v := v.(*GetAllCrewKpiRuleRes); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -953,7 +1115,7 @@ func file_config_inspirit_v1_crew_kpi_rule_proto_init() {
 			}
 		}
 		file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteCrewKpiRuleReq); i {
+			switch v := v.(*ModifyCrewKpiRuleReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -965,6 +1127,30 @@ func file_config_inspirit_v1_crew_kpi_rule_proto_init() {
 			}
 		}
 		file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ModifyCrewKpiRuleRes); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DeleteCrewKpiRuleReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_config_inspirit_v1_crew_kpi_rule_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*DeleteCrewKpiRuleRes); i {
 			case 0:
 				return &v.state
@@ -983,7 +1169,7 @@ func file_config_inspirit_v1_crew_kpi_rule_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_config_inspirit_v1_crew_kpi_rule_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -1012,6 +1198,7 @@ type CrewKpiRuleClient interface {
 	Create(ctx context.Context, in *CreateCrewKpiRuleReq, opts ...grpc.CallOption) (*CreateCrewKpiRuleRes, error)
 	GetOne(ctx context.Context, in *GetOneCrewKpiRuleReq, opts ...grpc.CallOption) (*GetOneCrewKpiRuleRes, error)
 	GetList(ctx context.Context, in *GetListCrewKpiRuleReq, opts ...grpc.CallOption) (*GetListCrewKpiRuleRes, error)
+	GetAll(ctx context.Context, in *GetAllCrewKpiRuleReq, opts ...grpc.CallOption) (*GetAllCrewKpiRuleRes, error)
 	Modify(ctx context.Context, in *ModifyCrewKpiRuleReq, opts ...grpc.CallOption) (*ModifyCrewKpiRuleRes, error)
 	Delete(ctx context.Context, in *DeleteCrewKpiRuleReq, opts ...grpc.CallOption) (*DeleteCrewKpiRuleRes, error)
 }
@@ -1051,6 +1238,15 @@ func (c *crewKpiRuleClient) GetList(ctx context.Context, in *GetListCrewKpiRuleR
 	return out, nil
 }
 
+func (c *crewKpiRuleClient) GetAll(ctx context.Context, in *GetAllCrewKpiRuleReq, opts ...grpc.CallOption) (*GetAllCrewKpiRuleRes, error) {
+	out := new(GetAllCrewKpiRuleRes)
+	err := c.cc.Invoke(ctx, "/config.CrewKpiRule/GetAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *crewKpiRuleClient) Modify(ctx context.Context, in *ModifyCrewKpiRuleReq, opts ...grpc.CallOption) (*ModifyCrewKpiRuleRes, error) {
 	out := new(ModifyCrewKpiRuleRes)
 	err := c.cc.Invoke(ctx, "/config.CrewKpiRule/Modify", in, out, opts...)
@@ -1074,6 +1270,7 @@ type CrewKpiRuleServer interface {
 	Create(context.Context, *CreateCrewKpiRuleReq) (*CreateCrewKpiRuleRes, error)
 	GetOne(context.Context, *GetOneCrewKpiRuleReq) (*GetOneCrewKpiRuleRes, error)
 	GetList(context.Context, *GetListCrewKpiRuleReq) (*GetListCrewKpiRuleRes, error)
+	GetAll(context.Context, *GetAllCrewKpiRuleReq) (*GetAllCrewKpiRuleRes, error)
 	Modify(context.Context, *ModifyCrewKpiRuleReq) (*ModifyCrewKpiRuleRes, error)
 	Delete(context.Context, *DeleteCrewKpiRuleReq) (*DeleteCrewKpiRuleRes, error)
 }
@@ -1090,6 +1287,9 @@ func (*UnimplementedCrewKpiRuleServer) GetOne(context.Context, *GetOneCrewKpiRul
 }
 func (*UnimplementedCrewKpiRuleServer) GetList(context.Context, *GetListCrewKpiRuleReq) (*GetListCrewKpiRuleRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetList not implemented")
+}
+func (*UnimplementedCrewKpiRuleServer) GetAll(context.Context, *GetAllCrewKpiRuleReq) (*GetAllCrewKpiRuleRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
 }
 func (*UnimplementedCrewKpiRuleServer) Modify(context.Context, *ModifyCrewKpiRuleReq) (*ModifyCrewKpiRuleRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Modify not implemented")
@@ -1156,6 +1356,24 @@ func _CrewKpiRule_GetList_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CrewKpiRule_GetAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllCrewKpiRuleReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CrewKpiRuleServer).GetAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/config.CrewKpiRule/GetAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CrewKpiRuleServer).GetAll(ctx, req.(*GetAllCrewKpiRuleReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _CrewKpiRule_Modify_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ModifyCrewKpiRuleReq)
 	if err := dec(in); err != nil {
@@ -1207,6 +1425,10 @@ var _CrewKpiRule_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetList",
 			Handler:    _CrewKpiRule_GetList_Handler,
+		},
+		{
+			MethodName: "GetAll",
+			Handler:    _CrewKpiRule_GetAll_Handler,
 		},
 		{
 			MethodName: "Modify",
