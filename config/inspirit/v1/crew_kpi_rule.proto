@@ -67,17 +67,12 @@ message GetListCrewKpiRuleRes {
 
 // 列表接口输入数据结构
 message GetAllCrewKpiRuleReq {
-  int32 Page = 1;
-  int32 Size = 2;
-  CrewKpiRuleInfo CrewKpiRule = 3;
+  CrewKpiRuleInfo CrewKpiRule = 1;
 }
 
 // 列表接口输出数据结构
 message GetAllCrewKpiRuleRes {
-  int32 Page = 1;
-  int32 Size = 2;
-  int32 TotalSize = 3;
-  repeated CrewKpiRuleInfo Data = 4;
+  repeated CrewKpiRuleInfo Data = 1;
 }
 
 // 修改数据接口输入数据结构
