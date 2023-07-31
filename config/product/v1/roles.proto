@@ -22,8 +22,9 @@ message RolesInfo {
   int32      Pid = 3; // 上级角色
   string      Explain = 4; // 角色与职责说明
   string         Remark = 5; // 预留备注说明信息
-  string  CreateTime = 6; // "新增数据时间"
-  string  UpdateTime = 7; // "最新更新数据"
+  int32        IsSpecial = 6; // 是否特殊处理
+  string  CreateTime = 7; // "新增数据时间"
+  string  UpdateTime = 8; // "最新更新数据"
 }
 
 // 创建数据接口输入数据结构
