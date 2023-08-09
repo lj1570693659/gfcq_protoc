@@ -14,12 +14,13 @@ service LevelConfirm {
   rpc Delete(DeleteLevelConfirmReq) returns (DeleteLevelConfirmRes) {}
 }
 
-// 得分区间包含关系（1：左闭右开，2：左开右闭）
+// 得分区间包含关系（1：左闭右开，2：左开右闭, 3: 左右闭口 4：左右开口）
 enum ScoreRangeEnum {
   anything = 0;
   includeMin = 1;
   includeMax = 2;
   includeMinMax = 3;
+  notIncludeMinMax = 4;
 }
 
 // 是否委派PM(1:是 2：否)

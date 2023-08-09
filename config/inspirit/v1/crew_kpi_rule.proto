@@ -6,6 +6,8 @@ package config;
 
 option go_package = "github.com/lj1570693659/gfcq_protoc/config/inspirit/v1";
 
+import "config/product/v1/level_confirm.proto";
+
 // 团队成员绩效等级配置信息
 service CrewKpiRule {
   rpc Create(CreateCrewKpiRuleReq) returns (CreateCrewKpiRuleRes) {}
@@ -21,9 +23,12 @@ message CrewKpiRuleInfo {
   int32             Id = 1;
   float          Redio = 2;// 比例
   string          LevelName = 3;// 等级名称
-  string          Remark = 4;// 预留备注说明信息
-  string CreateTime = 5;// 数据新增时间
-  string  UpdateTime = 6;// 最后一次更新数据时间
+  int32          ScoreMin = 4;// 分值下限
+  int32          ScoreMax = 5;// 分值上限
+  ScoreRangeEnum          ScoreRange = 6;// 分数区间包含关系（1：左闭右开，2：左开右闭, 3: 左右闭口 4：左右开口）
+  string          Remark = 7;// 预留备注说明信息
+  string CreateTime = 8;// 数据新增时间
+  string  UpdateTime = 9;// 最后一次更新数据时间
 }
 
 // 创建数据接口输入数据结构
@@ -31,6 +36,9 @@ message CreateCrewKpiRuleReq {
   string Remark = 1;
   float          Redio = 2;// 比例
   string          LevelName = 3;// 等级名称
+  int32          ScoreMin = 4;// 分值下限
+  int32          ScoreMax = 5;// 分值上限
+  ScoreRangeEnum          ScoreRange = 6;// 分数区间包含关系（1：左闭右开，2：左开右闭, 3: 左右闭口 4：左右开口）
 
 }
 
@@ -80,7 +88,10 @@ message ModifyCrewKpiRuleReq {
   string Remark = 1;
   float          Redio = 2;// 比例
   string          LevelName = 3;// 等级名称
-  int32 Id = 4; // v: required
+  int32          ScoreMin = 4;// 分值下限
+  int32          ScoreMax = 5;// 分值上限
+  ScoreRangeEnum          ScoreRange = 6;// 分数区间包含关系（1：左闭右开，2：左开右闭, 3: 左右闭口 4：左右开口）
+  int32 Id = 7; // v: required
 }
 
 // 修改数据接口输出数据结构

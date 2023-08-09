@@ -24,7 +24,7 @@ message CrewHoursIndexInfo {
   uint32          ScoreIndex = 2;// 工时指数
   float          ScoreMin = 3;// 分值下限
   float          ScoreMax = 4;// 分值上限
-  ScoreRangeEnum          ScoreRange = 5;// 分数区间包含关系（1：左闭右开，2：左开右闭）
+  ScoreRangeEnum          ScoreRange = 5;// 分数区间包含关系（1：左闭右开，2：左开右闭, 3: 左右闭口 4：左右开口）
   string          Remark = 6;// 预留备注说明信息
   string CreateTime = 7;// 数据新增时间
   string  UpdateTime = 8;// 最后一次更新数据时间
