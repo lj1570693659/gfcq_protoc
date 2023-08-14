@@ -30,7 +30,8 @@ message DepartmentInfo {
 message CreateDepartmentReq {
   int32 Pid = 1; // v: required
   string Name = 2; // v: required
-  string Remark = 3; // v: required
+  int32  Level          = 3; // 上级部门
+  string Remark = 4; // v: required
 }
 
 // 创建数据接口输出数据结构
