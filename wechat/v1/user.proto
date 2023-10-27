@@ -16,7 +16,7 @@ service WechatUser {
 }
 
 // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
-enum StatusEnum {
+enum WechatStatusEnum {
   anything = 0;
   working = 1;
   tryout = 2;
@@ -25,7 +25,7 @@ enum StatusEnum {
 }
 
 // 性别（0：未知 1：男  2：女）
-enum SexEnum {
+enum WechatSexEnum {
   unknow = 0;
   man = 1;
   woman = 2;
@@ -36,14 +36,14 @@ message WechatUserInfo {
     int32  Id                              = 1;
     string UserName                        = 2; // 员工姓名
     string WorkNumber                      = 3; // 员工工号
-    SexEnum Sex                             = 4; // 性别（0：未知 1：男  2：女）
+  WechatSexEnum Sex                             = 4; // 性别（0：未知 1：男  2：女）
     string Phone                           = 5; // 手机号码
     string Email                           = 6; // 邮箱号码
     string DepartId                        = 7; // 部门ID
     int32 JobLevel                         = 8; // 职级
     string JobId                            = 9; // 岗位信息
     int32 InstructorId                     = 10; // 指导老师
-    StatusEnum Status                      = 11; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+  WechatStatusEnum Status                      = 11; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
     string Remark                          = 12; // 预留备注信息
     string CreateTime   = 13; // 数据新增时间
     string UpdateTime   = 14; // 最后一次更新数据时间
@@ -54,13 +54,13 @@ message CreateWechatUserReq {
   string Remark                          = 1;
   string UserName                        = 2; // 员工姓名
   string WorkNumber                      = 3; // 员工工号
-  SexEnum Sex                             = 4; // 性别（0：未知 1：男  2：女）
+  WechatSexEnum Sex                             = 4; // 性别（0：未知 1：男  2：女）
   string Phone                           = 5; // 手机号码
   string Email                           = 6; // 邮箱号码
   int32 JobLevel                        = 7; // 职级
   repeated int32 JobId                           = 8; // 岗位信息
   int32 InstructorId                    = 9; // 指导老师
-  StatusEnum Status                          = 10; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+  WechatStatusEnum Status                          = 10; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
   string DepartId                        = 11; // 部门ID
 
 }
@@ -80,7 +80,7 @@ message GetOneWechatUserReq {
   repeated int32  DepartId                        = 6; // 部门ID
   repeated int32  JobId                           = 7; // 岗位ID
   repeated int32  JobLevel                        = 8; // 职级
-  StatusEnum  status                        = 9; // 在职状态
+  WechatStatusEnum  status                        = 9; // 在职状态
 }
 
 // 获取详情接口输出数据结构
@@ -122,13 +122,13 @@ message ModifyWechatUserReq {
   string Remark                          = 1;
   string UserName                        = 2; // 员工姓名
   string WorkNumber                      = 3; // 员工工号
-  SexEnum Sex                             = 4; // 性别（0：未知 1：男  2：女）
+  WechatSexEnum Sex                             = 4; // 性别（0：未知 1：男  2：女）
   string Phone                           = 5; // 手机号码
   string Email                           = 6; // 邮箱号码
   int32 JobLevel                        = 7; // 职级
   repeated int32 JobId                           = 8; // 岗位信息
   int32 InstructorId                    = 9; // 指导老师
-  StatusEnum Status                     = 10; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+  WechatStatusEnum Status                     = 10; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
   int32 Id                              = 11; // v: required
   string DepartId                        = 12; // 部门ID
 }
