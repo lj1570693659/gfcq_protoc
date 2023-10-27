@@ -1,0 +1,150 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+package common;
+
+option go_package = "github.com/lj1570693659/gfcq_protoc/wechat/v1/user";
+
+service WechatUser {
+  rpc Create(CreateWechatUserReq) returns (CreateWechatUserRes) {}
+  rpc GetOne(GetOneWechatUserReq) returns (GetOneWechatUserRes) {}
+  rpc GetList(GetListWechatUserReq) returns (GetListWechatUserRes) {}
+  rpc GetAll(GetAllWechatUserReq) returns (GetAllWechatUserRes) {}
+  rpc Modify(ModifyWechatUserReq) returns (ModifyWechatUserRes) {}
+  rpc Delete(DeleteWechatUserReq) returns (DeleteWechatUserRes) {}
+}
+
+// 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+enum StatusEnum {
+  anything = 0;
+  working = 1;
+  tryout = 2;
+  interns = 3;
+  terminated = 4;
+}
+
+// 性别（0：未知 1：男  2：女）
+enum SexEnum {
+  unknow = 0;
+  man = 1;
+  woman = 2;
+}
+
+// 员工信息公共数据结构
+message WechatUserInfo {
+    int32  Id                              = 1;
+    string UserName                        = 2; // 员工姓名
+    string WorkNumber                      = 3; // 员工工号
+    SexEnum Sex                             = 4; // 性别（0：未知 1：男  2：女）
+    string Phone                           = 5; // 手机号码
+    string Email                           = 6; // 邮箱号码
+    string DepartId                        = 7; // 部门ID
+    int32 JobLevel                         = 8; // 职级
+    string JobId                            = 9; // 岗位信息
+    int32 InstructorId                     = 10; // 指导老师
+    StatusEnum Status                      = 11; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+    string Remark                          = 12; // 预留备注信息
+    string CreateTime   = 13; // 数据新增时间
+    string UpdateTime   = 14; // 最后一次更新数据时间
+}
+
+// 创建数据接口输入数据结构
+message CreateWechatUserReq {
+  string Remark                          = 1;
+  string UserName                        = 2; // 员工姓名
+  string WorkNumber                      = 3; // 员工工号
+  SexEnum Sex                             = 4; // 性别（0：未知 1：男  2：女）
+  string Phone                           = 5; // 手机号码
+  string Email                           = 6; // 邮箱号码
+  int32 JobLevel                        = 7; // 职级
+  repeated int32 JobId                           = 8; // 岗位信息
+  int32 InstructorId                    = 9; // 指导老师
+  StatusEnum Status                          = 10; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+  string DepartId                        = 11; // 部门ID
+
+}
+
+// 创建数据接口输出数据结构
+message CreateWechatUserRes {
+  WechatUserInfo WechatUser = 1;
+}
+
+// 获取详情接口输入数据结构
+message GetOneWechatUserReq {
+  int32 Id                               = 1; // v: required
+  string UserName                        = 2; // 员工姓名
+  string WorkNumber                      = 3; // 员工工号
+  string Phone                           = 4; // 手机号码
+  string Email                           = 5; // 邮箱号码
+  repeated int32  DepartId                        = 6; // 部门ID
+  repeated int32  JobId                           = 7; // 岗位ID
+  repeated int32  JobLevel                        = 8; // 职级
+  StatusEnum  status                        = 9; // 在职状态
+}
+
+// 获取详情接口输出数据结构
+message GetOneWechatUserRes {
+  WechatUserInfo WechatUser = 1;
+  string DepartString = 2;
+  repeated int32  DepartIds                        = 3; // 部门ID
+  string JobIdString                            = 4; // 岗位信息
+  repeated int32  JobIds                        = 5; // 岗位ID
+}
+
+// 列表接口输入数据结构
+message GetListWechatUserReq {
+  int32 Page = 1;
+  int32 Size = 2;
+  WechatUserInfo WechatUser = 3;
+}
+
+// 列表接口输出数据结构
+message GetListWechatUserRes {
+  int32 Page = 1;
+  int32 Size = 2;
+  int32 TotalSize = 3;
+  repeated WechatUserInfo Data = 4;
+}
+
+// 列表接口输入数据结构
+message GetAllWechatUserReq {
+  WechatUserInfo WechatUser = 1;
+}
+
+// 列表接口输出数据结构
+message GetAllWechatUserRes {
+  repeated WechatUserInfo Data = 1;
+}
+
+// 修改数据接口输入数据结构
+message ModifyWechatUserReq {
+  string Remark                          = 1;
+  string UserName                        = 2; // 员工姓名
+  string WorkNumber                      = 3; // 员工工号
+  SexEnum Sex                             = 4; // 性别（0：未知 1：男  2：女）
+  string Phone                           = 5; // 手机号码
+  string Email                           = 6; // 邮箱号码
+  int32 JobLevel                        = 7; // 职级
+  repeated int32 JobId                           = 8; // 岗位信息
+  int32 InstructorId                    = 9; // 指导老师
+  StatusEnum Status                     = 10; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+  int32 Id                              = 11; // v: required
+  string DepartId                        = 12; // 部门ID
+}
+
+// 修改数据接口输出数据结构
+message ModifyWechatUserRes {
+  WechatUserInfo WechatUser = 3;
+}
+
+// 删除数据接口输入数据结构
+message DeleteWechatUserReq {
+  int32 Id = 1; // v: required
+}
+
+// 删除数据接口输出数据结构
+message DeleteWechatUserRes {
+  bool IsSuccess = 1; // v: required
+  string Msg = 2; // v: required
+}
