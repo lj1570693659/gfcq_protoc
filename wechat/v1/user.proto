@@ -17,18 +17,18 @@ service WechatUser {
 
 // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
 enum WechatStatusEnum {
-  anything = 0;
-  working = 1;
-  tryout = 2;
-  interns = 3;
-  terminated = 4;
+  wechatAnything = 0;
+  wechatWorking = 1;
+  wechatTryout = 2;
+  wechatInterns = 3;
+  wechatTerminated = 4;
 }
 
 // 性别（0：未知 1：男  2：女）
 enum WechatSexEnum {
-  unknow = 0;
-  man = 1;
-  woman = 2;
+  wechatUnknow = 0;
+  wechatMan = 1;
+  wechatWoman = 2;
 }
 
 // 员工信息公共数据结构
