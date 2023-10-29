@@ -24,6 +24,8 @@ message DepartmentInfo {
   string Remark       = 5; // 预留备注信息
   string CreateTime   = 6; // 数据新增时间
   string UpdateTime   = 7; // 最后一次更新数据时间
+  string NameEn = 8; // v: required
+  string DepartmentLeader = 9; // v: required
 }
 
 // 创建数据接口输入数据结构
@@ -32,6 +34,9 @@ message CreateDepartmentReq {
   string Name = 2; // v: required
   int32  Level          = 3; // 上级部门
   string Remark = 4; // v: required
+  string NameEn = 5; // v: required
+  string DepartmentLeader = 6; // v: required
+  int32 ID = 7; // v: required
 }
 
 // 创建数据接口输出数据结构
@@ -43,6 +48,7 @@ message CreateDepartmentRes {
 message GetOneDepartmentReq {
   int32 Id   = 1; // v: required
   string Name = 2; // 部门名称
+  string NameEn = 3; // v: required
 }
 
 // 获取详情接口输出数据结构
@@ -83,6 +89,8 @@ message ModifyDepartmentReq {
   int32  Level          = 3; // 上级部门
   string Name = 4; // v: required
   string Remark = 5; // v: required
+  string NameEn = 6; // v: required
+  string DepartmentLeader = 7; // v: required
 }
 
 // 修改数据接口输出数据结构
