@@ -44,10 +44,11 @@ message EmployeeInfo {
     string JobId                            = 9; // 岗位信息
     int32 InstructorId                     = 10; // 指导老师
   string DirectLeader                    = 11; // 直接上级
-    StatusEnum Status                      = 12; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
-    string Remark                          = 13; // 预留备注信息
-    string CreateTime   = 14; // 数据新增时间
-    string UpdateTime   = 15; // 最后一次更新数据时间
+  int32 IsLeaderInDept                    = 12; // 表示在所在的部门内是否为部门负责人。0-否；1-是
+    StatusEnum Status                      = 13; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+    string Remark                          = 14; // 预留备注信息
+    string CreateTime   = 15; // 数据新增时间
+    string UpdateTime   = 16; // 最后一次更新数据时间
 }
 
 // 创建数据接口输入数据结构
@@ -64,6 +65,7 @@ message CreateEmployeeReq {
   string DirectLeader                    = 10; // 直接上级
   StatusEnum Status                          = 11; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
   string DepartId                        = 12; // 部门ID
+  int32 IsLeaderInDept                    = 13; // 表示在所在的部门内是否为部门负责人。0-否；1-是
 
 }
 
@@ -134,6 +136,7 @@ message ModifyEmployeeReq {
   StatusEnum Status                     = 11; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
   int32 Id                              = 12; // v: required
   string DepartId                        = 13; // 部门ID
+  int32 IsLeaderInDept                    = 14; // 表示在所在的部门内是否为部门负责人。0-否；1-是
 }
 
 // 修改数据接口输出数据结构
