@@ -43,10 +43,11 @@ message EmployeeInfo {
     int32 JobLevel                         = 8; // 职级
     string JobId                            = 9; // 岗位信息
     int32 InstructorId                     = 10; // 指导老师
-    StatusEnum Status                      = 11; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
-    string Remark                          = 12; // 预留备注信息
-    string CreateTime   = 13; // 数据新增时间
-    string UpdateTime   = 14; // 最后一次更新数据时间
+  string DirectLeader                    = 11; // 直接上级
+    StatusEnum Status                      = 12; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+    string Remark                          = 13; // 预留备注信息
+    string CreateTime   = 14; // 数据新增时间
+    string UpdateTime   = 15; // 最后一次更新数据时间
 }
 
 // 创建数据接口输入数据结构
@@ -60,8 +61,9 @@ message CreateEmployeeReq {
   int32 JobLevel                        = 7; // 职级
   repeated int32 JobId                           = 8; // 岗位信息
   int32 InstructorId                    = 9; // 指导老师
-  StatusEnum Status                          = 10; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
-  string DepartId                        = 11; // 部门ID
+  string DirectLeader                    = 10; // 直接上级
+  StatusEnum Status                          = 11; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+  string DepartId                        = 12; // 部门ID
 
 }
 
@@ -128,9 +130,10 @@ message ModifyEmployeeReq {
   int32 JobLevel                        = 7; // 职级
   repeated int32 JobId                           = 8; // 岗位信息
   int32 InstructorId                    = 9; // 指导老师
-  StatusEnum Status                     = 10; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
-  int32 Id                              = 11; // v: required
-  string DepartId                        = 12; // 部门ID
+  string DirectLeader                    = 10; // 直接上级
+  StatusEnum Status                     = 11; // 在职状态（1：在职 2：试用期 3：实习期 4：已离职）
+  int32 Id                              = 12; // v: required
+  string DepartId                        = 13; // 部门ID
 }
 
 // 修改数据接口输出数据结构
