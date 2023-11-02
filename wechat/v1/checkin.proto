@@ -61,6 +61,11 @@ message BaseInfo {
 }
 
 message  GetUserCheckInDayDataRes {
+  repeated GetUserCheckInDayData Data = 1;
+}
+
+
+message  GetUserCheckInDayData {
    SummaryInfo SummaryInfo = 1;
    OtInfo      OtInfo   = 2;
    BaseInfo    BaseInfo  = 3;
