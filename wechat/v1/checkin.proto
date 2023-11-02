@@ -1,0 +1,69 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+package common;
+
+option go_package = "github.com/lj1570693659/gfcq_protoc/wechat/v1/checkin";
+
+service WechatCheckIn {
+  rpc GetUserCheckInDayData(GetUserCheckInDayDataReq) returns (GetUserCheckInDayDataRes) {}
+}
+
+// 请求数据
+message GetUserCheckInDayDataReq {
+  int32 DepartId                          = 1; // 部门ID
+  repeated string WorkNumber              = 2; // 员工工号
+}
+
+// 汇总数据
+message SummaryInfo {
+  int32 CheckinCount     = 1; // 当日打卡次数
+  int32 RegularWorkSec   = 2; // 当日实际工作时长，单位：秒
+  int32 StandardWorkSec  = 3; // 当日标准工作时长，单位：秒
+  int32 EarliestTime     = 4; // 当日最早打卡时间
+  int32 LastestTime      = 5; // 当日最晚打卡时间
+}
+
+
+// OtInfo 加班信息
+message OtInfo {
+    int32      OtStatus            = 1 ; // 状态：0-无加班；1-正常；2-缺时长
+    int32      OtDuration          = 2 ; // 加班时长
+    repeated int32 ExceptionDuration   = 3 ; // ot_status为2下，加班不足的时长
+    int32      WorkdayOverAsVacation  = 4 ;// 工作日加班记为调休，单位秒
+    int32      WorkdayOverAsMoney  = 5 ;// 工作日加班记为加班费，单位秒
+}
+
+// RuleInfo 打卡人员所属规则信息
+message RuleInfo{
+  int32 Groupid       = 1;
+  string Groupname   = 2;
+  int32 Scheduleid     = 3;
+  string Schedulename= 4;
+  repeated CheckinTime Checkintime = 5;
+}
+
+message CheckinTime {
+  int32 WorkSec     = 1; // 上班时间，为距离0点的时间差
+  int32 OffWorkSec  = 2; // 下班时间，为距离0点的时间差
+}
+
+message BaseInfo {
+    int32      Date         = 1 ;
+    int32      RecordType   = 2;  // 记录类型：1-固定上下班；2-外出（此报表中不会出现外出打卡数据）；3-按班次上下班；4-自由签到；5-加班；7-无规则
+    string   Name         = 3;
+    string   NameEx       = 4;
+    string   DepartsName  = 5;
+    string   Acctid       = 6;    // 打卡人员账号，即userid
+    RuleInfo RuleInfo    = 7; // 打卡规则
+    int32      DayType      = 8; // 日报类型：0-工作日日报；1-休息日日报
+}
+
+message  GetUserCheckInDayDataRes {
+   SummaryInfo SummaryInfo = 1;
+   OtInfo      OtInfo   = 2;
+   BaseInfo    BaseInfo  = 3;
+}
+
+
