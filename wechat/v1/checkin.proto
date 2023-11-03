@@ -29,7 +29,7 @@ message SummaryInfo {
 // OtInfo 加班信息
 message OtInfo {
     int32      OtStatus            = 1 ; // 状态：0-无加班；1-正常；2-缺时长
-    int32      OtDuration          = 2 ; // 加班时长
+    float      OtDuration          = 2 ; // 加班时长
     repeated int32 ExceptionDuration   = 3 ; // ot_status为2下，加班不足的时长
     int32      WorkdayOverAsVacation  = 4 ;// 工作日加班记为调休，单位秒
     int32      WorkdayOverAsMoney  = 5 ;// 工作日加班记为加班费，单位秒
@@ -50,7 +50,7 @@ message CheckinTime {
 }
 
 message BaseInfo {
-    int32      Date         = 1 ;
+    string      Date         = 1 ;
     int32      RecordType   = 2;  // 记录类型：1-固定上下班；2-外出（此报表中不会出现外出打卡数据）；3-按班次上下班；4-自由签到；5-加班；7-无规则
     string   Name         = 3;
     string   NameEx       = 4;
