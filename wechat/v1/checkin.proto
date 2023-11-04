@@ -8,6 +8,7 @@ option go_package = "github.com/lj1570693659/gfcq_protoc/wechat/v1/checkin";
 
 service WechatCheckIn {
   rpc GetUserCheckInDayData(GetUserCheckInDayDataReq) returns (GetUserCheckInDayDataRes) {}
+  rpc SendMsg(SendTextMsgReq) returns (SendMsgRes) {}
 }
 
 // 请求数据
@@ -74,4 +75,23 @@ message  GetUserCheckInDayData {
    BaseInfo    BaseInfo  = 3;
 }
 
+message SendTextMsgReq {
+  repeated string Touser   = 1 ; // 指定接收消息的成员，成员ID列表（多个接收者用‘|’分隔，最多支持1000个）。 特殊情况：指定为"@all"，则向该企业应用的全部成员发送
+  repeated string Toparty  = 2 ; // 指定接收消息的部门，部门ID列表，多个接收者用‘|’分隔，最多支持100个。
+  string Totag    = 3 ;
+  string Msgtype  = 4 ;
+  int32 Agentid   = 5 ;
+  int32 Safe                    = 6 ;
+  int32 EnableIdTrans           = 7 ;
+  int32 EnableDuplicateCheck    = 8 ;
+  int32 DuplicateCheckInterval  = 9 ;
+  TextContent Content = 10;
+}
 
+message TextContent {
+    string Content  = 1;
+}
+
+message SendMsgRes {
+
+}
