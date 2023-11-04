@@ -23,8 +23,8 @@ message SummaryInfo {
   int32 CheckinCount     = 1; // 当日打卡次数
   int32 RegularWorkSec   = 2; // 当日实际工作时长，单位：秒
   int32 StandardWorkSec  = 3; // 当日标准工作时长，单位：秒
-  int32 EarliestTime     = 4; // 当日最早打卡时间
-  int32 LastestTime      = 5; // 当日最晚打卡时间
+  string EarliestTime     = 4; // 当日最早打卡时间
+  string LastestTime      = 5; // 当日最晚打卡时间
 }
 
 
