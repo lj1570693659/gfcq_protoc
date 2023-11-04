@@ -14,6 +14,8 @@ service WechatCheckIn {
 message GetUserCheckInDayDataReq {
   int32 DepartId                          = 1; // 部门ID
   repeated string WorkNumber              = 2; // 员工工号
+  int32 StartTime = 3;
+  int32    EndTime = 4;
 }
 
 // 汇总数据
