@@ -93,5 +93,12 @@ message TextContent {
 }
 
 message SendMsgRes {
-
+  int32    ErrCode = 1;
+  string ErrMsg = 2;
+  string InvalidUser = 3;
+  string InvalidParty = 4;
+  string InvalidTag = 5;
+  string UnlicensedUser = 6;
+  string MsgID = 7;
+  string ResponseCode = 8;
 }
